@@ -1,11 +1,13 @@
 ## Component Hierarchy
 
 * `App`
-  * `SearchIndex`
+  * `Splash`
+    * `Sign Up`
+    * `Sign In`
   * `AlbumIndex`
     * `AlbumIndexEdit`
-  * `AlbumDetail`
+  * `AlbumShow`
     * `MODULAR PhotoDetail`
     * `AlbumEdit`
       * `MODULAR NewPhotos`
-  * `NewAlbum`
+      * `MODULAR NewAlbum`

@@ -38,4 +38,4 @@
 [photo_detail_mod_hover]: ./wireframes/photo_detail_mod_hover.jpg
 [home_page_edit]: ./wireframes/home_page_edit.jpg
 [album_edit]: ./wireframes/album_edit.jpg
-[photo_edit]: ./wireframes/photo_edit.jpg
+[photo_edit]: ./wireframes/photo_detail_edit.jpg
