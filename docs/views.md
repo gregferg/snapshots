@@ -1,22 +1,41 @@
 # View Wireframes
 
+## Splash
+![splash]
+
 ## New User
-![new-user]
+![signup]
 
 ## New Session
-![new-session]
+![login]
 
-## NotesIndex / NoteIndexItem / NoteForm
-![notes]
+## Home Page
+![homepage]
 
-## NotebooksIndex / NotebookIndexItem
-![notebooks]
+## Album Show
+![album_show]
 
-## NotebookForm
-![notebook-form]
+## Photo Detail
+![photo_detail_mod]
+![photo_detail_mod_hover]
 
-[new-user]: ./wireframes/new_user.png
-[new-session]: ./wireframes/new_session.png
-[notes]: ./wireframes/root_notes.png
-[notebooks]: ./wireframes/root_notebooks.png
-[notebook-form]: ./wireframes/notebook_form.png
+## Home Page Edit
+![home_page_edit]
+
+## Album Edit
+![album_edit]
+
+## Photo Edit
+![photo_edit]
+
+
+[splash]: ./wireframes/splash.jpg
+[signup]: ./wireframes/signup.jpg
+[login]: ./wireframes/login.jpg
+[homepage]: ./wireframes/homepage.jpg
+[album_show]: ./wireframes/album_show.jpg
+[photo_detail_mod]: ./wireframes/photo_detail_mod.jpg
+[photo_detail_mod_hover]: ./wireframes/photo_detail_mod_hover.jpg
+[home_page_edit]: ./wireframes/home_page_edit.jpg
+[album_edit]: ./wireframes/album_edit.jpg
+[photo_edit]: ./wireframes/photo_edit.jpg

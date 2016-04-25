@@ -2,12 +2,10 @@
 
 * `App`
   * `SearchIndex`
-  * `NotebooksIndex`
-    * `NotebookIndexItem`
-  * `NotebookForm`
-  * `NotesIndex`
-    * `NoteForm`
-    * `NoteIndexItem`
-  * `NoteDetail`
-    * `NoteTags`
-    * `NoteEditArea`
+  * `AlbumIndex`
+    * `AlbumIndexEdit`
+  * `AlbumDetail`
+    * `MODULAR PhotoDetail`
+    * `AlbumEdit`
+      * `MODULAR NewPhotos`
+  * `NewAlbum`
