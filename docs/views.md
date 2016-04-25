@@ -11,31 +11,39 @@
 
 ## Home Page
 ![homepage]
+![homepage_edit]
+![homepage_edit_new_album]
 
 ## Album Show
-![album_show]
+![album_detail_edit]
+![album_detail_edit_addphotos]
+![album_detail_edit_withphotos]
+![album_detail_edit_withphotos_two]
+![album_detail_edit_withphotos_three]
+![album_detail]
 
 ## Photo Detail
-![photo_detail_mod]
-![photo_detail_mod_hover]
+![photo_detail]
+![photo_detail_hover]
+![photo_detail_edit]
 
-## Home Page Edit
-![home_page_edit]
-
-## Album Edit
-![album_edit]
-
-## Photo Edit
-![photo_edit]
 
 
 [splash]: ./wireframes/splash.jpg
 [signup]: ./wireframes/signup.jpg
 [login]: ./wireframes/login.jpg
 [homepage]: ./wireframes/homepage.jpg
-[album_show]: ./wireframes/album_show.jpg
-[photo_detail_mod]: ./wireframes/photo_detail_mod.jpg
-[photo_detail_mod_hover]: ./wireframes/photo_detail_mod_hover.jpg
+[homepage_edit]: ./wireframes/homepage_edit.jpg
+[homepage_edit_new_album]: ./wireframes/homepage_edit_new_album.jpg
+[album_detail_edit]: ./wireframes/album_detail_edit.jpg
+[album_detail_edit_addphotos]: ./wireframes/album_detail_edit_addphotos.jpg
+[album_detail_edit_addphotos]: ./wireframes/album_detail_edit_addphotos.jpg
+[album_detail_edit_withphotos]: ./wireframes/album_detail_edit_withphotos.jpg
+[album_detail_edit_withphotos_two]: ./wireframes/album_detail_edit_withphotos_two.jpg
+[album_detail_edit_withphotos_three]: ./wireframes/album_detail_edit_withphotos_three.jpg
+[album_detail]: ./wireframes/album_detail.jpg
+[photo_detail]: ./wireframes/photo_detail.jpg
+[photo_detail_hover]: ./wireframes/photo_detail_hover.jpg
+[photo_detail_hover]: ./wireframes/photo_detail_hover.jpg
+[photo_detail_edit]: ./wireframes/photo_detail_edit.jpg
 [home_page_edit]: ./wireframes/home_page_edit.jpg
-[album_edit]: ./wireframes/album_edit.jpg
-[photo_edit]: ./wireframes/photo_detail_edit.jpg
