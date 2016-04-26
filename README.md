@@ -65,8 +65,8 @@ the API.
 
 - [ ] create `Photo` model
 - [ ] seed the database with a small amount of test data
-- [ ] CRUD API for notes (`PhotosController`)
-- [ ] jBuilder views for notes
+- [ ] CRUD API for photos (`PhotosController`)
+- [ ] jBuilder views for photos
 - [ ] setup Webpack & Flux scaffold
 - [ ] setup `APIUtil` to interact with the API
 - [ ] test out API interaction in the console.
@@ -78,7 +78,7 @@ user interface.
 
 - [ ] setup the flux loop with skeleton files
 - [ ] setup React Router
-- implement each note component, building out the flux loop as needed.
+- implement each photo component, building out the flux loop as needed.
   - [ ] `PhotosIndex`
   - [ ] `PhotoIndexItem`
   - [ ] `PhotoForm`
@@ -95,25 +95,25 @@ user interface.
 
 ### Phase 5: Albums (1 day)
 
-**Objective:** Photos belong to Albums, and can be viewed by notebook.
+**Objective:** Photos belong to Albums, and can be viewed by Album.
 
 - [ ] create `Album` model
 - build out API, Flux loop, and components for:
   - [ ] Album CRUD
   - [ ] adding photos requires a album  - [ ] moving photos to a different album  - [ ] viewing photos by album- Use CSS to style new views
-Phase 3 adds orgnization to the Notes. Notes belong to a Album,
+Phase 3 adds orgnization to the Photos. Photos belong to a Album,
 which has its own `Index` view.
 
 ### Phase 6: Tags (1.5 days)
 
-**Objective:** Notes can be tagged with multiple tags, and tags are searchable.
+**Objective:** Photos can be tagged with multiple tags, and tags are searchable.
 
 - [ ] create `Tag` model and join table
 - build out API, Flux loop, and components for:
   - [ ] fetching tags for album  - [ ] adding tags to album  - [ ] creating tags while adding to album
   - [ ] searching album by tag
 - [ ] Style new element
-### Phase 7: Allow Complex Styling in Notes (0.5 days)
+### Phase 7: Allow Complex Styling in Photos (0.5 days)
 
 **objective:** Enable complex styling of photos.
 
@@ -130,10 +130,8 @@ which has its own `Index` view.
 - [ ] Add modals, transitions, and other styling flourishes.
 
 ### Bonus Features (TBD)
-- [ ] Search through notes for blocks of text
-- [ ] Pagination / infinite scroll for Notes Index
-- [ ] Set reminders on notes
-- [ ] Changelogs for Notes
+- [ ] Multiple Layouts for Photos or Albums
+- [ ] Set tags on photos/albums
 - [ ] Multiple sessions
 
 [phase-one]: ./docs/phases/phase1.md
