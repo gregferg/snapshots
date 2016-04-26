@@ -31,6 +31,7 @@ progress. Put an x between the brackets for a checkmark: [x] -->
 - [ ] Module Photo View (MVP)
 - [ ] Choose multiple layouts for Home and Album viewing pages (expected feature, but not MVP)
 - [ ] Editable About Me Page (expected feature, but not MVP)
+- [ ] Editable Contact Me Page (expected feature, but not MVP)
 
 ## Design Docs
 * [View Wireframes][views]

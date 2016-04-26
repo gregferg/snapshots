@@ -1,40 +1,40 @@
-# Phase 5: Reminders and Garbage Collection
+# Phase 5: Tags and Garbage Collection
 
 ## Rails
 ### Models
-* Reminder
+* Tag
 
 ### Controllers
-* Api::RemindersController (create, destroy, index, show, update)
+* Api::TagsController (create, destroy, index, show, update)
 
 ### Views
 * reminders/index.json.jbuilder
 
 ## Flux
 ### Views (React Components)
-* RemindersIndex
-  - ReminderIndexItem
-* ReminderShow
-* ReminderForm
+* TagsIndex
+  - TagIndexItem
+* TagShow
+* TagForm
 
 ### Stores
-* Reminder
+* Tag
 
 ### Actions
-* ApiActions.receiveAllReminders -> triggered by ApiUtil
-* ApiActions.receiveSingleReminder
-* ApiActions.deleteReminder
-* ReminderActions.fetchAllReminders -> triggers ApiUtil
-* ReminderActions.fetchSingleReminder
-* ReminderActions.createReminder
-* ReminderActions.updateReminder
-* ReminderActions.destroyReminder
+* ApiActions.receiveAllTags -> triggered by ApiUtil
+* ApiActions.receiveSingleTag
+* ApiActions.deleteTag
+* TagActions.fetchAllTags -> triggers ApiUtil
+* TagActions.fetchSingleTag
+* TagActions.createTag
+* TagActions.updateTag
+* TagActions.destroyTag
 
 ### ApiUtil
-* ApiUtil.fetchAllReminders
-* ApiUtil.fetchSingleReminder
-* ApiUtil.createReminder
-* ApiUtil.updateReminder
-* ApiUtil.destroyReminder
+* ApiUtil.fetchAllTags
+* ApiUtil.fetchSingleTag
+* ApiUtil.createTag
+* ApiUtil.updateTag
+* ApiUtil.destroyTag
 
 ## Gems/Libraries
