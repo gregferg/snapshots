@@ -32,7 +32,9 @@ UserStore.logout = function(){
 
 UserStore.currentUser = function(){
   if (_currentUser) {
-  	return $.extend({}, _currentUser);
+  	return  _currentUser;
+  } else {
+    return null;
   }
 };
 

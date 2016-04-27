@@ -8,7 +8,7 @@ module.exports = {
 
   componentDidMount: function() {
     this.listener = UserStore.addListener(this.updateUser);
-    if (!UserStore.currentUser) {
+    if (!UserStore.currentUser()) {
       UserActions.fetchCurrentUser();
     }
   },

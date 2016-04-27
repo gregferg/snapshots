@@ -14,6 +14,9 @@ var NavBar = React.createClass({
     e.preventDefault();
     UserActions.logout();
   },
+  redirectToHome: function(e) {
+    HashHistory.push("/");
+  },
   render: function(){
 
     var currentUser =
@@ -32,7 +35,9 @@ var NavBar = React.createClass({
       }
     return (
       <div className="nav_bar">
-        <p className="logo"> SNAPSHOT LOGO </p>
+        <div id="logo" onClick={this.redirectToHome}>
+          <p> SNAPSHOT LOGO </p>
+        </div>
         <SearchBar />
         <div>
           {currentUser}

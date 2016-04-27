@@ -13,7 +13,7 @@ var UserActions = {
 		UserApiUtil.post({
 			url: "/api/users",
 			user: user,
-			success: UserActions.receiveCurrentUser,
+			success: UserActions.sucessfulLogin,
 			error: UserActions.handleError
 		});
 	},
@@ -21,17 +21,19 @@ var UserActions = {
 		UserApiUtil.post({
 			url: "/api/session",
 			user: {username: username, password: password },
-			success: function() {
-				UserActions.receiveCurrentUser;
-				HashHistory.push("/" + UserStore.currentUser.username);
-			},
+			success: UserActions.sucessfulLogin,
 			error: UserActions.handleError
 		});
+	},
+	sucessfulLogin: function(user) {
+		UserActions.receiveCurrentUser(user);
+		HashHistory.push("/" + user.username);
 	},
 	guestLogin: function(){
 		UserActions.login({username: "guest", password: "password"});
 	},
 	receiveCurrentUser: function(user){
+		console.log(user);
 		AppDispatcher.dispatch({
 			actionType: UserConstants.LOGIN,
 			user: user
@@ -49,8 +51,12 @@ var UserActions = {
 			actionType: UserConstants.LOGOUT,
 		});
 	},
+	sucessfulLogout: function(){
+		UserActions.removeCurrentUser();
+		HashHistory.push("/");
+	},
 	logout: function(){
-		UserApiUtil.logout(UserActions.removeCurrentUser, UserActions.handleError);
+		UserApiUtil.logout(UserActions.sucessfulLogout, UserActions.handleError);
 	}
 };
 

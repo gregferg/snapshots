@@ -1,7 +1,7 @@
 class Api::SessionsController < ApplicationController
   def create
     @user = User.find_by_credentials(params[:user][:username], params[:user][:password])
-    puts @user
+
     if @user
       login(@user)
       render "api/users/show"
@@ -28,7 +28,7 @@ class Api::SessionsController < ApplicationController
       render "api/users/show"
     else
       @errors = ["You're not logged in!"]
-      render "api/shared/error", status: 401
+      render "api/shared/error", status: 404
     end
   end
 end
