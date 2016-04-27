@@ -28,7 +28,7 @@ class Api::SessionsController < ApplicationController
       render "api/users/show"
     else
       @errors = ["You're not logged in!"]
-      render = "api/shared/errors"
+      render "api/shared/error", status: 401
     end
   end
 end

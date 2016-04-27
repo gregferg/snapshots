@@ -8,12 +8,19 @@
   justify-content: flex-end;
 }
 
-.nav_bar p {
+.nav_bar div {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.logo {
   margin-right: auto;
 }
 
 .form {
   display: flex;
-  align-content: space-between;
+  align-items: center;
   justify-content: center;
+  height: 400px;
 }

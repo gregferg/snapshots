@@ -32,7 +32,7 @@ var NavBar = React.createClass({
       }
     return (
       <div className="nav_bar">
-        <p> SNAPSHOT LOGO </p>
+        <p className="logo"> SNAPSHOT LOGO </p>
         <SearchBar />
         <div>
           {currentUser}
