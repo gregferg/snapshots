@@ -1,3 +1,19 @@
 // Place all the styles related to the static_pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.nav_bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.nav_bar p {
+  margin-right: auto;
+}
+
+.form {
+  display: flex;
+  align-content: space-between;
+  justify-content: center;
+}
