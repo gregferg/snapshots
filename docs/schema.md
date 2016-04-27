@@ -15,7 +15,8 @@ tags        | integer   |
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
-photographer_id   | integer   | not null, foreign key (references users), indexed
+ users), indexed
+ photo_url  | string    | not null
 album_id    | integer   | not null, foreign key (references albums), indexed
 title       | string    |
 description | string    |
