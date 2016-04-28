@@ -1,12 +1,14 @@
 class Api::AlbumsController < ApplicationController
   def index
-    @albums = Album.where(photographer_id: params[:photographer_id]) #COULD BE WRONG
+    user = User.includes(:albums).find_by(username: params[:username])
+    puts user
+    @albums = user.albums
     render :index
   end
 
   def show
     @album = Album.includes(:photos).find_by_id(params[:id])
-    render partial: 'api/albums/show'
+    render :show
   end
 
   def create
@@ -30,14 +32,14 @@ class Api::AlbumsController < ApplicationController
   end
 
   def destroy
-    @album = Album.find_by_id(params[:album_id])
+    @album = Album.find_by_id(params[:id])
     @album.destroy
     render :show
   end
 
   private
   def albums_params
-    params[:album].permit(:photographer_id, :title, :description)
+    params[:album].permit(:user_id, :title, :description)
   end
 
 end

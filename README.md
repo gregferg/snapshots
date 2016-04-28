@@ -8,7 +8,7 @@
 
 Snapshots is a web application inspired by Smugmug that will be build using Ruby on Rails and React.js.  By the end of Week 9, this app will, at a minimum, satisfy the following criteria:
 
-- [ ] New account creation, login, and guest/demo login
+- [x] New account creation, login, and guest/demo login
 - [ ] Smooth, bug-free navigation
 - [ ] Adequate seed data to demonstrate the site's features
 - [ ] The minimally necessary features for an Smugmug-inspired site: Album creation and saving, Album/Photo editing, Module Photo Detail View
@@ -23,8 +23,8 @@ Snapshots will allow users to do the following:
 <!-- This is a Markdown checklist. Use it to keep track of your
 progress. Put an x between the brackets for a checkmark: [x] -->
 
-- [ ] Create an account (MVP)
-- [ ] Log in / Log out, including as a Guest/Demo User (MVP)
+- [x] Create an account (MVP)
+- [x] Log in / Log out, including as a Guest/Demo User (MVP)
 - [ ] Upload, edit, and delete Albums/Photos (MVP)
 - [ ] Title, Description, and tags for Albums/Photos (MVP)
 - [ ] Organize Photos within Albums (MVP)
@@ -52,24 +52,24 @@ progress. Put an x between the brackets for a checkmark: [x] -->
 
 **Objective:** Functioning rails project with Authentication
 
-- [ ] create new project
-- [ ] create `User` model
-- [ ] authentication
-- [ ] user signup/signin pages
-- [ ] blank landing page after signin
+- [x] create new project
+- [x] create `User` model
+- [x] authentication
+- [x] user signup/signin pages
+- [x] blank landing page after signin
 
 ### Phase 2: Photos Model, API, and basic APIUtil (1.5 days)
 
 **Objective:** Photos can be created, read, edited and destroyed through
 the API.
 
-- [ ] create `Photo` model
+- [x] create `Photo` model
 - [ ] seed the database with a small amount of test data
-- [ ] CRUD API for photos (`PhotosController`)
-- [ ] jBuilder views for photos
+- [x] CRUD API for photos (`PhotosController`)
+- [x] jBuilder views for photos
 - [ ] setup Webpack & Flux scaffold
-- [ ] setup `APIUtil` to interact with the API
-- [ ] test out API interaction in the console.
+- [x] setup `APIUtil` to interact with the API
+- [x] test out API interaction in the console.
 
 ### Phase 3: Flux Architecture and Router (1.5 days)
 

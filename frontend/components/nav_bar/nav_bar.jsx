@@ -10,6 +10,10 @@ var SearchBar = require('./search_bar');
 var NavBar = React.createClass({
   mixins: [CurrentUserState],
 
+  componentWillReceiveProps: function(newProps) {
+    this.setState({ user: newProps.user });
+  },
+
   logout: function(e) {
     e.preventDefault();
     UserActions.logout();
@@ -22,14 +26,13 @@ var NavBar = React.createClass({
     var currentUser =
       this.state.user ? <p> Welcome back, {this.state.user.username} </p> : null;
     var button;
-      console.log(this.state.user);
       if (this.state.user) {
-        button =  <button onClick={this.logout}>Log Out</button>;
+        button =  <button className="logout" onClick={this.logout}>Log Out</button>;
       } else {
         button =  (
-          <div>
-            <Link to="/new_user">Sign Up!</Link>
-            <Link to="/login">Log in</Link>
+          <div className="login_signup">
+            <Link to="/new_user">TRY IT OUT</Link>
+            <Link to="/login">LOGIN</Link>
           </div>
         );
       }
@@ -38,9 +41,7 @@ var NavBar = React.createClass({
         <div id="logo" onClick={this.redirectToHome}>
           <p> SNAPSHOT LOGO </p>
         </div>
-        <SearchBar />
         <div>
-          {currentUser}
           {button}
         </div>
       </div>

@@ -7,7 +7,7 @@ var HashHistory = require('react-router').hashHistory;
 
 var UserActions = {
 	fetchCurrentUser: function(){
-		UserApiUtil.fetchCurrentUser(UserActions.receiveCurrentUser, UserActions.handleError);
+		UserApiUtil.fetchCurrentUser(UserActions.loggedInOrNot);
 	},
 	signup: function(user){
 		UserApiUtil.post({
@@ -29,18 +29,26 @@ var UserActions = {
 		UserActions.receiveCurrentUser(user);
 		HashHistory.push("/" + user.username);
 	},
-	guestLogin: function(){
-		UserActions.login({username: "guest", password: "password"});
+	demoLogin: function() {
+		UserActions.login("demo", "password");
+	},
+	loggedInOrNot: function(payload) {
+		if (payload.username) {
+			UserActions.receiveCurrentUser(payload);
+		} else {
+			UserActions.handleError(payload);
+		}
 	},
 	receiveCurrentUser: function(user){
-		console.log(user);
 		AppDispatcher.dispatch({
 			actionType: UserConstants.LOGIN,
 			user: user
 		});
 	},
 	handleError: function(error) {
-		console.log(error);
+		if (!error.responseJSON) {
+			return;
+		}
 		AppDispatcher.dispatch({
 			actionType: UserConstants.ERROR,
 			errors: error.responseJSON.errors

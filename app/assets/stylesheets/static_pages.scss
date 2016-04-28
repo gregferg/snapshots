@@ -2,25 +2,16 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.nav_bar {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-}
 
-.nav_bar div {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-}
-
-#logo {
-  margin-right: auto;
-}
 
 .form {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 400px;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
 }

@@ -81,12 +81,19 @@ var NewUserForm = React.createClass({
 				</form>
 		);
 	},
+	loginDemo:function (e) {
+		UserActions.demoLogin();
+	},
+	demoButton: function() {
+		return <button id="demo_login" onClick={this.loginDemo}>Demo Account</button>;
+	},
 	render: function(){
 		return (
 			<div id="login-form">
 				{this.greeting()}
 				{this.errors()}
 				{this.form()}
+				{this.demoButton()}
 			</div>
 		);
 	}

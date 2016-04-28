@@ -6,7 +6,7 @@ class Api::PhotosController < ApplicationController
 
   def show
     @photo = Photo.find_by_id(params[:id])
-    render partial: 'show'
+    render :show
   end
 
   def create
@@ -24,13 +24,13 @@ class Api::PhotosController < ApplicationController
     if @photo.update(photo_params)
       render :show
     else
-      @errors = @photo.errors
+      @errors = @photo.errors.full_messages
       render "api/shared/error", status: 401
     end
   end
 
   def destroy
-    @photo = Photo.find_by_id(params[:photo_id])
+    @photo = Photo.find_by_id(params[:id])
     @photo.destroy
     render :show
   end

@@ -7,13 +7,19 @@ var LoginForm = require('./components/login_form');
 var NewUserForm = require('./components/new_user_form');
 var HomePage = require('./components/home_page');
 var NavBar = require('./components/nav_bar/nav_bar');
+var CurrentUserState = require("./mixins/current_user_state");
 
 
 var App = React.createClass({
+  mixins: [CurrentUserState],
+
   render: function () {
+    // if (this.props.params.)
+    console.log(this.props.params);
+    
     return(
     <div>
-      <NavBar />
+      <NavBar user={this.state.user}/>
       {this.props.children}
     </div>
     );

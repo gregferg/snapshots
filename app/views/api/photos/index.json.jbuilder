@@ -1,3 +1,3 @@
 json.array! @photos do |photo|
-  json.partial! 'show', photo: photo
+  json.partial! 'photo', photo: photo
 end

@@ -1,24 +1,22 @@
 var React = require("react");
 var UserActions = require("../actions/user_actions");
-var CurrentUserState = require("../mixins/current_user_state");
 var UserStore = require('../stores/user_store');
 var HashHistory = require('react-router').hashHistory;
 
 
 var LoginForm = React.createClass({
-	mixins: [CurrentUserState],
 	getInitialState: function(){
 		return {username: "", password: "" };
 	},
-  // componentDidMount: function() {
-  //   this.listener = UserStore.addListener(this.updateErrors);
-  // },
-  // componentWillUnmount: function() {
-  //   this.listener.remove();
-  // },
-	// updateErrors: function(){
-	// 	this.setState({errors: UserStore.errors() });
-	// },
+  componentDidMount: function() {
+    this.listener = UserStore.addListener(this.updateErrors);
+  },
+  componentWillUnmount: function() {
+    this.listener.remove();
+  },
+	updateErrors: function(){
+		this.setState({errors: UserStore.errors() });
+	},
   usernameChange: function(e) {
     this.setState({username: e.target.value});
   },
@@ -38,16 +36,8 @@ var LoginForm = React.createClass({
 		e.preventDefault();
 		UserActions.logout();
 	},
-	greeting: function(){
-		if (!this.state.currentUser) {
-			return;
-		}
-		return (
-			<div>
-				<h2>Hi, {this.state.currentUser.username}!</h2>
-				<input type="submit" value="logout" onClick={this.logout}/>
-			</div>
-		);
+	onChange: function(){
+
 	},
 	errors: function(){
 		if (!this.state.errors){
@@ -76,6 +66,7 @@ var LoginForm = React.createClass({
                 onChange={this.usernameChange}
                 value={this.state.username}/>
 						</label>
+						<br/>
 
 						<label> Password:
 							<input
@@ -85,6 +76,7 @@ var LoginForm = React.createClass({
                 value={this.state.password}/>
 						</label>
 					</section>
+					<br/>
 
 					<input type="Submit" value="Submit"/>
 				</form>
@@ -93,7 +85,6 @@ var LoginForm = React.createClass({
 	render: function(){
 		return (
 			<div id="login-form">
-				{this.greeting()}
 				{this.errors()}
 				{this.form()}
 			</div>
