@@ -16,7 +16,8 @@ var App = React.createClass({
   render: function () {
     // if (this.props.params.)
     console.log(this.props.params);
-    
+    this.props.location.pathname;
+
     return(
     <div>
       <NavBar user={this.state.user}/>
