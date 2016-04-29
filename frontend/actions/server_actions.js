@@ -16,6 +16,11 @@ var ServerActions = {
       album: album
     });
   },
+  emptyPhotoStore: function () {
+    Dispatcher.dispatch({
+      actionType: "EMPTY_PHOTOSTORE"
+    });
+  },
   receivePhotos: function (photos) {
     Dispatcher.dispatch({
       actionType: "RECEIVE_PHOTOS",
@@ -26,6 +31,12 @@ var ServerActions = {
     Dispatcher.dispatch({
       actionType: "RECEIVE_PHOTO",
       photo: photo
+    });
+  },
+  receiveNewPhotos: function (photos) {
+    Dispatcher.dispatch({
+      actionType: "RECEIVE_NEW_PHOTOS",
+      photos: photos
     });
   }
 };

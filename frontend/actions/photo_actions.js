@@ -5,8 +5,8 @@ var PhotoActions = {
     ApiUtil.fetchPhotos(albumId);
   },
 
-  createPhoto: function(photo) {
-    ApiUtil.createPhoto(photo);
+  createPhotos: function(photos) {
+    ApiUtil.createPhotos(photos);
   }
 };
 

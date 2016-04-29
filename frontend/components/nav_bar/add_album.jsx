@@ -1,4 +1,4 @@
-var React = require('react');
+ var React = require('react');
 var CurrentUserState = require("../../mixins/current_user_state");
 var HashHistory = require('react-router').hashHistory;
 var UserActions = require("../../actions/user_actions");
@@ -40,7 +40,7 @@ var AddAlbum = React.createClass({
           style={ModalStyle}
           onAfterOpen={this.onModalOpen}>
           <button onClick={this.onModalClose}>Close</button>
-          <AddAlbumForm />
+          <AddAlbumForm onFormSubmit={this.onModalClose}/>
         </Modal>
       </div>
     );

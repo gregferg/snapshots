@@ -14,6 +14,7 @@ var PhotoIndex = React.createClass({
   },
 
   componentDidMount: function() {
+    console.log("POHTO INDEX MOUNTED");
     this.listener = PhotoStore.addListener(this.updateView);
     PhotoActions.fetchPhotos(this.props.params.album_id);
   },
@@ -30,28 +31,29 @@ var PhotoIndex = React.createClass({
     this.setState({ photos: newProps.photo});
   },
   openCloudinaryWidget: function (e) {
-    console.log(window.cloudinary_options);
     e.preventDefault();
     cloudinary.openUploadWidget(
       window.cloudinary_options,
-      function(error, images) {
-        console.log(error);
-        console.log(images);
+      function(error, photos) {
         if (error === null) {
-          //upload(images)
+          var payload = { photos: photos, album_id: this.props.params.album_id };
+          PhotoActions.createPhotos(payload);
         } else {
 
         }
-    });
+    }.bind(this));
   },
 
   render: function(){
-    var photos = this.state.photos.map(function(photo) {
-      return <PhotoIndexItem key={photo.id} photo={photo} />;
-    });
+    var photos;
+    if (this.state.photos) {
+      photos = this.state.photos.map(function(photo) {
+        return <PhotoIndexItem key={photo.id} photo={photo} />;
+      });
+    }
     return (
       <div className="photo-index">
-        <button onClick={this.openCloudinaryWidget}>Upload Photos (CURRENTLY DOESN"T ACTUALLY SAVE THEM TO DB)</button>
+        <button onClick={this.openCloudinaryWidget}>Upload Photos</button>
         <div className="photo-index1">
           {photos}
         </div>

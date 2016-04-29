@@ -39,10 +39,13 @@ var AddAlbumForm = React.createClass({
     AlbumActions.createAlbum({
       title: this.state.title,
       description: this.state.description,
-      user_id: this.state.user.id
+      user_id: this.state.user.id,
+      successCloseAddAlbumFormModal: this.props.onFormSubmit
     });
+
+
   },
-  
+
   errors: function(){
 		if (!this.state.errors){
 			return;

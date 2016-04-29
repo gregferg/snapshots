@@ -10,11 +10,17 @@ PhotoStore.__onDispatch = function (payload) {
     case "RECEIVE_PHOTOS":
       resetPhotos(payload.photos);
       break;
+    case "RECEIVE_NEW_PHOTOS":
+      addNewPhotos(payload.photos);
+      break;
     case "RECEIVE_PHOTO":
       addPhoto(payload.photo);
       break;
     case "PHOTO_ERROR":
       setErrors(payload.errors);
+      break;
+    case "EMPTY_PHOTOSTORE":
+      resetPhotos([]);
       break;
   }
 };
@@ -26,6 +32,7 @@ PhotoStore.all = function(){
 
 var resetPhotos = function(photos) {
   _photos = {};
+
   photos.forEach(function (photo) {
     _photos[photo.id] = photo;
   });
@@ -35,6 +42,13 @@ var resetPhotos = function(photos) {
 
 var addPhoto = function (photo) {
   _photos[photo.id] = photo;
+  PhotoStore.__emitChange();
+};
+var addNewPhotos = function (photos) {
+  photos.forEach(function (photo) {
+    _photos[photo.id] = photo;
+  });
+
   PhotoStore.__emitChange();
 };
 
