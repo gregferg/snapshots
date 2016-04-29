@@ -1,4 +1,5 @@
 var Dispatcher = require('../dispatcher/dispatcher.js');
+
  // Example Constants call
  // var PokemonConstants = require('../constants/pokemonConstants.js');
 
@@ -8,14 +9,25 @@ var ServerActions = {
       actionType: "RECEIVE_ALBUMS",
       albums: albums
     });
+  },
+  receiveAlbum: function (album) {
+    Dispatcher.dispatch({
+      actionType: "RECEIVE_ALBUM",
+      album: album
+    });
+  },
+  receivePhotos: function (photos) {
+    Dispatcher.dispatch({
+      actionType: "RECEIVE_PHOTOS",
+      photos: photos
+    });
+  },
+  receivePhoto: function (photo) {
+    Dispatcher.dispatch({
+      actionType: "RECEIVE_PHOTO",
+      photo: photo
+    });
   }
-// Example Function
-// receiveAllPokemons: function (pokemons) {
-// Dispatcher.dispatch({
-// actionType: PokemonConstants.POKEMONS_RECEIVED,
-// pokemons: pokemons
-// });
-// }
 };
 
  module.exports = ServerActions;

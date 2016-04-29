@@ -12,7 +12,7 @@ Snapshots is a web application inspired by Smugmug that will be build using Ruby
 - [ ] Smooth, bug-free navigation
 - [ ] Adequate seed data to demonstrate the site's features
 - [ ] The minimally necessary features for an Smugmug-inspired site: Album creation and saving, Album/Photo editing, Module Photo Detail View
-- [ ] Hosting on Heroku
+- [x] Hosting on Heroku
 - [ ] CSS styling that is satisfactorily visually appealing
 - [ ] A production README, replacing this README (**NB**: check out the [sample production README](https://github.com/appacademy/sample-project-proposal/blob/master/docs/production_readme.md) -- you'll write this later)
 
@@ -25,8 +25,8 @@ progress. Put an x between the brackets for a checkmark: [x] -->
 
 - [x] Create an account (MVP)
 - [x] Log in / Log out, including as a Guest/Demo User (MVP)
+- [x] Title and Description for Albums/Photos (MVP)
 - [ ] Upload, edit, and delete Albums/Photos (MVP)
-- [ ] Title, Description, and tags for Albums/Photos (MVP)
 - [ ] Organize Photos within Albums (MVP)
 - [ ] Module Photo View (MVP)
 - [ ] Choose multiple layouts for Home and Album viewing pages (expected feature, but not MVP)
@@ -64,23 +64,24 @@ progress. Put an x between the brackets for a checkmark: [x] -->
 the API.
 
 - [x] create `Photo` model
-- [ ] seed the database with a small amount of test data
+- [x] seed the database with a small amount of test data
 - [x] CRUD API for photos (`PhotosController`)
 - [x] jBuilder views for photos
-- [ ] setup Webpack & Flux scaffold
+- [x] setup Webpack & Flux scaffold
 - [x] setup `APIUtil` to interact with the API
 - [x] test out API interaction in the console.
+- [ ] working with cloudinary uploads.
 
 ### Phase 3: Flux Architecture and Router (1.5 days)
 
 **Objective:** Photos can be created, read, edited and destroyed with the
 user interface.
 
-- [ ] setup the flux loop with skeleton files
-- [ ] setup React Router
+- [x] setup the flux loop with skeleton files
+- [x] setup React Router
 - implement each photo component, building out the flux loop as needed.
-  - [ ] `PhotosIndex`
-  - [ ] `PhotoIndexItem`
+  - [x] `PhotosIndex`
+  - [x] `PhotoIndexItem`
   - [ ] `PhotoForm`
 - [ ] save Photos to the DB when the form loses focus or is left idle
   after editing.
@@ -97,10 +98,12 @@ user interface.
 
 **Objective:** Photos belong to Albums, and can be viewed by Album.
 
-- [ ] create `Album` model
+- [x] create `Album` model
 - build out API, Flux loop, and components for:
   - [ ] Album CRUD
-  - [ ] adding photos requires a album  - [ ] moving photos to a different album  - [ ] viewing photos by album- Use CSS to style new views
+  - [x] adding photos requires a album  
+  - [x] viewing photos by album
+  - Use CSS to style new views
 Phase 3 adds orgnization to the Photos. Photos belong to a Album,
 which has its own `Index` view.
 

@@ -5,7 +5,20 @@
 .album_index {
   background-color: #C3C3C3;
   margin: auto;
-  width: 1200px;
-  display: flex;
+  width: 100%;
   justify-content: center;
+
+  flex-direction: row;
+  > div {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+.album-index-item {
+  padding: 15px;
+  img {
+    height: 200px;
+    width: 300px;
+  }
 }

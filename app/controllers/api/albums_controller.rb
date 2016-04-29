@@ -14,7 +14,8 @@ class Api::AlbumsController < ApplicationController
   def create
     @album = Album.create(albums_params)
     if @album.save
-      render :show
+      @user = User.find(@album.user_id)
+      render :create
     else
       @errors = @album.errors.full_messages
       render "api/shared/error", status: 401

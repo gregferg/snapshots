@@ -20,7 +20,9 @@ var AlbumIndex = React.createClass({
     return (
       <div className="album_index">
         <p>{this.props.username}s Albums!</p>
+        <div>
           {albums}
+        </div>
       </div>
     );
   }

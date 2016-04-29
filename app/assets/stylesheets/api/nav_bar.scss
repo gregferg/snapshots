@@ -1,3 +1,20 @@
+.nav_bar.home-page {
+  height: 80px;
+
+  .login_signup > a {
+    padding: 16px 30px 16px 30px;
+    margin-right: 20px;
+    background-color: #B6B6B6;
+  }
+
+  .logout {
+    padding: 16px 30px 16px 30px;
+    margin-left: 20px;
+    margin-right: 20px;
+    background-color: #B6B6B6;
+  }
+}
+
 .nav_bar {
   height: 50px;
   display: flex;
@@ -19,7 +36,7 @@
       background-color: #B6B6B6;
     }
     .login_signup:hover {
-
+      background-color: #A6A6A6;
     }
 
     .logout {

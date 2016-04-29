@@ -1,0 +1,43 @@
+// Place all the styles related to the Api::Photos controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.photo-index1 {
+  width: 100%;
+}
+
+.photo-index {
+  background-color: #C3C3C3;
+  margin: auto;
+  width: 100%;
+  display: flex;
+
+  p {
+    width: 300px;
+  }
+
+  button {
+    justify-content: center;
+    background-color: #A3A3A3;
+    height: 50px;
+    width: 80px;
+  }
+
+  > div {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .photo-index-item {
+    word-wrap: break-word;
+    justify-content: space-around;
+  }
+}
+
+.photo-index-item {
+  padding: 15px;
+  img {
+    height: 200px;
+    width: 300px;
+  }
+}
