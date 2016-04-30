@@ -7,6 +7,10 @@ var AlbumActions = {
 
   createAlbum: function(album) {
     ApiUtil.createAlbum(album);
+  },
+
+  deleteAlbum: function(albumId) {
+    ApiUtil.deleteAlbum(albumId);
   }
 };
 

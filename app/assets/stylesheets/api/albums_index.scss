@@ -10,6 +10,7 @@
 
   flex-direction: row;
   > div {
+    justify-content: space-around;
     display: flex;
     flex-wrap: wrap;
   }
@@ -18,7 +19,7 @@
 .album-index-item {
   padding: 15px;
   img {
-    height: 200px;
-    width: 300px;
+    height: 300px;
+    width: 400px;
   }
 }

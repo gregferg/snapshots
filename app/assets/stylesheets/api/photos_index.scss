@@ -2,15 +2,14 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.photo-index1 {
-  width: 100%;
-}
-
 .photo-index {
   background-color: #C3C3C3;
   margin: auto;
   width: 100%;
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;;
 
   p {
     width: 300px;
@@ -24,20 +23,60 @@
   }
 
   > div {
-    flex-direction: row;
-    flex-wrap: wrap;
+
   }
 
   .photo-index-item {
+    width: 400px;
     word-wrap: break-word;
     justify-content: space-around;
   }
 }
 
 .photo-index-item {
+  height: 300px;
   padding: 15px;
+  overflow: hidden;
+  
   img {
-    height: 200px;
-    width: 300px;
+    height: 300px;
+    width: 400px;
+  }
+}
+
+.photo-index-item:hover {
+
+  .photo-information {
+    display:block;
+    z-index: 20;
+    animation-name: rollUp;
+    animation-duration: .5s;
+    animation-timing-function: ease-in-out;
+  }
+}
+
+.photo-information {
+  display: none;
+  position: relative;
+  bottom: 86px;
+  left: 0px;
+  background-color: white;
+
+  p {
+    opacity: .99;
+  }
+}
+
+@keyframes rollUp {
+  0% {
+    transform: scaleY(0);
+    transform: translateY(80px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scaleY(1);
+    transform: translateY(0px);
+    opacity: 1;
   }
 }

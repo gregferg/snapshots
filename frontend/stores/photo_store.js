@@ -16,6 +16,9 @@ PhotoStore.__onDispatch = function (payload) {
     case "RECEIVE_PHOTO":
       addPhoto(payload.photo);
       break;
+    case "REMOVE_PHOTO":
+      removePhoto(payload.photo);
+      break;
     case "PHOTO_ERROR":
       setErrors(payload.errors);
       break;
@@ -44,12 +47,19 @@ var addPhoto = function (photo) {
   _photos[photo.id] = photo;
   PhotoStore.__emitChange();
 };
+
 var addNewPhotos = function (photos) {
   photos.forEach(function (photo) {
     _photos[photo.id] = photo;
   });
 
   PhotoStore.__emitChange();
+};
+
+var removePhoto = function (photo) {
+  delete _photos[photo.id];
+  PhotoStore.__emitChange();
+
 };
 
 var setErrors = function(errors){

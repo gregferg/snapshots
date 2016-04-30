@@ -14,6 +14,9 @@ AlbumStore.__onDispatch = function (payload) {
     case "RECEIVE_ALBUM":
       addAlbum(payload.album);
       break;
+    case "REMOVE_ALBUM":
+      removeAlbum(payload.album);
+      break;
     case "ALBUM_ERROR":
       setErrors(payload.errors);
       break;
@@ -34,6 +37,12 @@ var resetAlbums = function(albums) {
   });
 
   AlbumStore.__emitChange();
+};
+
+var removeAlbum = function (album) {
+  delete _albums[album.id];
+  AlbumStore.__emitChange();
+
 };
 
 var addAlbum = function (album) {

@@ -16,6 +16,12 @@ var ServerActions = {
       album: album
     });
   },
+  removeAlbum: function (album) {
+    Dispatcher.dispatch({
+      actionType: "REMOVE_ALBUM",
+      album: album
+    });
+  },
   emptyPhotoStore: function () {
     Dispatcher.dispatch({
       actionType: "EMPTY_PHOTOSTORE"
@@ -37,6 +43,13 @@ var ServerActions = {
     Dispatcher.dispatch({
       actionType: "RECEIVE_NEW_PHOTOS",
       photos: photos
+    });
+  },
+
+  removePhoto: function (photo) {
+    Dispatcher.dispatch({
+      actionType: "REMOVE_PHOTO",
+      photo: photo
     });
   }
 };

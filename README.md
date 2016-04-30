@@ -26,7 +26,7 @@ progress. Put an x between the brackets for a checkmark: [x] -->
 - [x] Create an account (MVP)
 - [x] Log in / Log out, including as a Guest/Demo User (MVP)
 - [x] Title and Description for Albums/Photos (MVP)
-- [ ] Upload, edit, and delete Albums/Photos (MVP)
+- [x] Upload, edit, and delete Albums/Photos (MVP)
 - [ ] Organize Photos within Albums (MVP)
 - [ ] Module Photo View (MVP)
 - [ ] Choose multiple layouts for Home and Album viewing pages (expected feature, but not MVP)
@@ -70,7 +70,7 @@ the API.
 - [x] setup Webpack & Flux scaffold
 - [x] setup `APIUtil` to interact with the API
 - [x] test out API interaction in the console.
-- [ ] working with cloudinary uploads.
+- [x] working with cloudinary uploads.
 
 ### Phase 3: Flux Architecture and Router (1.5 days)
 
@@ -83,8 +83,6 @@ user interface.
   - [x] `PhotosIndex`
   - [x] `PhotoIndexItem`
   - [ ] `PhotoForm`
-- [ ] save Photos to the DB when the form loses focus or is left idle
-  after editing.
 
 ### Phase 4: Start Styling (0.5 days)
 
@@ -100,7 +98,7 @@ user interface.
 
 - [x] create `Album` model
 - build out API, Flux loop, and components for:
-  - [ ] Album CRUD
+  - [x] Album CRUD
   - [x] adding photos requires a album  
   - [x] viewing photos by album
   - Use CSS to style new views

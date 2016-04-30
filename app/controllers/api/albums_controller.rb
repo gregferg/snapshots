@@ -34,8 +34,9 @@ class Api::AlbumsController < ApplicationController
 
   def destroy
     @album = Album.find_by_id(params[:id])
+    @user = User.find(@album.user_id)
     @album.destroy
-    render :show
+    render :create
   end
 
   private

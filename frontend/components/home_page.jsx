@@ -2,6 +2,8 @@ var React = require('react');
 var AlbumIndex = require('./albums/album_index');
 var AlbumStore = require('../stores/album_store');
 var AlbumActions = require("../actions/album_actions");
+var AddAlbum = require("./albums/add_album");
+
 
 
 var HomePage = React.createClass({
@@ -19,11 +21,26 @@ var HomePage = React.createClass({
   componentWillUnmount: function() {
     this.listener.remove();
   },
+
+  noAlbums: function () {
+    console.log(this.state.albums);
+    console.log(this.state);
+    if (this.state.albums.length === 0) {
+      return (
+        <div>
+          <p>Looks like you have no albums.</p>
+          <AddAlbum />
+        </div>
+      );
+    }
+  },
+
   render: function(){
     return (
       <div>
         <p> Welcome to {this.props.params.username}s homepage </p>
         <AlbumIndex albums={this.state.albums} username={this.props.params.username}/>
+        {this.noAlbums()}
       </div>
     );
   }

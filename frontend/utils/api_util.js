@@ -36,6 +36,23 @@ var ApiUtil = {
     });
   },
 
+  deleteAlbum: function(albumId) {
+    $.ajax({
+      type: 'DELETE',
+      url: 'api/albums/' + albumId,
+      success: function(album) {
+        ServerActions.removeAlbum(album);
+        HashHistory.push("/" + album.username);
+      },
+      error: function(error) {
+        AppDispatcher.dispatch({
+          actionType: 'ALBUM_ERROR',
+          errors: error.responseJSON.errors
+        });
+      }
+    });
+  },
+
   fetchPhotos: function(albumId) {
     $.ajax({
       type: 'GET',
@@ -52,8 +69,24 @@ var ApiUtil = {
       url: 'api/photos/',
       data: {photos: payload.photos, album_id: payload.album_id },
       success: function(createdPhotos) {
-        console.log(createdPhotos);
         ServerActions.receiveNewPhotos(createdPhotos);
+      },
+      error: function(error) {
+        AppDispatcher.dispatch({
+          actionType: 'ALBUM_ERROR',
+          errors: error.responseJSON.errors
+        });
+      }
+    });
+  },
+
+  deletePhoto: function(photo) {
+    $.ajax({
+      type: 'DELETE',
+      url: 'api/photos/' + photo.id,
+      success: function(createdPhoto) {
+        console.log(photo);
+        ServerActions.removePhoto(photo);
         //HashHistory.push("/" + createdPhotos.username + "/" + payload.album_id);
       },
       error: function(error) {

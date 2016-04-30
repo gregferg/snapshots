@@ -7,6 +7,10 @@ var PhotoActions = {
 
   createPhotos: function(photos) {
     ApiUtil.createPhotos(photos);
+  },
+
+  deletePhoto: function(photo) {
+    ApiUtil.deletePhoto(photo);
   }
 };
 

@@ -4,7 +4,7 @@ var HashHistory = require('react-router').hashHistory;
 var UserActions = require("../../actions/user_actions");
 var Link = require('react-router').Link;
 var SearchBar = require('./search_bar');
-var AddAlbum = require('./add_album');
+var AddAlbum = require('../albums/add_album');
 
 
 

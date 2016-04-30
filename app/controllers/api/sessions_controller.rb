@@ -22,13 +22,7 @@ class Api::SessionsController < ApplicationController
   end
 
   def destroy
-    @user = current_user
-    if @user
-      logout
-      render "api/users/show"
-    else
-      @errors = ["You're not logged in!"]
-      render "api/shared/error", status: 404
-    end
+    logout
+    render json: {message: "Logged out"}
   end
 end
