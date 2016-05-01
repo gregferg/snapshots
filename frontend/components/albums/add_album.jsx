@@ -7,6 +7,7 @@ var SearchBar = require('../nav_bar/search_bar');
 var Modal = require('react-modal');
 var ModalStyle = require('./modal_style');
 var AddAlbumForm = require('./add_album_form');
+var AlbumStore = require('../../stores/album_store');
 
 
 
@@ -14,10 +15,21 @@ var AddAlbum = React.createClass({
   getInitialState: function () {
     return ({ modalOpen: false });
   },
-
+  componentDidMount: function() {
+    this.listener = AlbumStore.addListener(this.albumCreated);
+    this.albumCount = AlbumStore.all().length;
+  },
+  componentWillUnmount: function() {
+    this.listener.remove();
+  },
+  albumCreated:function () {
+    if (AlbumStore.all().length > this.albumCount){
+      this.onModalClose();
+    }
+    this.albumCount = AlbumStore.all().length;
+  },
   addAlbum: function(e) {
     e.preventDefault();
-
   },
   __handleClick: function() {
     this.setState({ modalOpen: true });
@@ -40,7 +52,7 @@ var AddAlbum = React.createClass({
           style={ModalStyle}
           onAfterOpen={this.onModalOpen}>
           <button onClick={this.onModalClose}>Close</button>
-          <AddAlbumForm onFormSubmit={this.onModalClose}/>
+          <AddAlbumForm />
         </Modal>
       </div>
     );

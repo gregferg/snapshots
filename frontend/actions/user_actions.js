@@ -1,3 +1,4 @@
+
 var UserConstants = require('../constants/user_constants');
 var UserApiUtil = require('../utils/user_api_utils');
 var UserStore = require('../stores/user_store');
@@ -8,6 +9,9 @@ var HashHistory = require('react-router').hashHistory;
 var UserActions = {
 	fetchCurrentUser: function(){
 		UserApiUtil.fetchCurrentUser(UserActions.loggedInOrNot);
+	},
+	fetchUser: function(username){
+		UserApiUtil.fetchUser(username);
 	},
 	signup: function(user){
 		UserApiUtil.post({

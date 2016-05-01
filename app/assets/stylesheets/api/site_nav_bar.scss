@@ -1,0 +1,21 @@
+.site-nav {
+  display: flex;
+  align-items: center;
+
+  .site-navigation {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    width: 100%;
+
+    div {
+      margin-left: 15px;
+    }
+  }
+  height: 40px;
+  background-color: #DBDBDB;
+
+  .username {
+    justify-content: flex-end;
+  }
+}

@@ -51,6 +51,16 @@ var AlbumDetail = React.createClass({
     HashHistory.push("/" + this.props.params.username);
   },
 
+  canEditAlbum: function() {
+    if (this.currentUser()) {
+      return (
+        <div>
+          <button onClick={this.deleteAlbum}>Delete Album</button>
+          <button onClick={this.openCloudinaryWidget}>Upload Photos</button>
+        </div>
+      );
+    }
+  },
   deleteAlbum: function (e) {
     e.preventDefault();
 
@@ -72,16 +82,26 @@ var AlbumDetail = React.createClass({
       );
     }
   },
+  currentUser: function() {
+    if (!this.state.user) { return; }
+    var currentSiteUsername = this.props.params.username;
+    var currentUsername = this.state.user.username;
+    if (currentSiteUsername === currentUsername) {
+      return true;
+    }
+  },
+
 
   render: function(){
     return (
       <div className="album-detail">
+        <div className="album-options">  
         <button onClick={this.closeAlbum}>Back to All Albums</button>
-        <button onClick={this.openCloudinaryWidget}>Upload Photos</button>
-        <button onClick={this.deleteAlbum}>Delete Album</button>
+        {this.canEditAlbum()}
+      </div>
         <div>
           {this.noPhotos()}
-          <PhotoIndex photos={this.state.photos} />
+          <PhotoIndex photos={this.state.photos} currentUser={this.currentUser()}/>
         </div>
       </div>
     );

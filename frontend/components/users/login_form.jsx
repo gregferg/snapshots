@@ -1,6 +1,6 @@
 var React = require("react");
-var UserActions = require("../actions/user_actions");
-var UserStore = require('../stores/user_store');
+var UserActions = require("../../actions/user_actions");
+var UserStore = require('../../stores/user_store');
 var HashHistory = require('react-router').hashHistory;
 
 
@@ -9,9 +9,11 @@ var LoginForm = React.createClass({
 		return {username: "", password: "" };
 	},
   componentDidMount: function() {
+		UserStore.clearErrors({});
     this.listener = UserStore.addListener(this.updateErrors);
   },
   componentWillUnmount: function() {
+		UserStore.clearErrors({});
     this.listener.remove();
   },
 	updateErrors: function(){

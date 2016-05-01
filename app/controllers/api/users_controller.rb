@@ -1,4 +1,9 @@
 class Api::UsersController < ApplicationController
+  def index
+    @user = User.find_by(username: params[:username])
+
+    render "api/users/show"
+  end
   def create
     @user = User.new(user_params)
 

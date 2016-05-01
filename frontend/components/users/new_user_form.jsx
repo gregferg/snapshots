@@ -1,13 +1,14 @@
 var React = require("react");
-var UserActions = require("../actions/user_actions");
-var CurrentUserState = require("../mixins/current_user_state");
-var UserStore = require('../stores/user_store');
+var UserActions = require("../../actions/user_actions");
+var CurrentUserState = require("../../mixins/current_user_state");
+var UserStore = require('../../stores/user_store');
 var HashHistory = require('react-router').hashHistory;
 
 
 var NewUserForm = React.createClass({
 	mixins: [CurrentUserState],
 	getInitialState: function(){
+		UserStore.setErrors({});
 		return {username: "", password: "" };
 	},
   usernameChange: function(e) {

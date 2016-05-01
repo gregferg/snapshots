@@ -27,20 +27,20 @@
   }
 
   .photo-index-item {
-    width: 400px;
+    // width: 400px;
     word-wrap: break-word;
     justify-content: space-around;
   }
 }
 
 .photo-index-item {
-  height: 300px;
-  padding: 15px;
+  width: 33%;
+  //height: 300px;
   overflow: hidden;
-  
+
   img {
-    height: 300px;
-    width: 400px;
+    // height: 300px;
+    // width: 400px;
   }
 }
 

@@ -15,16 +15,17 @@ var PhotoDetail = React.createClass({
 
   componentDidMount: function() {
     this.listener = PhotoStore.addListener(this.updateView);
+    window.addEventListener( "keyup", this.newPhotoView);
     PhotoActions.fetchPhotos(this.props.params.album_id);
   },
 
   updateView: function() {
-    console.log("updated view");
     this.setState({ photo: PhotoStore.photoDetail(this.props.params.photo_id) });
   },
 
   componentWillUnmount: function() {
     this.listener.remove();
+    window.removeEventListener("keyup", this.newPhotoView);
   },
 
   componentWillReceiveProps: function(newProps) {
@@ -48,7 +49,6 @@ var PhotoDetail = React.createClass({
     HashHistory.push("/" + this.props.params.username + "/" + this.props.params.album_id);
   },
   nextPhoto: function(e) {
-    e.preventDefault();
 
     HashHistory.push(
       "/" + this.props.params.username +
@@ -64,6 +64,14 @@ var PhotoDetail = React.createClass({
       "/" + this.props.params.album_id +
       "/" + PhotoStore.previousPhoto(this.state.photo.id).id
     );
+  },
+  newPhotoView: function(e) {
+    console.log("KEY PRESS");
+    if (e.keyCode === 37) {
+      this.previousPhoto(e);
+    } else if (e.keyCode === 39){
+      this.nextPhoto(e);
+    }
   },
 
   render: function(){

@@ -1,12 +1,14 @@
 var React = require('react');
-var AlbumIndex = require('./albums/album_index');
-var AlbumStore = require('../stores/album_store');
-var AlbumActions = require("../actions/album_actions");
-var AddAlbum = require("./albums/add_album");
+var AlbumIndex = require('../albums/album_index');
+var AlbumStore = require('../../stores/album_store');
+var AlbumActions = require("../../actions/album_actions");
+var AddAlbum = require("../albums/add_album");
+var CurrentUserState = require("../../mixins/current_user_state");
 
 
 
 var HomePage = React.createClass({
+  mixins: [CurrentUserState],
   getInitialState: function() {
     return { albums: AlbumStore.all() };
   },
@@ -23,8 +25,6 @@ var HomePage = React.createClass({
   },
 
   noAlbums: function () {
-    console.log(this.state.albums);
-    console.log(this.state);
     if (this.state.albums.length === 0) {
       return (
         <div>
@@ -34,12 +34,20 @@ var HomePage = React.createClass({
       );
     }
   },
+  currentUser: function() {
+    if (!this.state.user) { return; }
+    var currentSiteUsername = this.props.params.username;
+    var currentUsername = this.state.user.username;
+    if (currentSiteUsername === currentUsername) {
+      return true;
+    }
+  },
 
   render: function(){
     return (
       <div>
         <p> Welcome to {this.props.params.username}s homepage </p>
-        <AlbumIndex albums={this.state.albums} username={this.props.params.username}/>
+        <AlbumIndex albums={this.state.albums} username={this.props.params.username} currentUser={this.currentUser()}/>
         {this.noAlbums()}
       </div>
     );

@@ -24,10 +24,10 @@ var ApiUtil = {
         console.log(createdAlbum);
         ServerActions.receiveAlbum(createdAlbum);
         ServerActions.emptyPhotoStore();
-        album.successCloseAddAlbumFormModal();
         HashHistory.push("/" + createdAlbum.username + "/" + createdAlbum.id);
       },
       error: function(error) {
+        console.log("ERROR");
         AppDispatcher.dispatch({
           actionType: 'ALBUM_ERROR',
           errors: error.responseJSON.errors

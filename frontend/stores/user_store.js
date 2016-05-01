@@ -5,6 +5,7 @@ var myStorage = localStorage;
 var UserStore = new Store(AppDispatcher);
 
 var _currentUser = JSON.parse(myStorage.getItem("currentUser"));
+var _user = {};
 var _errors;
 
 UserStore.__onDispatch = function (payload) {
@@ -18,8 +19,20 @@ UserStore.__onDispatch = function (payload) {
     case "ERROR":
       UserStore.setErrors(payload.errors);
       break;
+    case "RECEIVE_USER":
+      setUser(payload.user);
+      break;
+
   }
   UserStore.__emitChange();
+};
+
+var setUser = function(user) {
+  _user = user;
+};
+
+UserStore.viewedUser = function() {
+  return _user;
 };
 
 UserStore.login = function(user){
@@ -44,6 +57,10 @@ UserStore.currentUser = function(){
 
 UserStore.setErrors = function(errors){
   _errors = errors;
+};
+
+UserStore.clearErrors = function(){
+  _errors = {};
 };
 
 UserStore.errors = function(){

@@ -26,6 +26,19 @@ var UserApiUtil = {
 			error: error
 		});
 	},
+	fetchUser: function(username){
+		$.ajax({
+			url: '/api/users',
+			method: 'get',
+			data: {username: username},
+			success: function(user) {
+				AppDispatcher.dispatch({
+					actionType: "RECEIVE_USER",
+					user: user
+				});
+			}
+		});
+	}
 };
 
 module.exports = UserApiUtil;

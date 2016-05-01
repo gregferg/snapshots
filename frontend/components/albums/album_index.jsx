@@ -13,15 +13,13 @@ var AlbumIndex = React.createClass({
     this.setState({ albums: newProps.albums });
   },
 
-
-
   render: function(){
+    var self = this;
     var albums = this.props.albums.map(function(album) {
-      return <AlbumIndexItem key={album.id} album={album} />;
+      return <AlbumIndexItem key={album.id} album={album} currentUser={self.props.currentUser}/>;
     });
     return (
       <div className="album_index">
-        <p>{this.props.username}s Albums!</p>
         <div>
           {albums}
         </div>

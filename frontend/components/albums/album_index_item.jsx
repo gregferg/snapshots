@@ -14,9 +14,14 @@ var AlbumIndexItem = React.createClass({
   deleteAlbum: function (e) {
     e.preventDefault();
 
-    var deleteAlbum = confirm("Are you sure you want to delete " +this.props.album.title);
+    var deleteAlbum = confirm("Are you sure you want to delete " + this.props.album.title);
     if (deleteAlbum) {
       AlbumActions.deleteAlbum(this.props.album.id);
+    }
+  },
+  currentUserCanEdit: function() {
+    if (this.props.currentUser) {
+      return <button onClick={this.deleteAlbum}>Delete Album</button>;
     }
   },
 
@@ -28,7 +33,7 @@ var AlbumIndexItem = React.createClass({
           onClick={this.onClick}/>
         <p>Title: {this.props.album.title}</p>
         //<p>Photo Count: {this.props.album.photos.length}</p>
-        <button onClick={this.deleteAlbum}>Delete Album</button>
+        {this.currentUserCanEdit()}
       </div>
     );
   }
