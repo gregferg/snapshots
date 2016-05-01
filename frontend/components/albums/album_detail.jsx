@@ -45,6 +45,12 @@ var AlbumDetail = React.createClass({
     }.bind(this));
   },
 
+  closeAlbum: function (e) {
+    e.preventDefault();
+
+    HashHistory.push("/" + this.props.params.username);
+  },
+
   deleteAlbum: function (e) {
     e.preventDefault();
 
@@ -70,6 +76,7 @@ var AlbumDetail = React.createClass({
   render: function(){
     return (
       <div className="album-detail">
+        <button onClick={this.closeAlbum}>Back to All Albums</button>
         <button onClick={this.openCloudinaryWidget}>Upload Photos</button>
         <button onClick={this.deleteAlbum}>Delete Album</button>
         <div>

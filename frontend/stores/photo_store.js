@@ -3,7 +3,10 @@ var Store = require('flux/utils').Store;
 
 var PhotoStore = new Store(AppDispatcher);
 
-var _photos = {}; var _errors = {};
+var _photos = {};
+var _errors = {};
+var _photoDetail =  "";
+
 
 PhotoStore.__onDispatch = function (payload) {
   switch(payload.actionType) {
@@ -33,7 +36,35 @@ PhotoStore.all = function(){
   { return _photos[photoId]; });
 };
 
-var resetPhotos = function(photos) {
+PhotoStore.photoDetail = function (photoId){
+  return _photos[photoId];
+};
+
+PhotoStore.nextPhoto = function (currentPhotoId) {
+  var keys = Object.keys(_photos);
+  var nextPhotoId = keys.indexOf(currentPhotoId.toString()) + 1;
+  if (nextPhotoId === keys.length) {
+    nextPhotoId = 0;
+  }
+
+  _photoDetail = _photos[keys[nextPhotoId]];
+  return _photoDetail;
+};
+
+
+PhotoStore.previousPhoto = function (currentPhotoId) {
+  var keys = Object.keys(_photos);
+  var previousPhotoId = keys.indexOf(currentPhotoId.toString()) - 1;
+  if (previousPhotoId < 0 ) {
+    previousPhotoId = keys.length - 1;
+  }
+
+  _photoDetail = _photos[keys[previousPhotoId]];
+  return _photoDetail;
+};
+
+
+var resetPhotos = function (photos) {
   _photos = {};
 
   photos.forEach(function (photo) {

@@ -11,6 +11,7 @@ var CurrentUserState = require("./mixins/current_user_state");
 var Modal = require('react-modal');
 var PhotoIndex = require('./components/photos/photo_index');
 var AlbumDetail = require('./components/albums/album_detail');
+var PhotoDetail = require('./components/photos/photo_detail');
 
 
 var App = React.createClass({
@@ -39,6 +40,8 @@ var routes = (
     <Route path="login" component={LoginForm} />
     <Route path=":username" component={HomePage} />
     <Route path=":username/:album_id" component={AlbumDetail} />
+    <Route path=":username/:album_id/:photo_id" component={PhotoDetail} />
+
   </Route>
 );
 

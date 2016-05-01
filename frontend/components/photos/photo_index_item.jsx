@@ -5,13 +5,16 @@ var PhotoActions = require("../../actions/photo_actions");
 
 
 var PhotoIndexItem = React.createClass({
-  onClick: function(e) {
-    //HashHistory.push(window.path + "/" + this.props.album.id)
-  },
   deletePhoto: function(e) {
     e.preventDefault();
 
     PhotoActions.deletePhoto(this.props.photo);
+  },
+
+  onClick: function(e) {
+    e.preventDefault();
+
+    HashHistory.push(window.path + "/" + this.props.photo.id);
   },
 
   render: function(){
