@@ -3,7 +3,11 @@ var CurrentUserState = require("../../mixins/current_user_state");
 var HashHistory = require('react-router').hashHistory;
 var AlbumActions = require("../../actions/album_actions");
 var AlbumStore = require("../../stores/album_store");
+var PhotoStore = require("../../stores/photo_store");
 var Link = require('react-router').Link;
+var PhotoActions = require("../../actions/photo_actions");
+var PhotosToUpload = require("../photos/photos_to_upload");
+
 
 
 var AddAlbumForm = React.createClass({
@@ -39,7 +43,8 @@ var AddAlbumForm = React.createClass({
     AlbumActions.createAlbum({
       title: this.state.title,
       description: this.state.description,
-      user_id: this.state.user.id
+      user_id: this.state.user.id,
+      photos_to_upload: PhotoStore.photosToUpload()
     });
   },
 
@@ -79,8 +84,12 @@ var AddAlbumForm = React.createClass({
               onChange={this.descriptionChange}
               value={this.state.description}/>
           </label>
-
+          <PhotosToUpload />
           <br/>
+          <div id='my-widget-container'>
+
+          </div>
+          <br />
 
           <input type="submit" value="Add Album"/>
         </form>

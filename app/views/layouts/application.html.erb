@@ -11,7 +11,13 @@
     window.cloudinary_options = {
     cloud_name: '<%= ENV['CLOUD_NAME'] %>',
     upload_preset: '<%= ENV['UPLOAD_PRESET'] %>',
-    theme: 'minimal'
+    theme: 'minimal',
+    sources: ['local'],
+    text: {
+      "powered_by_cloudinary": " ",
+      "sources.local.title": "Local Files",
+    },
+    inline_container: '#my-widget-container'
 
   };
   </script>

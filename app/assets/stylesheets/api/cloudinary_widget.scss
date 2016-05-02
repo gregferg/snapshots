@@ -1,0 +1,16 @@
+iframe {
+  height: 300px !important;
+  border-bottom: 1px solid black !important;
+}
+
+
+.photo-to-upload {
+  height: 50px;
+  width: 50px;
+}
+
+.photos-to-upload {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}

@@ -3,6 +3,7 @@ var CurrentUserState = require("../../mixins/current_user_state");
 var HashHistory = require('react-router').hashHistory;
 var PhotoActions = require("../../actions/photo_actions");
 var PhotoStore = require("../../stores/photo_store");
+var PhotoInformation = require("./photo_information");
 var Link = require('react-router').Link;
 
 
@@ -36,7 +37,10 @@ var PhotoDetail = React.createClass({
   },
   photoTitle: function() {
     if (this.state.photo) {
-      if (this.state.title === "") { return "untitled"; }
+      var title = this.state.photo.title;
+      console.log(title);
+      console.log(title === "");
+      if (title === "") { return "untitled"; }
       return this.state.photo.title;
     }
   },
@@ -73,16 +77,18 @@ var PhotoDetail = React.createClass({
       this.nextPhoto(e);
     }
   },
+  renderPhotoInformation: function () {
+    if (!this.state.photo) { return ;}
+
+    return <PhotoInformation photo={this.state.photo} username={this.props.params.username}/>;
+  },
 
   render: function(){
     console.log(this.state.photo);
     return (
       <div className="photo-detail">
         <img src={this.photoUrl()} />
-        <div className="photo-information">
-          <p>{this.photoTitle()}</p>
-          <p>{this.photoDescription()}</p>
-        </div>
+        {this.renderPhotoInformation()}
         <button onClick={this.onClose}>Close View</button>
         <button onClick={this.nextPhoto}>Next Photo</button>
         <button onClick={this.previousPhoto}>Previous Photo</button>

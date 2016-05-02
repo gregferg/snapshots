@@ -4,6 +4,7 @@ var Store = require('flux/utils').Store;
 var PhotoStore = new Store(AppDispatcher);
 
 var _photos = {};
+var _photosToUpload = {};
 var _errors = {};
 var _photoDetail =  "";
 
@@ -16,8 +17,14 @@ PhotoStore.__onDispatch = function (payload) {
     case "RECEIVE_NEW_PHOTOS":
       addNewPhotos(payload.photos);
       break;
+    case "UPDATE_PHOTOS_TO_UPLOAD":
+      PhotoStore.addPhotosToPhotosToUpload(payload.photos);
+      break;
     case "RECEIVE_PHOTO":
       addPhoto(payload.photo);
+      break;
+    case "RECEIVE_UPDATED_PHOTO":
+      updatePhoto(payload.photo);
       break;
     case "REMOVE_PHOTO":
       removePhoto(payload.photo);
@@ -27,6 +34,7 @@ PhotoStore.__onDispatch = function (payload) {
       break;
     case "EMPTY_PHOTOSTORE":
       resetPhotos([]);
+      emptyPhotosToUpload();
       break;
   }
 };
@@ -34,6 +42,26 @@ PhotoStore.__onDispatch = function (payload) {
 PhotoStore.all = function(){
   return Object.keys(_photos).map(function (photoId)
   { return _photos[photoId]; });
+};
+PhotoStore.photosToUpload = function(){
+  return Object.keys(_photosToUpload).map(function (url)
+    {return _photosToUpload[url]; }
+  );
+};
+
+var emptyPhotosToUpload = function() {
+  _photosToUpload = {};
+
+  PhotoStore.__emitChange();
+};
+
+PhotoStore.addPhotosToPhotosToUpload = function(photos) {
+  photos.forEach(function (photo) {
+
+    _photosToUpload[photo.url] = photo;
+  });
+
+  PhotoStore.__emitChange();
 };
 
 PhotoStore.photoDetail = function (photoId){
@@ -75,6 +103,11 @@ var resetPhotos = function (photos) {
 };
 
 var addPhoto = function (photo) {
+  _photos[photo.id] = photo;
+  PhotoStore.__emitChange();
+};
+
+var updatePhoto = function (photo) {
   _photos[photo.id] = photo;
   PhotoStore.__emitChange();
 };

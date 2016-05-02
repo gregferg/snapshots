@@ -1,5 +1,6 @@
 var Dispatcher = require('../dispatcher/dispatcher.js');
 
+var PhotoStore = require('../stores/photo_store');
  // Example Constants call
  // var PokemonConstants = require('../constants/pokemonConstants.js');
 
@@ -33,9 +34,21 @@ var ServerActions = {
       photos: photos
     });
   },
+  updatePhotosToUpload: function (photos) {
+    Dispatcher.dispatch({
+      actionType: "UPDATE_PHOTOS_TO_UPLOAD",
+      photos: photos
+    });
+  },
   receivePhoto: function (photo) {
     Dispatcher.dispatch({
       actionType: "RECEIVE_PHOTO",
+      photo: photo
+    });
+  },
+  receiveUpdatedPhoto: function (photo) {
+    Dispatcher.dispatch({
+      actionType: "RECEIVE_UPDATED_PHOTO",
       photo: photo
     });
   },

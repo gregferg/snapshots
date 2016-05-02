@@ -55,17 +55,36 @@
   }
 }
 
-.photo-information {
-  display: none;
-  position: relative;
-  bottom: 86px;
-  left: 0px;
-  background-color: white;
+// .photo-information {
+//   display: none;
+//   position: relative;
+//   bottom: 86px;
+//   left: 0px;
+//   background-color: white;
+//
+//   p {
+//     opacity: .99;
+//   }
+// }
 
-  p {
-    opacity: .99;
+.photo-detail:hover {
+
+  .photo-detail-information {
+    display: flex;
+    position: relative;
+    bottom: 50px;
+    background-color: white;
   }
 }
+
+
+.photo-detail-information {
+  display: none;
+  position: relative;
+  bottom: 50px;
+  background-color: white;
+}
+
 
 @keyframes rollUp {
   0% {

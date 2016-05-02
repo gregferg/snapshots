@@ -5,6 +5,7 @@ var PhotoActions = require("../../actions/photo_actions");
 var AlbumActions = require("../../actions/album_actions");
 var PhotoStore = require("../../stores/photo_store");
 var PhotoIndex = require("../photos/photo_index");
+var UploadPhotos = require("../photos/upload_photos");
 
 
 
@@ -15,7 +16,6 @@ var AlbumDetail = React.createClass({
   },
 
   componentDidMount: function() {
-    console.log("ALBUM DETAIL MOUNTED");
     this.listener = PhotoStore.addListener(this.updateView);
     PhotoActions.fetchPhotos(this.props.params.album_id);
   },
@@ -37,8 +37,11 @@ var AlbumDetail = React.createClass({
       window.cloudinary_options,
       function(error, photos) {
         if (error === null) {
-          var payload = { photos: photos, album_id: this.props.params.album_id };
-          PhotoActions.createPhotos(payload);
+          var photosToUpload = { photos: photos, album_id: this.props.params.album_id };
+          PhotoActions.updatePhotosToUpload(photosToUpload);
+
+          // var payload = { photos: photos, album_id: this.props.params.album_id };
+          // PhotoActions.createPhotos(payload);
         } else {
 
         }
@@ -56,7 +59,7 @@ var AlbumDetail = React.createClass({
       return (
         <div>
           <button onClick={this.deleteAlbum}>Delete Album</button>
-          <button onClick={this.openCloudinaryWidget}>Upload Photos</button>
+          <UploadPhotos albumId={this.props.params.album_id}/>
         </div>
       );
     }
@@ -72,7 +75,7 @@ var AlbumDetail = React.createClass({
   },
 
   noPhotos: function () {
-    console.log(this.state.photos);
+    if (!this.state.photos) { return; }
     if (this.state.photos.length === 0) {
       return (
         <div>
@@ -95,7 +98,7 @@ var AlbumDetail = React.createClass({
   render: function(){
     return (
       <div className="album-detail">
-        <div className="album-options">  
+        <div className="album-options">
         <button onClick={this.closeAlbum}>Back to All Albums</button>
         {this.canEditAlbum()}
       </div>
@@ -103,6 +106,7 @@ var AlbumDetail = React.createClass({
           {this.noPhotos()}
           <PhotoIndex photos={this.state.photos} currentUser={this.currentUser()}/>
         </div>
+
       </div>
     );
   }

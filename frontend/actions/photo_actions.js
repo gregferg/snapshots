@@ -11,6 +11,12 @@ var PhotoActions = {
 
   deletePhoto: function(photo) {
     ApiUtil.deletePhoto(photo);
+  },
+  updatePhotosToUpload: function(photos) {
+    ApiUtil.updatePhotosToUpload(photos);
+  },
+  updatePhoto: function(photo) {
+    ApiUtil.updatePhoto(photo);
   }
 };
 

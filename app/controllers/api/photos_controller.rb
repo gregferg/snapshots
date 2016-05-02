@@ -41,7 +41,7 @@ class Api::PhotosController < ApplicationController
 
   def update
     @photo = Photo.find_by_id(params[:id])
-    if @photo.update(photo_params)
+    if @photo.update(title: params[:title], description: params[:description])
       render :show
     else
       @errors = @photo.errors.full_messages

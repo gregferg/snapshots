@@ -24,10 +24,13 @@ var ApiUtil = {
         console.log(createdAlbum);
         ServerActions.receiveAlbum(createdAlbum);
         ServerActions.emptyPhotoStore();
+        var payload = { photos: createdAlbum.photos, album_id: createdAlbum.id};
+        ApiUtil.createPhotos(payload);
         HashHistory.push("/" + createdAlbum.username + "/" + createdAlbum.id);
       },
       error: function(error) {
         console.log("ERROR");
+        console.log(error);
         AppDispatcher.dispatch({
           actionType: 'ALBUM_ERROR',
           errors: error.responseJSON.errors
@@ -63,6 +66,9 @@ var ApiUtil = {
       }
     });
   },
+updatePhotosToUpload: function(photos) {
+  ServerActions.updatePhotosToUpload(photos);
+},
   createPhotos: function(payload) {
     $.ajax({
       type: 'POST',
@@ -70,6 +76,22 @@ var ApiUtil = {
       data: {photos: payload.photos, album_id: payload.album_id },
       success: function(createdPhotos) {
         ServerActions.receiveNewPhotos(createdPhotos);
+      },
+      error: function(error) {
+        AppDispatcher.dispatch({
+          actionType: 'ALBUM_ERROR',
+          errors: error.responseJSON.errors
+        });
+      }
+    });
+  },
+  updatePhoto: function(photo) {
+    $.ajax({
+      type: 'PATCH',
+      url: 'api/photos/' + photo.id,
+      data: {title: photo.title, description: photo.description },
+      success: function(updatedPhoto) {
+        ServerActions.receiveUpdatedPhoto(updatedPhoto);
       },
       error: function(error) {
         AppDispatcher.dispatch({

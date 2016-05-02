@@ -14,6 +14,7 @@ class Api::AlbumsController < ApplicationController
   def create
     @album = Album.create(albums_params)
     if @album.save
+      @photos = { photos: params[:album][:photos_to_upload] }
       @user = User.find(@album.user_id)
       render :create
     else
@@ -36,6 +37,7 @@ class Api::AlbumsController < ApplicationController
     @album = Album.find_by_id(params[:id])
     @user = User.find(@album.user_id)
     @album.destroy
+    @photos = {photos: nil}
     render :create
   end
 

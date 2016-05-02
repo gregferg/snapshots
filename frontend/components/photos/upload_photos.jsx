@@ -1,38 +1,18 @@
 var React = require('react');
 var CurrentUserState = require("../../mixins/current_user_state");
 var HashHistory = require('react-router').hashHistory;
-var UserActions = require("../../actions/user_actions");
-var Link = require('react-router').Link;
-var SearchBar = require('../nav_bar/search_bar');
-var Modal = require('react-modal');
-var ModalStyle = require('./modal_style');
-var AddAlbumForm = require('./add_album_form');
-var AlbumStore = require('../../stores/album_store');
 var PhotoActions = require("../../actions/photo_actions");
+var PhotoStore = require("../../stores/photo_store");
+var Link = require('react-router').Link;
+var Modal = require('react-modal');
+var ModalStyle = require('../albums/modal_style');
+var UploadPhotoForm = require('./upload_photos_form');
 
 
 
 
-var AddAlbum = React.createClass({
-  getInitialState: function () {
-    return ({ modalOpen: false });
-  },
-  componentDidMount: function() {
-    this.listener = AlbumStore.addListener(this.albumCreated);
-    this.albumCount = AlbumStore.all().length;
-  },
-  componentWillUnmount: function() {
-    this.listener.remove();
-  },
-  albumCreated:function () {
-    if (AlbumStore.all().length > this.albumCount){
-      this.onModalClose();
-    }
-    this.albumCount = AlbumStore.all().length;
-  },
-  addAlbum: function(e) {
-    e.preventDefault();
-  },
+var UploadPhotos = React.createClass({
+  mixins: [CurrentUserState],
   __handleClick: function() {
     this.setState({ modalOpen: true });
   },
@@ -59,10 +39,11 @@ var AddAlbum = React.createClass({
         }
     }.bind(this));
   },
+
   render: function(){
     return (
       <div>
-        <button className="add-album" onClick={this.__handleClick}>Add Album</button>
+        <button className="upload-photos" onClick={this.__handleClick}>Upload Photos</button>
 
         <Modal
           isOpen={this.state.modalOpen}
@@ -70,7 +51,7 @@ var AddAlbum = React.createClass({
           style={ModalStyle}
           onAfterOpen={this.onModalOpen}>
           <button onClick={this.onModalClose}>Close</button>
-          <AddAlbumForm />
+          <UploadPhotoForm closeModal={this.onModalClose} albumId={this.props.albumId}/>
 
         </Modal>
       </div>
@@ -78,4 +59,4 @@ var AddAlbum = React.createClass({
   }
 });
 
-module.exports = AddAlbum;
+module.exports = UploadPhotos;
