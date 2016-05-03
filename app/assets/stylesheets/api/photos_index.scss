@@ -29,8 +29,18 @@
   }
 }
 
-.photo-index-item {
+
+.photo-row {
   display: flex;
+  flex-direction: row;
+  max-height: 200px;
+}
+
+
+.photo-index-item {
+
+  display: flex;
+  flex: auto;
   position: relative;
 
 
@@ -61,8 +71,9 @@
   }
 
   img {
-    height: 200px;
-    width: auto;
+    display: flex;
+    flex: auto;
+    height: 100%
   }
 }
 

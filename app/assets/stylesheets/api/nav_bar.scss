@@ -1,3 +1,9 @@
+$nav_bar_bg_color: black;
+
+.nav_bar {
+  color: white;
+}
+
 .nav_bar.home-page {
   height: 80px;
 
@@ -30,7 +36,7 @@
   align-items: center;
   flex-direction: row;
   justify-content: flex-end;
-  background-color: #E6E6E6;
+  background-color: $nav_bar_bg_color;
 
   div {
     display: flex;
@@ -58,4 +64,7 @@
 
 #logo {
   margin-right: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

@@ -1,4 +1,9 @@
 .site-nav {
+  color: white;
+  background-color: #A9A9A9;
+
+
+  height: 40px;
   display: flex;
   align-items: center;
 
@@ -12,8 +17,6 @@
       margin-right: 15px;
     }
   }
-  height: 40px;
-  background-color: #DBDBDB;
 
   .username {
     justify-content: flex-end;

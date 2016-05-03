@@ -21,8 +21,15 @@ var AlbumIndexItem = React.createClass({
   },
   currentUserCanEdit: function() {
     if (this.props.currentUser) {
-      return <button onClick={this.deleteAlbum}>Delete Album</button>;
+      return <div className="delete-album" onClick={this.deleteAlbum}>Delete Album</div>;
     }
+  },
+  albumTitle: function() {
+    return (
+      <div className="album-info">
+        <p>{this.props.album.title}</p>
+      </div>
+  );
   },
 
   render: function(){
@@ -31,7 +38,7 @@ var AlbumIndexItem = React.createClass({
         <img
           src={this.props.album.thumbnail_url}
           onClick={this.onClick}/>
-        <p>Title: {this.props.album.title}</p>
+        {this.albumTitle()}
         {this.currentUserCanEdit()}
       </div>
     );

@@ -19,13 +19,24 @@ var PhotoIndex = React.createClass({
   },
 
   render: function(){
+    if (!this.state.photos) { return ; }
     var self = this;
     var photos;
-    if (this.state.photos) {
-      photos = this.state.photos.map(function(photo) {
-        return <PhotoIndexItem key={photo.id} photo={photo} currentUser={self.props.currentUser} />;
-      });
-    }
+    var photoRows = [];
+
+    photos = this.state.photos.map(function(photo) {
+      return <PhotoIndexItem key={photo.id} photo={photo} currentUser={self.props.currentUser} />;
+    });
+
+    var testPhotoRow = (
+      <div className="photo-row">
+        {photos[0]}
+        {photos[1]}
+        {photos[2]}
+      </div>
+    );
+
+
     return (
       <div className="photo-index">
         {photos}

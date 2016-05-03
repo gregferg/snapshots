@@ -55,10 +55,8 @@ var NavBar = React.createClass({
   render: function(){
     return (
       <div className={this.className()}>
-        <div className="nav-bar-content">
-          <div id="logo" onClick={this.redirectToHome}>
-            <p> SNAPSHOT LOGO </p>
-          </div>
+        <div className="nav-bar content">
+          <div id="logo" onClick={this.redirectToHome}>SNAPSHOTS</div>
           {this.buttons()}
         </div>
       </div>

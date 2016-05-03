@@ -16,8 +16,40 @@
   }
 }
 
+.album-index-item:hover {
+  .album-info {
+    display: flex;
+  }
+}
+
 .album-index-item {
+  position: relative;
   width: 33%;
+
+  .album-info {
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    height: 20%;
+    bottom: 0px;
+    left: 0px;
+    background:rgba(0,0,0,0.6);
+    width: 100%;
+
+    p {
+      margin-left: 5%;
+      margin-top: 2.5%;
+      color: white;
+      font-size: 1em;
+      font-weight: 200;
+    }
+  }
+
+  .delete-album {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+  }
   img {
   //  height: 300px;
   //  width: 400px;

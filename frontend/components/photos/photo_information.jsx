@@ -117,9 +117,9 @@ var PhotoInformation = React.createClass({
   },
   editButton: function() {
     if (this.state.editing) {
-      return <div onClick={this.toggleEdit} >Save Changes</div>;
+      return <div className="edit-button" onClick={this.toggleEdit} >Save Changes</div>;
     } else {
-      return <div onClick={this.toggleEdit} >Edit</div>;
+      return <div className="edit-button" onClick={this.toggleEdit} >Edit</div>;
     }
   },
   currentUser: function() {
@@ -133,7 +133,7 @@ var PhotoInformation = React.createClass({
   canEdit: function() {
     if (this.currentUser()) {
       return (
-        <div>
+        <div className="form-boundary">
           {this.isBeingEditted()}
           {this.editButton()}
         </div>
