@@ -15,6 +15,15 @@ var ApiUtil = {
       }
     });
   },
+  fetchAlbum: function(albumId) {
+    $.ajax({
+      type: 'GET',
+      url: 'api/albums/' + albumId,
+      success: function(album) {
+        ServerActions.receiveAlbum(album);
+      }
+    });
+  },
   createAlbum: function(album) {
     $.ajax({
       type: 'POST',

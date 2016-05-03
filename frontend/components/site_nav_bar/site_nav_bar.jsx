@@ -8,6 +8,10 @@ var SiteNavBar = React.createClass({
     HashHistory.push("/" + this.props.username);
   },
 
+  redirectToPortfolio: function(e) {
+    HashHistory.push("/" + this.props.username + "/portfolio");
+  },
+
   redirectToAboutPage: function(e) {
     HashHistory.push("/" + this.props.username + "/about");
   },
@@ -19,13 +23,16 @@ var SiteNavBar = React.createClass({
   render: function(){
     return (
       <div className="site-nav">
-        <div className="site-navigation">
-          <div onClick={this.redirectToHomePage}>Home</div>
-          <div onClick={this.redirectToAboutPage}>About</div>
-          <div onClick={this.redirectToContactPage}>Contact</div>
-        </div>
-        <div className="username">
-          <div>{this.props.username}&#39;s Home Page</div>
+        <div className="site-nav-bar-content">
+          <div className="site-navigation">
+            <div onClick={this.redirectToHomePage}>Home</div>
+            <div onClick={this.redirectToPortfolio}>Portfolio</div>
+            <div onClick={this.redirectToAboutPage}>About</div>
+            <div onClick={this.redirectToContactPage}>Contact</div>
+          </div>
+          <div className="username">
+            <div>{this.props.username}</div>
+          </div>
         </div>
       </div>
     );

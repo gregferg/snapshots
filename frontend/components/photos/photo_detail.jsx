@@ -35,21 +35,7 @@ var PhotoDetail = React.createClass({
   photoUrl: function() {
     if (this.state.photo) { return this.state.photo.photo_url; }
   },
-  photoTitle: function() {
-    if (this.state.photo) {
-      var title = this.state.photo.title;
-      console.log(title);
-      console.log(title === "");
-      if (title === "") { return "untitled"; }
-      return this.state.photo.title;
-    }
-  },
-  photoDescription: function() {
-    if (this.state.photo) { return this.state.photo.description; }
-  },
-  onClose: function(e) {
-    e.preventDefault();
-
+  onClose: function() {
     HashHistory.push("/" + this.props.params.username + "/" + this.props.params.album_id);
   },
   nextPhoto: function(e) {
@@ -75,6 +61,8 @@ var PhotoDetail = React.createClass({
       this.previousPhoto(e);
     } else if (e.keyCode === 39){
       this.nextPhoto(e);
+    } else if (e.keyCode === 27) {
+      this.onClose();
     }
   },
   renderPhotoInformation: function () {
@@ -87,11 +75,13 @@ var PhotoDetail = React.createClass({
     console.log(this.state.photo);
     return (
       <div className="photo-detail">
-        <img src={this.photoUrl()} />
-        {this.renderPhotoInformation()}
-        <button onClick={this.onClose}>Close View</button>
-        <button onClick={this.nextPhoto}>Next Photo</button>
-        <button onClick={this.previousPhoto}>Previous Photo</button>
+        <div className="img">
+          <img src={this.photoUrl()} />
+          {this.renderPhotoInformation()}
+        </div>
+        <div className="next-photo" onClick={this.nextPhoto}>Next Photo</div>
+        <div className="previous-photo" onClick={this.previousPhoto}>Previous Photo</div>
+        <div className="close-detail-view" onClick={this.onClose}>Close View</div>
       </div>
     );
   }

@@ -4,6 +4,9 @@ var AlbumActions = {
   fetchAlbums: function(username) {
     ApiUtil.fetchAlbums(username);
   },
+  fetchAlbum: function(albumId) {
+    ApiUtil.fetchAlbum(albumId);
+  },
 
   createAlbum: function(album) {
     ApiUtil.createAlbum(album);

@@ -4,6 +4,7 @@ var HashHistory = require('react-router').hashHistory;
 var PhotoActions = require("../../actions/photo_actions");
 var AlbumActions = require("../../actions/album_actions");
 var PhotoStore = require("../../stores/photo_store");
+var AlbumStore = require("../../stores/album_store");
 var PhotoIndex = require("../photos/photo_index");
 var UploadPhotos = require("../photos/upload_photos");
 
@@ -17,11 +18,23 @@ var AlbumDetail = React.createClass({
 
   componentDidMount: function() {
     this.listener = PhotoStore.addListener(this.updateView);
+    this.listener = AlbumStore.addListener(this.updateAlbum);
+    AlbumActions.fetchAlbum(this.props.params.album_id);
     PhotoActions.fetchPhotos(this.props.params.album_id);
   },
 
   updateView: function() {
     this.setState({ photos: PhotoStore.all() });
+  },
+
+  updateAlbum: function() {
+    this.setState({ album: AlbumStore.currentAlbum() });
+  },
+
+  albumTitle: function() {
+    if (!this.state.album) { return ; }
+
+    return this.state.album.title;
   },
 
   componentWillUnmount: function() {
@@ -39,9 +52,6 @@ var AlbumDetail = React.createClass({
         if (error === null) {
           var photosToUpload = { photos: photos, album_id: this.props.params.album_id };
           PhotoActions.updatePhotosToUpload(photosToUpload);
-
-          // var payload = { photos: photos, album_id: this.props.params.album_id };
-          // PhotoActions.createPhotos(payload);
         } else {
 
         }
@@ -97,16 +107,19 @@ var AlbumDetail = React.createClass({
 
   render: function(){
     return (
-      <div className="album-detail">
-        <div className="album-options">
-        <button onClick={this.closeAlbum}>Back to All Albums</button>
-        {this.canEditAlbum()}
-      </div>
-        <div>
-          {this.noPhotos()}
-          <PhotoIndex photos={this.state.photos} currentUser={this.currentUser()}/>
+      <div className="content">
+        <div className="album-detail">
+          <div className="album-headers">
+            <h2>{this.albumTitle()}</h2>
+            <div className="album-options">
+              {this.canEditAlbum()}
+            </div>
+          </div>
+          <div>
+            {this.noPhotos()}
+            <PhotoIndex photos={this.state.photos} currentUser={this.currentUser()}/>
+          </div>
         </div>
-
       </div>
     );
   }

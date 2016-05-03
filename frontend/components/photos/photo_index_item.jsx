@@ -22,7 +22,7 @@ var PhotoIndexItem = React.createClass({
       HashHistory.push(window.path + "/" + this.props.photo.id);
     }
     HashHistory.push(window.path + "/" + this.props.photo.id);
-    
+
   },
 
   toggleEdit: function(e) {
@@ -30,25 +30,32 @@ var PhotoIndexItem = React.createClass({
 
     this.setState({ editForm: !this.state.editForm });
   },
+  photoTitle: function() {
+    if (this.props.photo) {
+      var title = this.props.photo.title;
+      if (title === "") { return "untitled"; }
+      return this.props.photo.title;
+    }
+  },
   titleAndDescription: function() {
     if (this.state.editForm) {
       return <PhotoEditForm photo={this.props.photo} />;
     } else {
       return (
-        <div>
-          <p>Title: {this.props.photo.title}</p>
-          <p>Description: {this.props.photo.description}</p>
+        <div className="photo-information">
+          <p>{this.photoTitle()}</p>
         </div>
       );
     }
 
   },
   currentUserCanEdit: function() {
+
+    //to implement later <button onClick={this.toggleEdit}>Edit Photo</button>
+
     if (this.props.currentUser) {
       return (
-        <div>
-          <button onClick={this.deletePhoto}>Delete Photo</button>
-          <button onClick={this.toggleEdit}>Edit Photo</button>
+        <div className="delete-photo" onClick={this.deletePhoto}>Delete Photo
         </div>
       );
     }
@@ -58,10 +65,8 @@ var PhotoIndexItem = React.createClass({
     return (
       <div onClick={this.onClick} className="photo-index-item">
         <img src={this.props.photo.photo_url} />
-        <div className="photo-information">
-          {this.titleAndDescription()}
-          {this.currentUserCanEdit()}
-        </div>
+        {this.titleAndDescription()}
+        {this.currentUserCanEdit()}
       </div>
     );
   }

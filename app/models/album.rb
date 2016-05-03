@@ -3,4 +3,14 @@ class Album < ActiveRecord::Base
 
   has_many :photos,  dependent: :destroy
   belongs_to :user
+
+  def adjust_thumbnail_url
+    if self.photos[0]
+      self.thumbnail_url = self.photos[0].thumbnail_url
+    else
+      self.thumbnail_url = nil
+    end
+
+    self.save
+  end
 end

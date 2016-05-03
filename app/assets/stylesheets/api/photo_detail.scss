@@ -1,0 +1,85 @@
+.photo-detail {
+  background-color: black;
+  display: flex;
+  height: 100vh;
+  position: relative;
+
+  .img {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100vh;
+  }
+
+  .img:hover {
+
+    .photo-detail-information {
+      background:rgba(0,0,0,0.3);
+      display: flex;
+      color: rgba(256,256,256,0.8);
+    }
+  }
+  div {
+    // color: white;
+  }
+
+  .photo-detail-information {
+    display: none;
+    position: absolute;
+    height: 100px;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    background:rgba(0,0,0,0.6);
+
+    p {
+      position: absolute;
+      left: 5%;
+      margin-left: 5%;
+    }
+
+    .form {
+      margin-left: 5%;
+
+      align-items: flex-start;
+      height: 100px;
+      input {
+        margin-top: 10px;
+        // margin-left: 10px;
+      }
+    }
+  }
+
+  .next-photo {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    right: 5%;
+    top: 50%;
+  }
+
+  .previous-photo {
+    display: flex;
+    position: absolute;
+    left: 5%;
+    top: 50%;
+  }
+
+  .close-detail-view {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    right: 2%;
+    top: 2%;
+  }
+
+  img {
+    display: flex;
+    justify-content: center;
+    // height: 600px;
+    height: 100%;
+    width: auto
+  }
+}

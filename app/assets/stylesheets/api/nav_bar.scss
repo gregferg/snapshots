@@ -9,11 +9,20 @@
 
   .logout {
     padding: 16px 30px 16px 30px;
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-left: 20px;;
     background-color: #B6B6B6;
   }
 }
+
+.nav-bar-content {
+  min-width: 800px;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 130px;
+  padding-right: 130px;
+}
+
 
 .nav_bar {
   height: 50px;
@@ -42,7 +51,6 @@
     .logout {
       padding: 8px 15px 8px 15px;
       margin-left: 10px;
-      margin-right: 10px;
       background-color: #B6B6B6;
     }
   }
@@ -50,5 +58,4 @@
 
 #logo {
   margin-right: auto;
-  margin-left: 20px;
 }

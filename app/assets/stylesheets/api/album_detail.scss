@@ -1,0 +1,40 @@
+
+.album-detail {
+
+  h2 {
+    font-size: 2em;
+    font-weight: 400;
+
+  }
+
+  .album-headers {
+    display: flex;
+    flex-direction: row;
+    margin-top: 40px;
+    margin-bottom: 20px;
+
+    .album-options {
+      display: flex;
+      margin-left: auto;
+      align-items: flex-end;;
+
+
+      button {
+        margin-left: 20px;
+      }
+    }
+  }
+}
+
+
+.album-options {
+  display: flex;
+  flex-direction: row;
+
+
+  div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+}

@@ -9,10 +9,9 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-around;;
 
   p {
-    width: 300px;
+    width: 100%;
   }
 
   button {
@@ -22,68 +21,53 @@
     width: 80px;
   }
 
-  > div {
+}
 
-  }
-
-  .photo-index-item {
-    // width: 400px;
-    word-wrap: break-word;
-    justify-content: space-around;
+.photo-index-item:hover {
+  .photo-information {
+    display: flex;
   }
 }
 
 .photo-index-item {
-  width: 33%;
-  //height: 300px;
-  overflow: hidden;
+  display: flex;
+  position: relative;
 
-  img {
-    // height: 300px;
-    // width: 400px;
-  }
-}
-
-.photo-index-item:hover {
 
   .photo-information {
-    display:block;
-    z-index: 20;
-    animation-name: rollUp;
-    animation-duration: .5s;
-    animation-timing-function: ease-in-out;
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    height: 20%;
+    bottom: 0px;
+    left: 0px;
+    background:rgba(0,0,0,0.6);
+    width: 100%;
+
+    p {
+      margin-left: 5%;
+      margin-top: 2.5%;
+      color: white;
+      font-size: 1em;
+      font-weight: 200;
+    }
   }
-}
 
-// .photo-information {
-//   display: none;
-//   position: relative;
-//   bottom: 86px;
-//   left: 0px;
-//   background-color: white;
-//
-//   p {
-//     opacity: .99;
-//   }
-// }
-
-.photo-detail:hover {
-
-  .photo-detail-information {
+  .delete-photo {
     display: flex;
-    position: relative;
-    bottom: 50px;
-    background-color: white;
+    position: absolute;
+    right: 2%;
+    top: 2%;
+  }
+
+  img {
+    height: 200px;
+    width: auto;
   }
 }
 
 
-.photo-detail-information {
-  display: none;
-  position: relative;
-  bottom: 50px;
-  background-color: white;
-}
+
 
 
 @keyframes rollUp {

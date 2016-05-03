@@ -15,6 +15,7 @@ class Api::AlbumsController < ApplicationController
     @album = Album.create(albums_params)
     if @album.save
       @photos = { photos: params[:album][:photos_to_upload] }
+      @album.save
       @user = User.find(@album.user_id)
       render :create
     else

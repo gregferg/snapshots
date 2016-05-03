@@ -53,19 +53,14 @@ var NavBar = React.createClass({
     }
   },
   render: function(){
-
-    var currentUser =
-      this.state.user ? <p> Welcome back, {this.state.user.username} </p> : null;
-
-    var button;
-
-
     return (
       <div className={this.className()}>
-        <div id="logo" onClick={this.redirectToHome}>
-          <p> SNAPSHOT LOGO </p>
+        <div className="nav-bar-content">
+          <div id="logo" onClick={this.redirectToHome}>
+            <p> SNAPSHOT LOGO </p>
+          </div>
+          {this.buttons()}
         </div>
-        {this.buttons()}
       </div>
     );
   }

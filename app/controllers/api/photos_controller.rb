@@ -30,6 +30,8 @@ class Api::PhotosController < ApplicationController
       @photos.push(@photo)
     end
 
+    @photo.album.adjust_thumbnail_url
+
     render :index
     # if @photo.save
     #   render :show
@@ -51,7 +53,9 @@ class Api::PhotosController < ApplicationController
 
   def destroy
     @photo = Photo.find_by_id(params[:id])
+    album = @photo.album
     @photo.destroy
+    album.adjust_thumbnail_url
     render :show
   end
 

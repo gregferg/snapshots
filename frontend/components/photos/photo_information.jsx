@@ -145,7 +145,7 @@ var PhotoInformation = React.createClass({
 
   render: function(){
     return (
-      <div className="photo-information">
+      <div className="photo-detail-information">
         {this.canEdit()}
       </div>
     );

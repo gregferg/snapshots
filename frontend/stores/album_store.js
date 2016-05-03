@@ -5,6 +5,7 @@ var AlbumStore = new Store(AppDispatcher);
 
 var _albums = {};
 var _errors = {};
+var _currentAlbum = {};
 
 AlbumStore.__onDispatch = function (payload) {
   switch(payload.actionType) {
@@ -29,6 +30,10 @@ AlbumStore.all = function(){
   });
 };
 
+AlbumStore.currentAlbum = function(){
+ return _currentAlbum;
+};
+
 var resetAlbums = function(albums) {
   _albums = {};
 
@@ -47,6 +52,7 @@ var removeAlbum = function (album) {
 
 var addAlbum = function (album) {
   _albums[album.id] = album;
+  _currentAlbum = album;
   AlbumStore.__emitChange();
 };
 
