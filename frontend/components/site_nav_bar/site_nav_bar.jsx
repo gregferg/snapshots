@@ -20,15 +20,23 @@ var SiteNavBar = React.createClass({
     HashHistory.push("/" + this.props.username + "/contact");
   },
 
+  selected: function(option) {
+    console.log(this.props.params);
+    if (this.props.url === "/demo" && option === "home") {return "selected"; }
+    if (this.props.url.indexOf(option) > -1) { return "selected"; }
+    if (this.props.params.album_id && option === "portfolio") { return "selected"; }
+
+  },
+
   render: function(){
     return (
       <div className="site-nav">
         <div className="site-nav-bar-content">
           <div className="site-navigation">
-            <div onClick={this.redirectToHomePage}>Home</div>
-            <div onClick={this.redirectToPortfolio}>Portfolio</div>
-            <div onClick={this.redirectToAboutPage}>About</div>
-            <div onClick={this.redirectToContactPage}>Contact</div>
+            <div className={this.selected("home")} onClick={this.redirectToHomePage}>Home</div>
+            <div className={this.selected("portfolio")} onClick={this.redirectToPortfolio}>Portfolio</div>
+            <div className={this.selected("about")} onClick={this.redirectToAboutPage}>About</div>
+            <div className={this.selected("contact")} onClick={this.redirectToContactPage}>Contact</div>
           </div>
           <div className="username">
             <div>{this.props.username}</div>

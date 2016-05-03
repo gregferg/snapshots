@@ -24,7 +24,6 @@ var PhotoInformation = React.createClass({
 
   updateView: function() {
     var updatedPhoto = PhotoStore.photoDetail(this.props.photo.id);
-    console.log(updatedPhoto);
     this.setState({ title: updatedPhoto.title, description: updatedPhoto.description });
   },
 
@@ -145,7 +144,7 @@ var PhotoInformation = React.createClass({
 
   render: function(){
     return (
-      <div className="photo-detail-information">
+      <div className="photo-detail-information shown-on-mouse-move">
         {this.canEdit()}
       </div>
     );

@@ -8,7 +8,11 @@
 
 User.create(
   username: "demo",
-  password: 'password'
+  password: 'password',
+  about_me_title: "Hi, I'm Demo",
+  about_me_body: """
+    I am the photographer and blogger behind ShootTokyo. I am originally from Boston, Massachusetts but my professional life has lead me from Boston to New York City, Singapore finally landing me in Tokyo, Japan in 2001. I live in the heart of Tokyo with my beautiful wife Mayumi, our 7 year old son Kai and his growing collection of insects. Photography is an outlet from an otherwise busy and sometimes stressful life.I primarily shoot Leica M digital and film range finders. You can read all about my gear if you want some more details. I work in Technology and I am lucky enough to have a job that allows me to travel around the world which is great for my photography. My frequent travel locations currently are Sydney, Singapore and San Francisco.The combination of my love for photography coupled with my frequent travels and bias for technology made a blog a logical and rewarding hobby for me. I have had surprising success with blogging that has brought me a lot of personal satisfaction, new friendships and surprising business contacts. This is a friendly place so feel free to engage, share, ask questions or just watch quietly from the shadows. I hope to see you around ShootTokyo!
+  """
 )
 
 5.times do

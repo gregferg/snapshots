@@ -46,8 +46,8 @@ var Portfolio = React.createClass({
   render: function(){
     console.log(this.props.params);
     return (
-      <div className="content">
-        <div className="portfolio-welcome">
+      <div className="">
+        <div className="portfolio-welcome content">
           <h2>{this.props.params.username}s Portfolio </h2>
         </div>
         <AlbumIndex albums={this.state.albums} username={this.props.params.username} currentUser={this.currentUser()}/>

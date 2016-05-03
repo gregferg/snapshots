@@ -1,0 +1,31 @@
+.about-page {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;;
+  margin-top: 100px;
+
+
+  .about-me-info {
+    width: 40%;
+    h3 {
+      font-size: 2em;
+      margin-top: 0px;
+      margin-bottom: 15px;
+    }
+  }
+
+  .edit-about-me {
+    position: absolute;
+    display: flex;
+    justify-content: flex-end;
+    bottom: 0px;
+  }
+
+
+  img {
+    width: 20%;
+    margin-right: 5%;
+  }
+}

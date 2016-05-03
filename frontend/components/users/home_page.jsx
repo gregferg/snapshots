@@ -13,7 +13,7 @@ var HomePage = React.createClass({
   render: function(){
     return (
       <div className="home-page">
-
+        <h1 className="username">Demo</h1>
       </div>
     );
   }

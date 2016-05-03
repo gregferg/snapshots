@@ -8,15 +8,25 @@ var Link = require('react-router').Link;
 
 
 
+var mouseStopped = function() {
+  $('.shown-on-mouse-move').css('display', 'none');
+};
+
 var PhotoDetail = React.createClass({
   mixins: [CurrentUserState],
   getInitialState: function() {
     return { photo: PhotoStore.photoDetail(this.props.params.photo_id) };
   },
-
   componentDidMount: function() {
     this.listener = PhotoStore.addListener(this.updateView);
+    var timer;
     window.addEventListener( "keyup", this.newPhotoView);
+    window.addEventListener( "mousemove", function(e) {
+
+      $('.shown-on-mouse-move').css('display', 'flex');
+      clearTimeout(timer);
+      timer=setTimeout(mouseStopped, 3000);
+    });
     PhotoActions.fetchPhotos(this.props.params.album_id);
   },
 
@@ -27,6 +37,7 @@ var PhotoDetail = React.createClass({
   componentWillUnmount: function() {
     this.listener.remove();
     window.removeEventListener("keyup", this.newPhotoView);
+    window.removeEventListener("mousemove", this.mouseStopped);
   },
 
   componentWillReceiveProps: function(newProps) {
@@ -56,7 +67,6 @@ var PhotoDetail = React.createClass({
     );
   },
   newPhotoView: function(e) {
-    console.log("KEY PRESS");
     if (e.keyCode === 37) {
       this.previousPhoto(e);
     } else if (e.keyCode === 39){
@@ -72,16 +82,15 @@ var PhotoDetail = React.createClass({
   },
 
   render: function(){
-    console.log(this.state.photo);
     return (
       <div className="photo-detail">
         <div className="img">
           <img src={this.photoUrl()} />
           {this.renderPhotoInformation()}
         </div>
-        <div className="next-photo" onClick={this.nextPhoto}>Next Photo</div>
-        <div className="previous-photo" onClick={this.previousPhoto}>Previous Photo</div>
-        <div className="close-detail-view" onClick={this.onClose}>Close View</div>
+          <div className="next-photo shown-on-mouse-move" onClick={this.nextPhoto}>Next Photo</div>
+          <div className="previous-photo shown-on-mouse-move" onClick={this.previousPhoto}>Previous Photo</div>
+          <div className="close-detail-view shown-on-mouse-move" onClick={this.onClose}>Close View</div>
       </div>
     );
   }

@@ -107,7 +107,7 @@ var AlbumDetail = React.createClass({
 
   render: function(){
     return (
-      <div className="content">
+      <div className="photo-content">
         <div className="album-detail">
           <div className="album-headers">
             <h2>{this.albumTitle()}</h2>

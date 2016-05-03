@@ -3,7 +3,6 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .photo-index {
-  background-color: #C3C3C3;
   margin: auto;
   width: 100%;
   display: flex;
@@ -27,6 +26,10 @@
   .photo-information {
     display: flex;
   }
+
+  .delete-photo {
+    display: flex;
+  }
 }
 
 
@@ -38,7 +41,7 @@
 
 
 .photo-index-item {
-
+  margin-bottom: 25px;
   display: flex;
   flex: auto;
   position: relative;
@@ -64,10 +67,12 @@
   }
 
   .delete-photo {
-    display: flex;
+    display: none;
     position: absolute;
     right: 2%;
     top: 2%;
+
+    color: white;
   }
 
   img {

@@ -20,7 +20,7 @@ var AlbumIndex = React.createClass({
       return <AlbumIndexItem key={album.id} album={album} username={self.props.username} currentUser={self.props.currentUser}/>;
     });
     return (
-      <div className="album_index">
+      <div className="album_index photo-content">
         <div>
           {albums}
         </div>

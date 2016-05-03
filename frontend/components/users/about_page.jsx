@@ -26,7 +26,7 @@ var AboutPage = React.createClass({
   },
   editForm: function (){
     if (this.state.user && this.state.viewedUser.username === this.state.user.username) {
-      return <p>Edit Your About Me</p>;
+      return <div className="edit-about-me">Edit Your About Me</div>;
     }
   },
   backToViewedUserHomePage: function(e) {
@@ -51,7 +51,13 @@ var AboutPage = React.createClass({
 
   about_body: function() {
     if (this.state.viewedUser.about_me_body) {
-      return <h3>{this.state.viewedUser.about_me_body}</h3>;
+      return (
+        <div>
+          <p>{this.state.viewedUser.about_me_body}</p>
+          <br />
+          <p>Regards, {this.state.viewedUser.username}</p>
+        </div>
+      );
     } else {
       return ;
     }
@@ -60,9 +66,12 @@ var AboutPage = React.createClass({
   render: function(){
     return (
       <div className="about-page">
-        {this.about_title()}
-        {this.about_body()}
-        {this.editForm()}
+        <img src="http://portfolio.shoottokyo.com/Logos/n-VLZRx/i-xsJhhbS/0/O/i-xsJhhbS.jpg" />
+        <div className="about-me-info">
+          {this.editForm()}
+          {this.about_title()}
+          {this.about_body()}
+      </div>
       </div>
     );
   }

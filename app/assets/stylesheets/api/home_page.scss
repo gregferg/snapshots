@@ -1,0 +1,28 @@
+.home-page {
+  background-image: url('https://images.unsplash.com/photo-1441422454217-519d3ee81350?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=a71dbb2b2d03212ca553a22e6e5ab5cb');
+  background-size: cover;
+  height: calc(100vh - 50px);
+  width: 100%;
+
+
+  position: absolute;
+  z-index: 0;
+  top: 50px;
+}
+
+.home-page {
+  display: flex;
+
+  .username{
+    font-size: 5em;
+    font-weight: 500;
+    color: white;
+    display: flex;
+    align-items: center;
+    // justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    // top: 50%;
+    // right: 50%;
+  }
+}

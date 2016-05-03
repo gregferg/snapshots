@@ -13,20 +13,8 @@
     height: 100vh;
   }
 
-  .img:hover {
-
-    .photo-detail-information {
-      background:rgba(0,0,0,0.3);
-      display: flex;
-      color: rgba(256,256,256,0.8);
-    }
-  }
-  div {
-    // color: white;
-  }
-
   .photo-detail-information {
-    // display: none;
+    display: none;
     position: fixed;
     height: 100px;
     bottom: 0px;
@@ -34,6 +22,7 @@
     width: 100%;
     width: 100vw;
     background:rgba(0,0,0,0.6);
+    color: rgba(256,256,256,0.8);
 
 
     .form-boundary {
@@ -41,6 +30,7 @@
       width: 100%;
       height: 100px;
     }
+
     .edit-button {
       position: absolute;
       top: 2%;
@@ -75,6 +65,7 @@
     position: absolute;
     right: 5%;
     top: 50%;
+    color: white;
   }
 
   .previous-photo {
@@ -82,6 +73,8 @@
     position: absolute;
     left: 5%;
     top: 50%;
+    color: white;
+
   }
 
   .close-detail-view {
@@ -90,6 +83,8 @@
     position: absolute;
     right: 2%;
     top: 2%;
+    color: white;
+
   }
 
   img {
