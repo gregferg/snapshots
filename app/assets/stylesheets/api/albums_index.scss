@@ -5,25 +5,36 @@
 .album_index {
   background-color: #C3C3C3;
   margin: auto;
+  // margin-top: 5vw;
   width: 100%;
   justify-content: center;
-
   flex-direction: row;
+
+
   > div {
-    justify-content: space-around;
-    display: flex;
-    flex-wrap: wrap;
+    // justify-content: space-around;
+    // display: flex;
+    // flex-wrap: wrap;
   }
 }
 
 .album-index-item:hover {
+
+  cursor: pointer;
+
   .album-info {
+    display: flex;
+  }
+  .delete-album {
     display: flex;
   }
 }
 
 .album-index-item {
   position: relative;
+  display: flex;
+  height: 15vw;
+  flex: 0;
   width: 33%;
 
   .album-info {
@@ -46,12 +57,18 @@
   }
 
   .delete-album {
+    color: white;
+    display: none;
     position: absolute;
-    right: 0px;
-    top: 0px;
-  }
-  img {
-  //  height: 300px;
-  //  width: 400px;
+    right: 2%;
+    top: 2%;
+
+    :hover {
+      cursor: pointer;
+    }
+
+    delete-album:hover {
+      cursor: pointer;
+    }
   }
 }

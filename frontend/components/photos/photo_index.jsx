@@ -18,28 +18,91 @@ var PhotoIndex = React.createClass({
     this.setState({ photos: newProps.photos});
   },
 
+  calcRow: function (photos) {
+    if (photos.length === 0) { return ;}
+    // debugger;
+    var targetWidth = window.innerWidth * .9;
+    var firstHeight = photos[0].height;
+    var widths = [photos[0].width];
+
+    for (var i = 0; i < photos.length; i++) {
+      if (i !== 0) {
+
+      var unscaledHeight = photos[i].height;
+      var unscaledWidth =  photos[i].width;
+
+      var widthScale = firstHeight / unscaledHeight;
+      widths.push(unscaledWidth * widthScale);
+      }
+    }
+
+    var sumWidth = 0;
+    for (var i = 0; i < widths.length; i++) {
+      sumWidth += widths[i];
+    }
+
+    var heightScale = targetWidth / sumWidth;
+
+    var renderHeight = firstHeight * heightScale;
+
+    var renderWidths = [];
+    for (var i = 0; i < widths.length; i++) {
+      renderWidths.push(Math.floor(widths[i] * heightScale));
+    }
+
+    return {renderHeight: renderHeight, renderWidths: renderWidths};
+  },
+  allocateRows: function(allPhotos) {
+    var rowsToRender = [];
+    var photos = allPhotos.slice();
+
+    while (photos.length > 0) {
+      var tempRowNumber = Math.floor(Math.random() * (4 - 0)) + 1;
+
+      var possibleRow = photos.slice(0, tempRowNumber);
+
+      var calculatedRow = this.calcRow(possibleRow);
+
+
+      if (calculatedRow.renderHeight < 100) {
+        continue ;
+      }
+
+
+      var self = this;
+      var newRow = possibleRow.map(function(photo, idx) {
+        return <PhotoIndexItem key={photo.id} photo={photo} currentUser={self.props.currentUser} height={calculatedRow.renderHeight} width={calculatedRow.renderWidths[idx]} />;
+      });
+
+      photos = photos.slice(tempRowNumber, photos.length);
+      rowsToRender.push(newRow);
+    }
+
+    console.log(rowsToRender);
+    return rowsToRender;
+  },
+
   render: function(){
-    if (!this.state.photos) { return ; }
-    var self = this;
-    var photos;
-    var photoRows = [];
+    if (!this.state.photos) { return <div></div>; }
+    if (this.state.photos.length === 0) { return <div></div>; }
+    var photos = this.state.photos;
 
-    photos = this.state.photos.map(function(photo) {
-      return <PhotoIndexItem key={photo.id} photo={photo} currentUser={self.props.currentUser} />;
+
+    var testPhotoRow = [
+        photos[0], photos[1]
+      ];
+
+    var rows = this.allocateRows(photos).map(function(row) {
+      return (
+        <div className="photo-row">
+          {row}
+        </div>
+      );
     });
-
-    var testPhotoRow = (
-      <div className="photo-row">
-        {photos[0]}
-        {photos[1]}
-        {photos[2]}
-      </div>
-    );
-
 
     return (
       <div className="photo-index">
-        {photos}
+        {rows}
       </div>
     );
   }

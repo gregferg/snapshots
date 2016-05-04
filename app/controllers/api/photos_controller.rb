@@ -19,13 +19,17 @@ class Api::PhotosController < ApplicationController
       thumbnail_url = photo_data["thumbnail_url"]
       title = photo_data["title"]
       description = photo_data["description"]
+      height = photo_data["height"]
+      width = photo_data["width"]
 
       @photo = Photo.create(
         photo_url: photo_url,
         thumbnail_url: thumbnail_url,
         title: title,
         description: description,
-        album_id: album_id
+        album_id: album_id,
+        height: height,
+        width: width
       )
       @photos.push(@photo)
     end

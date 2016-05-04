@@ -6,8 +6,7 @@
   margin: auto;
   width: 100%;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-direction: column;
 
   p {
     width: 100%;
@@ -34,16 +33,13 @@
 
 
 .photo-row {
+  margin-top: 20px;
   display: flex;
-  flex-direction: row;
-  max-height: 200px;
 }
 
 
 .photo-index-item {
   margin-bottom: 25px;
-  display: flex;
-  flex: auto;
   position: relative;
 
 

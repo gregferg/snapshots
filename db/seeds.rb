@@ -153,27 +153,3 @@ photo_urls.each do |photo_url|
     photo_url: photo_url
   )
 end
-
-#
-# User.all.each do |user|
-#   rand(5).times do
-#     Album.create(
-#       user_id: user.id,
-#       title: Faker::Superhero.name,
-#       description: Faker::Hipster.sentence(3),
-#       thumbnail_url: Faker::Avatar.image
-#     )
-#   end
-# end
-#
-#
-# Album.all.each do |album|
-#   rand(10).times do
-#     Photo.create(
-#       photo_url: Faker::Placeholdit.image,
-#       album_id: album.id,
-#       title: Faker::Superhero.name,
-#       description: Faker::Hipster.sentence(3)
-#     )
-#   end
-# end

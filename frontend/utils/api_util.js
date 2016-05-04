@@ -34,6 +34,7 @@ var ApiUtil = {
         ServerActions.receiveAlbum(createdAlbum);
         ServerActions.emptyPhotoStore();
         var payload = { photos: createdAlbum.photos, album_id: createdAlbum.id};
+        debugger;
         ApiUtil.createPhotos(payload);
         HashHistory.push("/" + createdAlbum.username + "/" + createdAlbum.id);
       },

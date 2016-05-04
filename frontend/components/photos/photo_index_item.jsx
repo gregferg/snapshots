@@ -63,7 +63,7 @@ var PhotoIndexItem = React.createClass({
 
   render: function(){
     return (
-      <div onClick={this.onClick} className="photo-index-item">
+      <div onClick={this.onClick} className="photo-index-item" style={{height: Math.floor(this.props.height), width: this.props.width}}>
         <img src={this.props.photo.photo_url} />
         {this.titleAndDescription()}
         {this.currentUserCanEdit()}
