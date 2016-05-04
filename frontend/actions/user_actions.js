@@ -34,7 +34,7 @@ var UserActions = {
 		HashHistory.push("/" + user.username);
 	},
 	demoLogin: function() {
-		UserActions.login("demo", "password");
+		UserActions.login("Demo", "password");
 	},
 	loggedInOrNot: function(payload) {
 		if (payload.username) {

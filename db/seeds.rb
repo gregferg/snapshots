@@ -5,6 +5,9 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+require '../album_seed_photos/tokyo_album/photos_title_description.rb'
+require '../album_seed_photos/forest/forest_titles.rb'
+
 
 User.create(
   username: "demo",

@@ -13,6 +13,13 @@ var PhotoIndex = React.createClass({
   getInitialState: function() {
     return { photos: this.props.photos };
   },
+  componentDidMount: function() {
+    window.addEventListener("resize", this.reRender);
+  },
+
+  componentWillUnmount: function() {
+    window.removeEventListener("resize", this.reRender);
+  },
 
   componentWillReceiveProps: function(newProps) {
     this.setState({ photos: newProps.photos});
@@ -81,6 +88,9 @@ var PhotoIndex = React.createClass({
     console.log(rowsToRender);
     return rowsToRender;
   },
+  reRender: function() {
+    this.setState({ potato: true});
+  },
 
   render: function(){
     if (!this.state.photos) { return <div></div>; }
@@ -94,14 +104,14 @@ var PhotoIndex = React.createClass({
 
     var rows = this.allocateRows(photos).map(function(row) {
       return (
-        <div className="photo-row">
+        <div className="photo-row" >
           {row}
         </div>
       );
     });
 
     return (
-      <div className="photo-index">
+      <div className="photo-index" onresize={this.reRender}>
         {rows}
       </div>
     );
