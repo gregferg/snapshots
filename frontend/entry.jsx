@@ -28,7 +28,6 @@ var App = React.createClass({
     }
   },
   site_nav_bar: function () {
-    console.log(this.props);
     if (this.lookingAtUser()) {
       return <SiteNavBar url={this.props.location.pathname} params={this.props.params} username={this.props.params.username}/>;
     }

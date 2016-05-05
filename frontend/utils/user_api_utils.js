@@ -38,6 +38,20 @@ var UserApiUtil = {
 				});
 			}
 		});
+	},
+	updateUser: function(user) {
+		console.log(user);
+		$.ajax({
+			url: '/api/users/' + user.id,
+			method: 'PATCH',
+			data: {user: user},
+			success: function(updatedUser) {
+				AppDispatcher.dispatch({
+					actionType: "RECEIVE_UPDATED_USER",
+					updatedUser: updatedUser
+				});
+			}
+		});
 	}
 };
 

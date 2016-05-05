@@ -21,15 +21,22 @@ var SiteNavBar = React.createClass({
   },
 
   selected: function(option) {
-    if (this.props.url === "/demo" && option === "home") {return "selected"; }
+    if (this.props.url === this.props.username && option === "home") {return "selected"; }
     if (this.props.url.indexOf(option) > -1) { return "selected"; }
     if (this.props.params.album_id && option === "portfolio") { return "selected"; }
 
   },
 
+  homepage: function() {
+    if (this.props.url === "/" + this.props.username) {
+      return "site-nav user-home-nav";
+    }
+    return "site-nav";
+  },
+
   render: function(){
     return (
-      <div className="site-nav">
+      <div className={this.homepage()}>
         <div className="site-nav-bar-content">
           <div className="site-navigation">
             <div className={this.selected("home")} onClick={this.redirectToHomePage}>Home</div>
@@ -38,7 +45,7 @@ var SiteNavBar = React.createClass({
             <div className={this.selected("contact")} onClick={this.redirectToContactPage}>Contact</div>
           </div>
           <div className="username">
-            <div>{this.props.username}</div>
+            <h1>{this.props.username}</h1>
           </div>
         </div>
       </div>

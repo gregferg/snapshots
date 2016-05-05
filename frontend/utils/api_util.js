@@ -34,7 +34,6 @@ var ApiUtil = {
         ServerActions.receiveAlbum(createdAlbum);
         ServerActions.emptyPhotoStore();
         var payload = { photos: createdAlbum.photos, album_id: createdAlbum.id};
-        debugger;
         ApiUtil.createPhotos(payload);
         HashHistory.push("/" + createdAlbum.username + "/" + createdAlbum.id);
       },
@@ -55,7 +54,7 @@ var ApiUtil = {
       url: 'api/albums/' + albumId,
       success: function(album) {
         ServerActions.removeAlbum(album);
-        HashHistory.push("/" + album.username);
+        HashHistory.push("/" + album.username + "/portfolio");
       },
       error: function(error) {
         AppDispatcher.dispatch({

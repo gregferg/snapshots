@@ -22,12 +22,19 @@ UserStore.__onDispatch = function (payload) {
     case "RECEIVE_USER":
       setUser(payload.user);
       break;
+    case "RECEIVE_UPDATED_USER":
+      updateUser(payload.updatedUser);
+      break;
 
   }
   UserStore.__emitChange();
 };
 
 var setUser = function(user) {
+  _user = user;
+};
+
+var updateUser = function (user) {
   _user = user;
 };
 

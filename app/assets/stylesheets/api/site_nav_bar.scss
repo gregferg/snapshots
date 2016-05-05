@@ -1,5 +1,7 @@
+
+
 .site-nav {
-  color: #7C7C7C;
+  color: #C7C7C7;
   background:rgba(256,256,256,0.2);
   position: relative;
   z-index: 10;
@@ -46,6 +48,17 @@
   }
 }
 
+
+.site-nav.user-home-nav {
+  background:rgba(256,256,256,0);
+
+  color:rgba(256,256,256,0.8);
+
+
+  -webkit-box-shadow: 0px 0px 0px 0px rgba(0,0,0,0);
+  -moz-box-shadow: 0px 0px 0px 0px rgba(0,0,0,0);
+  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0);
+}
 
 .site-nav-bar-content {
   min-width: 800px;

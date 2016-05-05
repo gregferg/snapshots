@@ -63,6 +63,9 @@ var UserActions = {
 			actionType: UserConstants.LOGOUT,
 		});
 	},
+	updateUser: function(user) {
+		UserApiUtil.updateUser(user);
+	},
 	sucessfulLogout: function(){
 		UserActions.removeCurrentUser();
 		HashHistory.push("/");

@@ -64,7 +64,7 @@ var PhotoIndex = React.createClass({
     var photos = allPhotos.slice();
 
     while (photos.length > 0) {
-      var tempRowNumber = Math.floor(Math.random() * (4 - 0)) + 1;
+      var tempRowNumber = Math.floor(Math.random() * (4 - 1)) + 2;
 
       var possibleRow = photos.slice(0, tempRowNumber);
 
@@ -85,7 +85,6 @@ var PhotoIndex = React.createClass({
       rowsToRender.push(newRow);
     }
 
-    console.log(rowsToRender);
     return rowsToRender;
   },
   reRender: function() {

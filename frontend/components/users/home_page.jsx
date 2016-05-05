@@ -8,12 +8,13 @@ var Link = require('react-router').Link;
 
 
 var HomePage = React.createClass({
-  mixins: [CurrentUserState],
-
   render: function(){
     return (
       <div className="home-page">
-        <h1 className="username">Demo</h1>
+        <div className="home-info">
+          <h1 className="username">{this.props.params.username}</h1>
+          <h4>THE PORTFOLIO</h4>
+        </div>
       </div>
     );
   }

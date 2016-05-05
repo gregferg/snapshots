@@ -9,7 +9,7 @@ var UserStore = require("../../stores/user_store");
 var AboutPage = React.createClass({
   mixins: [CurrentUserState],
   getInitialState: function() {
-    return { viewedUser: UserStore.viewedUser() };
+    return { viewedUser: UserStore.viewedUser(), editting: false };
   },
 
   componentDidMount: function() {
@@ -24,9 +24,32 @@ var AboutPage = React.createClass({
   componentWillUnmount: function() {
     this.listener.remove();
   },
-  editForm: function (){
+  editButton: function (){
     if (this.state.user && this.state.viewedUser.username === this.state.user.username) {
-      return <div className="edit-about-me">Edit Your About Me</div>;
+      if (this.state.editting) {
+        return <div className="edit-about-me" onClick={this.toggleEditting}>Update</div>;
+      } else {
+        return <div className="edit-about-me" onClick={this.toggleEditting}>Edit Your About Me</div>;
+      }
+    }
+  },
+  toggleEditting: function() {
+    if (this.state.editting) {
+      UserActions.updateUser({
+        id: this.state.viewedUser.id,
+        title: this.state.title,
+        body: this.state.body
+      });
+
+      console.log("SHOULD CHANGE");
+
+      this.setState({ editting: false });
+    } else {
+      this.setState({
+        editting: true,
+        title: this.state.viewedUser.about_me_title,
+        body:this.state.viewedUser.about_me_body
+      });
     }
   },
   backToViewedUserHomePage: function(e) {
@@ -62,16 +85,67 @@ var AboutPage = React.createClass({
       return ;
     }
   },
+  titleChange: function(e) {
+    this.setState({ title: e.target.value});
+  },
+  bodyChange: function(e) {
+    this.setState({ body: e.target.value});
+  },
+  handleSubmit: function(e) {
+    e.preventDefault();
+  },
+  editForm: function() {
+    return (
+      <form className="form">
+				<label className="title">
+					<input
+            type="text"
+            placeholder="Welcome Tagline"
+            onChange={this.titleChange}
+            value={this.state.title}/>
+				</label>
+				<br/>
+
+        <div className="body">
+  				<label >
+  					<textarea
+              placeholder="Your About Me"
+              onChange={this.bodyChange}
+              value={this.state.body}/>
+  				</label>
+  				<br/>
+          <p>Regards, Demo</p>
+      </div>
+			</form>
+    );
+  },
+
+  renderAboutMe: function() {
+    if (this.state.editting) {
+      return (
+        <div>
+          {this.editButton()}
+          {this.editForm()}
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          {this.editButton()}
+          {this.about_title()}
+          {this.about_body()}
+        </div>
+      );
+    }
+  },
 
   render: function(){
     return (
       <div className="about-page">
         <img src="http://portfolio.shoottokyo.com/Logos/n-VLZRx/i-xsJhhbS/0/O/i-xsJhhbS.jpg" />
         <div className="about-me-info">
-          {this.editForm()}
-          {this.about_title()}
-          {this.about_body()}
-      </div>
+          {this.renderAboutMe()}
+        </div>
       </div>
     );
   }

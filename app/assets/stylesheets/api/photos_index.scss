@@ -22,6 +22,8 @@
 }
 
 .photo-index-item:hover {
+  cursor: pointer;
+  
   .photo-information {
     display: flex;
   }

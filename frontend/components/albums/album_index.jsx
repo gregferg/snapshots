@@ -13,6 +13,16 @@ var AlbumIndex = React.createClass({
     this.setState({ albums: newProps.albums });
   },
 
+  componentDidMount: function() {
+    window.addEventListener("resize", this.reRender);
+  },
+  componentWillUnmount: function() {
+    window.removeEventListener("resize", this.reRender);
+  },
+  reRender: function() {
+    this.setState({ potato: true});
+  },
+
   calcRow: function (photos) {
     if (photos.length === 0) { return ;}
     // debugger;
@@ -52,7 +62,7 @@ var AlbumIndex = React.createClass({
     var albums = allAlbums.slice();
 
     while (albums.length > 0) {
-      var tempRowNumber = Math.floor(Math.random() * (4 - 0)) + 1;
+      // var tempRowNumber = Math.floor(Math.random() * (4 - 0)) + 2;
       var tempRowNumber = albums.length;
 //       debugger;
       var possibleRow = albums.slice(0, tempRowNumber);
