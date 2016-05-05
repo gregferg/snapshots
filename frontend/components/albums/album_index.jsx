@@ -25,6 +25,13 @@ var AlbumIndex = React.createClass({
 
   calcRow: function (photos) {
     if (photos.length === 0) { return ;}
+
+    for (var i = 0; i < 3; i++) {
+      // debugger;
+      if(!photos[i]) {
+        photos[i] = {height: 300, width: 400};
+      }
+    }
     // debugger;
     var targetWidth = window.innerWidth * .9;
     var firstHeight = photos[0].height;
@@ -65,7 +72,7 @@ var AlbumIndex = React.createClass({
       // var tempRowNumber = Math.floor(Math.random() * (4 - 0)) + 2;
       var tempRowNumber = albums.length;
 //       debugger;
-      var possibleRow = albums.slice(0, tempRowNumber);
+      var possibleRow = albums.slice(0, 3);
 
       var thumbnails = [];
 
@@ -88,7 +95,7 @@ var AlbumIndex = React.createClass({
         return <AlbumIndexItem key={album.id} album={album} username={self.props.username} currentUser={self.props.currentUser} height={calculatedRow.renderHeight} width={calculatedRow.renderWidths[idx]} />;
       });
 
-      albums = albums.slice(tempRowNumber, albums.length);
+      albums = albums.slice(3, albums.length);
       rowsToRender.push(newRow);
     }
 

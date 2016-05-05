@@ -1,0 +1,22 @@
+.splash {
+  position: absolute;
+  top: 80px;
+  height: calc(100vh - 80px);
+  width: 100vw;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-image: url('http://portfolio.shoottokyo.com/Portfolio-Gallery/i-FnsCK98/0/X2/ShootTokyoSmugMug-7-X2.jpg');
+  background-size: cover;
+
+  h1 {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+
+    background-color: #B6B6B6;
+  }
+}

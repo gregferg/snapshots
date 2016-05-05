@@ -2,9 +2,11 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var Router = require('react-router').Router;
 var Route = require('react-router').Route;
+var IndexRoute = require('react-router').IndexRoute;
 var HashHistory = require('react-router').hashHistory;
 var LoginForm = require('./components/users/login_form');
 var NewUserForm = require('./components/users/new_user_form');
+var Splash = require('./components/splash');
 var NavBar = require('./components/nav_bar/nav_bar');
 var SiteNavBar = require('./components/site_nav_bar/site_nav_bar');
 var CurrentUserState = require("./mixins/current_user_state");
@@ -43,6 +45,17 @@ var App = React.createClass({
 
     return <NavBar isHomePage={homepage} user={this.state.user}/>;
   },
+  footer: function () {
+    console.log(this.props);
+    if (this.props.location.pathname.indexOf("portfolio") > -1 ||
+        this.props.location.pathname.indexOf("about") > -1) {
+          return (
+            <div className="footer">
+              <p>Site created by Grant Sauer ®2016</p>
+            </div>
+          );
+    }
+  },
 
   render: function () {
     return(
@@ -50,6 +63,7 @@ var App = React.createClass({
       {this.displayNavBar()}
       {this.site_nav_bar()}
       {this.props.children}
+      {this.footer()}
     </div>
     );
   }
@@ -57,6 +71,7 @@ var App = React.createClass({
 
 var routes = (
   <Route path='/' component={App}>
+    <IndexRoute component={Splash} />
     <Route path="new_user" component={NewUserForm} />
     <Route path="login" component={LoginForm} />
     <Route path=":username" component={HomePage} />
@@ -65,7 +80,6 @@ var routes = (
     <Route path=":username/contact" component={ContactPage} />
     <Route path=":username/:album_id" component={AlbumDetail} />
     <Route path=":username/:album_id/:photo_id" component={PhotoDetail} />
-
   </Route>
 );
 

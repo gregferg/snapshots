@@ -1,0 +1,17 @@
+.footer {
+  position: relative;
+  height: 50px;
+  margin-top: 150px;
+  width: 90vw;
+  margin-left: auto;
+  margin-right: auto;
+
+  border-top: 1px solid #CCCCCC;
+  color: #6F6F6F;
+
+  p {
+    position: absolute;
+    top: 5%;
+    left: 1%
+  }
+}

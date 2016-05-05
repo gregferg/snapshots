@@ -10,6 +10,8 @@ $nav_bar_bg_color: #2E2E2E;
 
 .nav_bar.home-page {
   height: 80px;
+  top: 0;
+  background-image: none;
 
   .login_signup > a {
     padding: 16px 30px 16px 30px;
@@ -53,9 +55,6 @@ $nav_bar_bg_color: #2E2E2E;
       margin-left: 10px;
       margin-right: 10px;
       background-color: #B6B6B6;
-    }
-    .login_signup:hover {
-      background-color: #A6A6A6;
     }
 
     .logout {

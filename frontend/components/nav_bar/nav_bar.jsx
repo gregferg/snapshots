@@ -23,11 +23,10 @@ var NavBar = React.createClass({
     UserActions.logout();
   },
   redirectToHome: function(e) {
-    if (this.state.user) {
-      HashHistory.push("/" + this.state.user.username);
-    } else {
-      HashHistory.push("/");
-    }
+    HashHistory.push("/");
+  },
+  redirectToUserPage: function(e) {
+    HashHistory.push("/" + this.state.user.username);
   },
   className: function() {
     if (this.props.isHomePage) {
@@ -40,6 +39,7 @@ var NavBar = React.createClass({
       return (
         <div>
           <AddAlbum />
+          <button className="user-page" onClick={this.redirectToUserPage}>Profile</button>
           <button className="logout" onClick={this.logout}>Log Out</button>
         </div>
         );
