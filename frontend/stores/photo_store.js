@@ -36,6 +36,9 @@ PhotoStore.__onDispatch = function (payload) {
       resetPhotos([]);
       emptyPhotosToUpload();
       break;
+    case "EMPTY_PHOTOS_TO_UPLOAD":
+      emptyPhotosToUpload();
+      break;
   }
 };
 

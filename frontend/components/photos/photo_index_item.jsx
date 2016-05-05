@@ -18,8 +18,8 @@ var PhotoIndexItem = React.createClass({
   onClick: function(e) {
     e.preventDefault();
 
-    if (e.target === "img") {
-      HashHistory.push(window.path + "/" + this.props.photo.id);
+    if (e.target.className === "delete-photo") {
+      return ;
     }
     HashHistory.push(window.path + "/" + this.props.photo.id);
 

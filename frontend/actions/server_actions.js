@@ -64,6 +64,12 @@ var ServerActions = {
       actionType: "REMOVE_PHOTO",
       photo: photo
     });
+  },
+  emptyPhotosToUpload: function (photo) {
+    Dispatcher.dispatch({
+      actionType: "EMPTY_PHOTOS_TO_UPLOAD",
+      photo: photo
+    });
   }
 };
 

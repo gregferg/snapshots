@@ -85,6 +85,7 @@ updatePhotosToUpload: function(photos) {
       url: 'api/photos/',
       data: {photos: payload.photos, album_id: payload.album_id },
       success: function(createdPhotos) {
+        ServerActions.emptyPhotosToUpload();
         ServerActions.receiveNewPhotos(createdPhotos);
       },
       error: function(error) {

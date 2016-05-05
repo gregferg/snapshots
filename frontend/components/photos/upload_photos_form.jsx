@@ -15,18 +15,17 @@ var UploadPhotoForm = React.createClass({
     return { photos: PhotoStore.all() };
   },
 
-  componentDidMount: function() {
-    this.listener = PhotoStore.addListener(this.updateView);
-    PhotoActions.fetchPhotos();
-  },
-
-  updateView: function() {
-    this.setState({ photos: PhotoStore.all() });
-  },
-
-  componentWillUnmount: function() {
-    this.listener.remove();
-  },
+  // componentDidMount: function() {
+  //   this.listener = PhotoStore.addListener(this.updateView);
+  // },
+  //
+  // updateView: function() {
+  //   this.setState({ photos: PhotoStore.all() });
+  // },
+  //
+  // componentWillUnmount: function() {
+  //   this.listener.remove();
+  // },
 
   componentWillReceiveProps: function(newProps) {
     this.setState({ photos: newProps.photo});
