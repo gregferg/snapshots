@@ -15,6 +15,7 @@
 
 node_modules
 bundle.js
+album_seed_photos
 
 # Ignore application configuration
 /config/application.yml
