@@ -30,7 +30,7 @@ var Portfolio = React.createClass({
   noAlbums: function () {
     if (this.state.albums.length === 0) {
       return (
-        <div>
+        <div className="photo-content">
           <p>Looks like you have no albums.</p>
           <AddAlbum />
         </div>

@@ -6,7 +6,7 @@ var HashHistory = require('react-router').hashHistory;
 var Splash = React.createClass({
 
   redirectToExampleOne: function() {
-    HashHistory.push("/");
+    HashHistory.push("/Demo");
   },
   redirectToExampleTwo: function() {
 

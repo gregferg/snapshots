@@ -61,7 +61,7 @@ var AddAlbum = React.createClass({
   },
   render: function(){
     return (
-      <div>
+      <div className="add-album-div">
         <button className="add-album" onClick={this.__handleClick}>Add Album</button>
 
         <Modal
