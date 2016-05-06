@@ -34,7 +34,7 @@ var UserActions = {
 		HashHistory.push("/" + user.username);
 	},
 	demoLogin: function() {
-		switch(Math.random() * (2 - 0) + 0) {
+		switch(Math.floor(Math.random() * (2 - 0) + 0)) {
 			case 0:
 				UserActions.login("Eric Landon", "password");
 				break;
