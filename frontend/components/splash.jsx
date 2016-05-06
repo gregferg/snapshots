@@ -39,7 +39,7 @@ var Splash = React.createClass({
               Eric Landon
             </div>
             <div className="exploring-options" onClick={this.redirectToExampleThree}>
-              PERSONE 3
+              Dave Powell
             </div>
         </div>
         </div>

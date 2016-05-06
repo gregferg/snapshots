@@ -35,7 +35,7 @@ var ApiUtil = {
         ServerActions.emptyPhotoStore();
         var payload = { photos: createdAlbum.photos, album_id: createdAlbum.id};
         ApiUtil.createPhotos(payload);
-        HashHistory.push("/" + createdAlbum.username + "/" + createdAlbum.id);
+        HashHistory.push("/" + createdAlbum.username + "/albums/" + createdAlbum.id);
       },
       error: function(error) {
         console.log("ERROR");
