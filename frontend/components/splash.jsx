@@ -6,10 +6,10 @@ var HashHistory = require('react-router').hashHistory;
 var Splash = React.createClass({
 
   redirectToExampleOne: function() {
-    HashHistory.push("/Demo");
+    HashHistory.push("/Peter Mohrbacher");
   },
   redirectToExampleTwo: function() {
-
+    HashHistory.push("/Eric Landon");
   },
   redirectToExampleThree: function() {
 
@@ -35,10 +35,10 @@ var Splash = React.createClass({
           </div>
           <div className="exploring-options-box">
             <div className="exploring-options" onClick={this.redirectToExampleOne}>
-              PERSONE 1
+              Peter Mohrbacher
             </div>
             <div className="exploring-options" onClick={this.redirectToExampleTwo}>
-              PERSONE 2
+              Eric Landon
             </div>
             <div className="exploring-options" onClick={this.redirectToExampleThree}>
               PERSONE 3

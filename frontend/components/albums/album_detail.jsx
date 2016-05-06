@@ -154,7 +154,7 @@ var AlbumDetail = React.createClass({
               photos={this.state.photos}
               currentUser={this.currentUser()}
               demoAccount={this.demoAccount()}
-              modalOpen={self.onModalOpen}/>
+              modalOpen={this.onModalOpen}/>
           </div>
 
 

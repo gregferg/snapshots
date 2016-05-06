@@ -93,7 +93,7 @@ var PhotoIndex = React.createClass({
             height={calculatedRow.renderHeight}
             width={calculatedRow.renderWidths[idx]}
             demoAccount={self.props.demoAccount}
-            modalOpen={self.modalOpen} />
+            modalOpen={self.props.modalOpen}/>
         );
       });
 
@@ -119,7 +119,7 @@ var PhotoIndex = React.createClass({
               height={calculatedRow.renderHeight}
               width={calculatedRow.renderWidths[idx]}
               demoAccount={self.props.demoAccount}
-              modalOpen={self.onModalOpen}/>
+              modalOpen={self.props.modalOpen}/>
           );
         });
 

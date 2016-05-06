@@ -34,7 +34,19 @@ var UserActions = {
 		HashHistory.push("/" + user.username);
 	},
 	demoLogin: function() {
-		UserActions.login("Demo", "password");
+		switch(Math.random() * (2 - 0) + 0) {
+			case 0:
+				UserActions.login("Eric Landon", "password");
+				break;
+			case 1:
+				UserActions.login("Peter Mohrbacher", "password");
+				break;
+			case 2:
+				UserActions.login("Demo", "password");
+				break;
+		}
+
+
 	},
 	loggedInOrNot: function(payload) {
 		if (payload.username) {

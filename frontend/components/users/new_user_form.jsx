@@ -41,7 +41,7 @@ var NewUserForm = React.createClass({
 			return;
 		}
 		var self = this;
-		return (<ul>
+		return (<ul className="errors">
 		{
 			Object.keys(this.state.errors).map(function(key, i){
 				return (<li key={i}>{self.state.errors[key]}</li>);
@@ -58,7 +58,6 @@ var NewUserForm = React.createClass({
 				<h1 className="login-form-title">Sign Up</h1>
 				<form onSubmit={this.handleSubmit} className="form">
 					<div>
-						{this.errors()}
 						<label> Username:
 							<input
                 type="text"
@@ -82,6 +81,8 @@ var NewUserForm = React.createClass({
 					</div>
 
 				</form>
+				{this.errors()}
+
 			</div>
 		);
 	},
