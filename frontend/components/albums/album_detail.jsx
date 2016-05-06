@@ -90,9 +90,9 @@ var AlbumDetail = React.createClass({
     if (!this.state.user) { return ;}
     // debugger;
     if (
-      this.props.params.username === "Demo" ||
-      this.props.params.username === "" ||
-      this.props.params.username === ""
+      this.props.params.username === "Peter Mohrbacher" ||
+      this.props.params.username === "Eric Landon" ||
+      this.props.params.username === "Dave Powell"
     ) { return true; }
   },
   deleteAlbum: function (e) {
@@ -127,16 +127,6 @@ var AlbumDetail = React.createClass({
       return true;
     }
   },
-  demoAccount: function() {
-    if (!this.state.user) { return ;}
-    // debugger;
-    if (
-      this.props.params.username === "Demo" ||
-      this.props.params.username === "" ||
-      this.props.params.username === ""
-    ) { return true; }
-  },
-
 
   render: function(){
     return (

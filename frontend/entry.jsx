@@ -64,11 +64,10 @@ var App = React.createClass({
   },
   demoAccount: function() {
     if (!this.state.user) { return ;}
-    // debugger;
     if (
-      this.props.params.username === "Demo" ||
-      this.props.params.username === "" ||
-      this.props.params.username === ""
+      this.props.params.username === "Peter Mohrbacher" ||
+      this.props.params.username === "Eric Landon" ||
+      this.props.params.username === "Dave Powell"
     ) { return true; }
   },
 

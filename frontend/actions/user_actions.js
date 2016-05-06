@@ -42,11 +42,9 @@ var UserActions = {
 				UserActions.login("Peter Mohrbacher", "password");
 				break;
 			case 2:
-				UserActions.login("Demo", "password");
+				UserActions.login("Dave Powell", "password");
 				break;
 		}
-
-
 	},
 	loggedInOrNot: function(payload) {
 		if (payload.username) {
