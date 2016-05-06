@@ -88,7 +88,6 @@ var AlbumDetail = React.createClass({
   },
   demoAccount: function() {
     if (!this.state.user) { return ;}
-    debugger;
     if (
       this.props.params.username === "Peter Mohrbacher" ||
       this.props.params.username === "Eric Landon" ||
