@@ -141,11 +141,29 @@ var AboutPage = React.createClass({
       );
     }
   },
+  contact: function (){
+    var photoToRender;
+    switch (this.state.viewedUser.username) {
+      case 'Eric Landon':
+        photoToRender ='http://tortus-copenhagen.com/wp-content/uploads/2014/11/portrait3-600x600.jpg';
+        break;
+      case 'Peter Mohrbacher':
+        photoToRender = 'http://static1.squarespace.com/static/52b99140e4b02ffea75851ab/t/56bf641386db43b5489f4e77/1455383619587/artist+photo.jpg?format=300w';
+        break;
+      case 'Dave Powell':
+        photoToRender = 'http://portfolio.shoottokyo.com/Logos/n-VLZRx/i-xsJhhbS/0/O/i-xsJhhbS.jpg';
+        break;
+      default:
+        photoToRender ='http://tortus-copenhagen.com/wp-content/uploads/2014/11/portrait3-600x600.jpg';
+    }
+
+    return photoToRender;
+  },
 
   render: function(){
     return (
       <div className="about-page">
-        <img src="http://portfolio.shoottokyo.com/Logos/n-VLZRx/i-xsJhhbS/0/O/i-xsJhhbS.jpg" />
+        <img src={this.contact()} />
         <div className="about-me-info">
           {this.renderAboutMe()}
         </div>
