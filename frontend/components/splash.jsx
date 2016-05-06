@@ -13,16 +13,18 @@ var Splash = React.createClass({
   },
   redirectToExampleThree: function() {
 
+    return <img className="splash-background" src="https://images.unsplash.com/photo-1460574283810-2aab119d8511?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=8f51973741d4b25375b6bb3de767dd67" />;
+
   },
 
   render: function(){
     return (
       <div className="splash">
         <div className="big-splash-image">
-          <img className="splash-background" src="http://portfolio.shoottokyo.com/Portfolio-Gallery/i-FnsCK98/0/X2/ShootTokyoSmugMug-7-X2.jpg" />
+          <div className="splash-background"/>
           <div className="taglines">
-            <h1>Showncase your photos in their best light</h1>
-            <h2>by dragging and dropping your way to a new beautiful portfolio</h2>
+            <h1>Showcase your photos in their best light</h1>
+            <h2>by dragging and dropping your way to a beautiful portfolio</h2>
           </div>
         </div>
 
