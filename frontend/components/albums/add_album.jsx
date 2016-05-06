@@ -70,7 +70,7 @@ var AddAlbum = React.createClass({
           style={ModalStyle}
           onAfterOpen={this.onModalOpen}>
           <button onClick={this.onModalClose}>Close</button>
-          <AddAlbumForm />
+          <AddAlbumForm demoAccount={this.props.demoAccount}/>
 
         </Modal>
       </div>

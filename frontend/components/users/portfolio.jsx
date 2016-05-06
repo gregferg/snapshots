@@ -45,15 +45,27 @@ var Portfolio = React.createClass({
       return true;
     }
   },
+  demoAccount: function() {
+    if (!this.state.user) { return ;}
+    // debugger;
+    if (
+      this.props.params.username === "Demo" ||
+      this.props.params.username === "" ||
+      this.props.params.username === ""
+    ) { return true; }
+  },
 
   render: function(){
-    console.log(this.props.params);
     return (
       <div className="">
         <div className="portfolio-welcome photo-content">
           <h2>All Albums</h2>
         </div>
-        <AlbumIndex albums={this.state.albums} username={this.props.params.username} currentUser={this.currentUser()}/>
+        <AlbumIndex
+          albums={this.state.albums}
+          username={this.props.params.username}
+          currentUser={this.currentUser()}
+          demoAccount={this.demoAccount()}/>
         {this.noAlbums()}
       </div>
     );

@@ -43,11 +43,14 @@ var App = React.createClass({
       homepage = true;
     }
 
-    return <NavBar isHomePage={homepage} user={this.state.user}/>;
+    return (
+      <NavBar
+        isHomePage={homepage}
+        user={this.state.user}
+        demoAccount={this.demoAccount()}/>
+    );
   },
   footer: function () {
-    console.log(this.props);
-    console.log(this.props.params.album_id && !this.props.params.photo_id);
     if (this.props.location.pathname.indexOf("portfolio") > -1 ||
         this.props.location.pathname.indexOf("about") > -1 ||
         this.props.params.album_id && !this.props.params.photo_id)
@@ -58,6 +61,15 @@ var App = React.createClass({
             </div>
           );
     }
+  },
+  demoAccount: function() {
+    if (!this.state.user) { return ;}
+    // debugger;
+    if (
+      this.props.params.username === "Demo" ||
+      this.props.params.username === "" ||
+      this.props.params.username === ""
+    ) { return true; }
   },
 
   render: function () {

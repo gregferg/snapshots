@@ -7,13 +7,23 @@ var PhotoStore = require("../../stores/photo_store");
 var AlbumStore = require("../../stores/album_store");
 var PhotoIndex = require("../photos/photo_index");
 var UploadPhotos = require("../photos/upload_photos");
-
+var Modal = require('react-modal');
+var ModalStyle = require('./delete_modal_style');
+var CannotDelete = require('../users/cannot_delete_modal');
 
 
 var AlbumDetail = React.createClass({
   mixins: [CurrentUserState],
   getInitialState: function() {
-    return { photos: PhotoStore.all() };
+    return { photos: PhotoStore.all(), modalOpen: false };
+  },
+  onModalClose: function() {
+    this.setState({ modalOpen: false });
+    ModalStyle.content.opacity = 0;
+  },
+  onModalOpen: function () {
+    this.setState({ modalOpen: true });
+    ModalStyle.content.opacity = 100;
   },
 
   componentDidMount: function() {
@@ -69,18 +79,32 @@ var AlbumDetail = React.createClass({
       return (
         <div>
           <button onClick={this.deleteAlbum}>Delete Album</button>
-          <UploadPhotos albumId={this.props.params.album_id}/>
+          <UploadPhotos
+            albumId={this.props.params.album_id}
+            demoAccount={this.demoAccount()}/>
         </div>
       );
     }
   },
+  demoAccount: function() {
+    if (!this.state.user) { return ;}
+    // debugger;
+    if (
+      this.props.params.username === "Demo" ||
+      this.props.params.username === "" ||
+      this.props.params.username === ""
+    ) { return true; }
+  },
   deleteAlbum: function (e) {
     e.preventDefault();
 
-
-    var deleteAlbum = confirm("Are you sure you want to delete this album?");
-    if (deleteAlbum) {
-      AlbumActions.deleteAlbum(this.props.params.album_id);
+    if (this.demoAccount()) {
+      this.onModalOpen();
+    } else {
+      var deleteAlbum = confirm("Are you sure you want to delete this album?");
+      if (deleteAlbum) {
+        AlbumActions.deleteAlbum(this.props.params.album_id);
+      }
     }
   },
 
@@ -103,6 +127,15 @@ var AlbumDetail = React.createClass({
       return true;
     }
   },
+  demoAccount: function() {
+    if (!this.state.user) { return ;}
+    // debugger;
+    if (
+      this.props.params.username === "Demo" ||
+      this.props.params.username === "" ||
+      this.props.params.username === ""
+    ) { return true; }
+  },
 
 
   render: function(){
@@ -117,8 +150,26 @@ var AlbumDetail = React.createClass({
           </div>
           <div>
             {this.noPhotos()}
-            <PhotoIndex photos={this.state.photos} currentUser={this.currentUser()}/>
+            <PhotoIndex
+              photos={this.state.photos}
+              currentUser={this.currentUser()}
+              demoAccount={this.demoAccount()}
+              modalOpen={self.onModalOpen}/>
           </div>
+
+
+          <Modal
+            isOpen={this.state.modalOpen}
+            onRequestClose={this.onModalClose}
+            style={ModalStyle}
+            onAfterOpen={this.onModalOpen}>
+
+            <div className="modal-content">
+              <button onClick={this.onModalClose}>Close</button>
+              <CannotDelete />
+            </div>
+
+          </Modal>
         </div>
       </div>
     );

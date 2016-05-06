@@ -10,14 +10,15 @@ module.exports = {
   },
   content : {
     position        : 'fixed',
-    top             : '100px',
+    top             : '80px',
     left            : '150px',
     right           : '150px',
-    bottom          : '100px',
+    bottom          : '80px',
     border          : '1px solid #ccc',
     padding         : '20px',
     zIndex          : 11,
     opacity         : '0',
-    transition      : 'opacity .7s'
+    transition      : 'opacity .7s',
+
   }
 };

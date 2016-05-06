@@ -12,7 +12,11 @@ var PhotoIndexItem = React.createClass({
   deletePhoto: function(e) {
     e.preventDefault();
 
-    PhotoActions.deletePhoto(this.props.photo);
+    if (this.props.demoAccount) {
+      this.props.modalOpen();
+    } else {
+      PhotoActions.deletePhoto(this.props.photo);
+    }
   },
 
   onClick: function(e) {

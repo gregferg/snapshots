@@ -9,8 +9,16 @@
   align-items: center;
   justify-content: center;
   height: 400px;
-}
 
+}
+form {
+  .add-photos {
+    padding: 10px 15px 10px 15px;
+    background-color: #6EB800;
+    color: white;
+    font-size: 1.2em;
+  }
+}
 body {
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
@@ -24,6 +32,45 @@ body {
   margin-right: auto;
   padding-left: 130px;
   padding-right: 130px;
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  div {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  button {
+    margin-left: auto;
+    margin-bottom: 10px;
+  }
+}
+
+.cannot-delete {
+  display: flex;
+  justify-content: flex-start;;
+  flex-direction: column;
+  position: relative;
+  width: 400px;
+
+  div {
+    margin-top: 10px;
+    font-weight: 400;
+    background-color: #6EB800;
+    color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 120px;
+  }
+  div:hover {
+    cursor: pointer;
+  }
 }
 
 .photo-content {

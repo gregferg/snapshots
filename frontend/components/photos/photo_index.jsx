@@ -7,14 +7,17 @@ var PhotoStore = require("../../stores/photo_store");
 var PhotoIndexItem = require("./photo_index_item");
 
 
-
 var _rowOrder = [];
 
 var PhotoIndex = React.createClass({
   mixins: [CurrentUserState],
   getInitialState: function() {
-    return { photos: this.props.photos, rowsToRender: false};
+    return {
+      photos: this.props.photos,
+      rowsToRender: false
+    };
   },
+
   componentDidMount: function() {
     window.addEventListener("resize", this.reRender);
   },
@@ -49,14 +52,14 @@ var PhotoIndex = React.createClass({
       sumWidth += widths[i];
     }
 
-    // IF MARGINS ARE DESISIRED
-    // if (widths.length === 4) {
-    //   targetWidth -= 60;
-    // } else if (widths.length === 3) {
-    //   targetWidth -= 40;
-    // } else if (widths.length === 2) {
-    //   targetWidth -= 20;
-    // }
+    //IF MARGINS ARE DESISIRED
+    if (widths.length === 4) {
+      targetWidth -= 30;
+    } else if (widths.length === 3) {
+      targetWidth -= 20;
+    } else if (widths.length === 2) {
+      targetWidth -= 10;
+    }
 
     var heightScale = targetWidth / sumWidth;
 
@@ -82,7 +85,16 @@ var PhotoIndex = React.createClass({
 
 
       var newRow = possibleRow.map(function(photo, idx) {
-        return <PhotoIndexItem key={photo.id} photo={photo} currentUser={self.props.currentUser} height={calculatedRow.renderHeight} width={calculatedRow.renderWidths[idx]} />;
+        return (
+          <PhotoIndexItem
+            key={photo.id}
+            photo={photo}
+            currentUser={self.props.currentUser}
+            height={calculatedRow.renderHeight}
+            width={calculatedRow.renderWidths[idx]}
+            demoAccount={self.props.demoAccount}
+            modalOpen={self.modalOpen} />
+        );
       });
 
       photos = photos.slice(_rowOrder[i], photos.length);
@@ -99,7 +111,16 @@ var PhotoIndex = React.createClass({
         }
 
         var newRow = possibleRow.map(function(photo, idx) {
-          return <PhotoIndexItem key={photo.id} photo={photo} currentUser={self.props.currentUser} height={calculatedRow.renderHeight} width={calculatedRow.renderWidths[idx]} />;
+          return (
+            <PhotoIndexItem
+              key={photo.id}
+              photo={photo}
+              currentUser={self.props.currentUser}
+              height={calculatedRow.renderHeight}
+              width={calculatedRow.renderWidths[idx]}
+              demoAccount={self.props.demoAccount}
+              modalOpen={self.onModalOpen}/>
+          );
         });
 
         photos = photos.slice(tempRowNumber, photos.length);

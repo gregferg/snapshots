@@ -24,7 +24,11 @@ var PhotoInformation = React.createClass({
 
   updateView: function() {
     var updatedPhoto = PhotoStore.photoDetail(this.props.photo.id);
-    this.setState({ title: updatedPhoto.title, description: updatedPhoto.description });
+    this.setState({
+      title: updatedPhoto.title,
+      description: updatedPhoto.description,
+      editing: false
+    });
   },
 
   componentWillUnmount: function() {
@@ -51,7 +55,7 @@ var PhotoInformation = React.createClass({
   },
   renderInformation: function() {
     return (
-      <div>
+      <div className="photo-information">
         {this.photoTitle()}
         {this.photoDescription()}
       </div>
@@ -73,6 +77,7 @@ var PhotoInformation = React.createClass({
 
     this.setState({ editing: false });
   },
+
   renderEditForm: function() {
     return (
       <div>

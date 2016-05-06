@@ -11,6 +11,7 @@ var _errors;
 UserStore.__onDispatch = function (payload) {
   switch(payload.actionType) {
     case "LOGIN":
+      UserStore.clearErrors();
     	UserStore.login(payload.user);
       break;
     case "LOGOUT":

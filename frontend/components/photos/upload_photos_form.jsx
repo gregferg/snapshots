@@ -5,27 +5,27 @@ var PhotoActions = require("../../actions/photo_actions");
 var PhotoStore = require("../../stores/photo_store");
 var Link = require('react-router').Link;
 var PhotosToUpload = require("./photos_to_upload");
-
-
+var Modal = require('react-modal');
+var ModalStyle = require('../albums/delete_modal_style');
+var CannotDelete = require('../users/cannot_delete_modal');
 
 
 var UploadPhotoForm = React.createClass({
   mixins: [CurrentUserState],
   getInitialState: function() {
-    return { photos: PhotoStore.all() };
+    return { photos: PhotoStore.all(), modalOpen: false };
   },
-
-  // componentDidMount: function() {
-  //   this.listener = PhotoStore.addListener(this.updateView);
-  // },
-  //
-  // updateView: function() {
-  //   this.setState({ photos: PhotoStore.all() });
-  // },
-  //
-  // componentWillUnmount: function() {
-  //   this.listener.remove();
-  // },
+  componentDidMount: function() {
+    this.setState({ errors: {} });
+  },
+  onModalClose: function() {
+    this.setState({ modalOpen: false });
+    ModalStyle.content.opacity = 0;
+  },
+  onModalOpen: function () {
+    this.setState({ modalOpen: true });
+    ModalStyle.content.opacity = 100;
+  },
 
   componentWillReceiveProps: function(newProps) {
     this.setState({ photos: newProps.photo});
@@ -33,11 +33,15 @@ var UploadPhotoForm = React.createClass({
   handleSubmit: function (e) {
     e.preventDefault();
 
-    this.props.closeModal();
-    PhotoActions.createPhotos({
-      photos: PhotoStore.photosToUpload(),
-      album_id: this.props.albumId
-    });
+    if (this.props.demoAccount) {
+      this.onModalOpen();
+    } else {
+      this.props.closeModal();
+      PhotoActions.createPhotos({
+        photos: PhotoStore.photosToUpload(),
+        album_id: this.props.albumId
+      });
+    }
   },
 
   errors: function(){
@@ -66,8 +70,21 @@ var UploadPhotoForm = React.createClass({
           </div>
           <br />
 
-          <input type="submit" value="Upload Photos"/>
+          <input className="add-photos" type="submit" value="Upload Photos"/>
         </form>
+
+        <Modal
+          isOpen={this.state.modalOpen}
+          onRequestClose={this.onModalClose}
+          style={ModalStyle}
+          onAfterOpen={this.onModalOpen}>
+
+          <div className="modal-content">
+            <button onClick={this.onModalClose}>Close</button>
+            <CannotDelete />
+          </div>
+
+        </Modal>
       </div>
     );
   }

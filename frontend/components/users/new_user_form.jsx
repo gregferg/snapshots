@@ -58,6 +58,7 @@ var NewUserForm = React.createClass({
 				<h1 className="login-form-title">Sign Up</h1>
 				<form onSubmit={this.handleSubmit} className="form">
 					<div>
+						{this.errors()}
 						<label> Username:
 							<input
                 type="text"
@@ -73,6 +74,7 @@ var NewUserForm = React.createClass({
                 onChange={this.passwordChange}
                 value={this.state.password}/>
 						</label>
+
 						<div className="submit-buttons">
 							<input className="signup-button" type="Submit" value="Sign Up!"/>
 							<button id="demo_login" onClick={this.loginDemo}>Demo Account</button>
@@ -90,7 +92,6 @@ var NewUserForm = React.createClass({
 		return (
 			<div id="signup-form">
 				{this.greeting()}
-				{this.errors()}
 				{this.form()}
 			</div>
 		);

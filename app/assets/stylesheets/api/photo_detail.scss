@@ -4,6 +4,9 @@
   height: 100vh;
   position: relative;
 
+  .arrow {
+  }
+
   .img {
     display: flex;
     justify-content: center;
@@ -12,6 +15,7 @@
     margin-right: auto;
     height: 100vh;
   }
+
 
   .photo-detail-information {
     display: none;
@@ -37,7 +41,7 @@
       right: 2%;
     }
 
-    p {
+    .photo-information {
       position: absolute;
       display: flex;
       flex-direction: column;
@@ -66,6 +70,7 @@
     position: absolute;
     right: 5%;
     top: 50%;
+    height: 50px;
     color: white;
   }
 
@@ -81,6 +86,7 @@
     position: absolute;
     left: 5%;
     top: 50%;
+    height: 50px;
     color: white;
 
   }

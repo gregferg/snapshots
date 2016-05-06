@@ -75,6 +75,7 @@ var LoginForm = React.createClass({
 	              value={this.state.password}/>
 						</label>
 						<br/>
+						{this.errors()}
 
 						<input className="submit-button" type="Submit" value="Submit"/>
 					</div>
@@ -85,7 +86,6 @@ var LoginForm = React.createClass({
 	render: function(){
 		return (
 			<div id="login-form">
-				{this.errors()}
 				{this.form()}
 			</div>
 		);

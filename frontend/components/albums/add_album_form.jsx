@@ -7,16 +7,28 @@ var PhotoStore = require("../../stores/photo_store");
 var Link = require('react-router').Link;
 var PhotoActions = require("../../actions/photo_actions");
 var PhotosToUpload = require("../photos/photos_to_upload");
+var Modal = require('react-modal');
+var ModalStyle = require('./delete_modal_style');
+var CannotDelete = require('../users/cannot_delete_modal');
 
 
 
 var AddAlbumForm = React.createClass({
   mixins: [CurrentUserState],
   getInitialState: function() {
-    return { title: "", description: "", image_url: "" };
+    return { title: "", description: "", image_url: "", modalOpen: false};
+  },
+  onModalClose: function() {
+    this.setState({ modalOpen: false });
+    ModalStyle.content.opacity = 0;
+  },
+  onModalOpen: function () {
+    this.setState({ modalOpen: true });
+    ModalStyle.content.opacity = 100;
   },
   componentDidMount: function() {
     this.listener = AlbumStore.addListener(this.updateErrors);
+    this.setState({ errors: {} });
   },
   componentWillUnmount: function() {
     this.listener.remove();
@@ -40,12 +52,16 @@ var AddAlbumForm = React.createClass({
   handleSubmit: function (e) {
     e.preventDefault();
 
-    AlbumActions.createAlbum({
-      title: this.state.title,
-      description: this.state.description,
-      user_id: this.state.user.id,
-      photos_to_upload: PhotoStore.photosToUpload()
-    });
+    if (this.props.demoAccount) {
+      this.onModalOpen();
+    } else {
+      AlbumActions.createAlbum({
+        title: this.state.title,
+        description: this.state.description,
+        user_id: this.state.user.id,
+        photos_to_upload: PhotoStore.photosToUpload()
+      });
+    }
   },
 
   errors: function(){
@@ -91,8 +107,21 @@ var AddAlbumForm = React.createClass({
           </div>
           <br />
 
-          <input type="submit" value="Add Album"/>
+          <input className="add-photos" type="submit" value="Add Album"/>
         </form>
+
+        <Modal
+          isOpen={this.state.modalOpen}
+          onRequestClose={this.onModalClose}
+          style={ModalStyle}
+          onAfterOpen={this.onModalOpen}>
+
+          <div className="modal-content">
+            <button onClick={this.onModalClose}>Close</button>
+            <CannotDelete />
+          </div>
+
+        </Modal>
       </div>
     );
   }

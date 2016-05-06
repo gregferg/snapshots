@@ -5,10 +5,25 @@ var HashHistoryLocation = require('react-router').HashLocation;
 var AlbumActions = require("../../actions/album_actions");
 var AlbumStore = require("../../stores/album_store");
 var AlbumIndexItem = require("./album_index_item");
+var Modal = require('react-modal');
+var ModalStyle = require('./delete_modal_style');
+var CannotDelete = require('../users/cannot_delete_modal');
+
 
 
 
 var AlbumIndex = React.createClass({
+  getInitialState: function() {
+    return ({ modalOpen: false });
+  },
+  onModalClose: function() {
+    this.setState({ modalOpen: false });
+    ModalStyle.content.opacity = 0;
+  },
+  onModalOpen: function () {
+    this.setState({ modalOpen: true });
+    ModalStyle.content.opacity = 100;
+  },
   componentWillReceiveProps: function(newProps) {
     this.setState({ albums: newProps.albums });
   },
@@ -27,12 +42,11 @@ var AlbumIndex = React.createClass({
     if (photos.length === 0) { return ;}
 
     for (var i = 0; i < 3; i++) {
-      // debugger;
       if(!photos[i]) {
         photos[i] = {height: 300, width: 400};
       }
     }
-    // debugger;
+
     var targetWidth = window.innerWidth * .9;
     var firstHeight = photos[0].height;
     var widths = [photos[0].width];
@@ -53,14 +67,14 @@ var AlbumIndex = React.createClass({
       sumWidth += widths[i];
     }
 
-    // IF MARGINS WANTED
-    // if (widths.length === 4) {
-    //   targetWidth -= 60;
-    // } else if (widths.length === 3) {
-    //   targetWidth -= 40;
-    // } else if (widths.length === 2) {
-    //   targetWidth -= 20;
-    // }
+    //IF MARGINS WANTED
+    if (widths.length === 4) {
+      targetWidth -= 30;
+    } else if (widths.length === 3) {
+      targetWidth -= 20;
+    } else if (widths.length === 2) {
+      targetWidth -= 10;
+    }
 
     var heightScale = targetWidth / sumWidth;
 
@@ -101,7 +115,17 @@ var AlbumIndex = React.createClass({
 
       var self = this;
       var newRow = possibleRow.map(function(album, idx) {
-        return <AlbumIndexItem key={album.id} album={album} username={self.props.username} currentUser={self.props.currentUser} height={calculatedRow.renderHeight} width={calculatedRow.renderWidths[idx]} />;
+        return (
+          <AlbumIndexItem
+            key={album.id}
+            album={album}
+            username={self.props.username}
+            currentUser={self.props.currentUser}
+            height={calculatedRow.renderHeight}
+            width={calculatedRow.renderWidths[idx]}
+            demoAccount={self.props.demoAccount}
+            modalOpen={self.onModalOpen}/>
+        );
       });
 
       albums = albums.slice(3, albums.length);
@@ -128,6 +152,19 @@ var AlbumIndex = React.createClass({
       <div className="album_index photo-content">
         <div>
           {rows}
+
+          <Modal
+            isOpen={this.state.modalOpen}
+            onRequestClose={this.onModalClose}
+            style={ModalStyle}
+            onAfterOpen={this.onModalOpen}>
+
+            <div className="modal-content">
+              <button onClick={this.onModalClose}>Close</button>
+              <CannotDelete />
+            </div>
+
+          </Modal>
         </div>
       </div>
     );

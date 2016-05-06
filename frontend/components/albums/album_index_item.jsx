@@ -17,10 +17,15 @@ var AlbumIndexItem = React.createClass({
   deleteAlbum: function (e) {
     e.preventDefault();
 
-    var deleteAlbum = confirm("Are you sure you want to delete " + this.props.album.title);
-    if (deleteAlbum) {
-      AlbumActions.deleteAlbum(this.props.album.id);
+    if (this.props.demoAccount) {
+      this.props.modalOpen();
+    } else {
+      var deleteAlbum = confirm("Are you sure you want to delete " + this.props.album.title);
+      if (deleteAlbum) {
+        AlbumActions.deleteAlbum(this.props.album.id);
+      }
     }
+
   },
   currentUserCanEdit: function() {
     if (this.props.currentUser) {

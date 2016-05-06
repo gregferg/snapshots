@@ -38,7 +38,7 @@ var NavBar = React.createClass({
     if (this.state.user) {
       return (
         <div className="nav-options">
-          <AddAlbum />
+          <AddAlbum demoAccount={this.props.demoAccount}/>
           <div className="user-page" onClick={this.redirectToUserPage}>Profile</div>
           <div className="logout" onClick={this.logout}>Log Out</div>
         </div>
