@@ -20,11 +20,6 @@ var NewUserForm = React.createClass({
 	handleSubmit: function(e){
 		e.preventDefault();
 		UserActions.signup({username: this.state.username, password: this.state.password});
-    // if (this.state.user) {
-    //   HashHistory.push("/" + this.state.user.username);
-    // } else {
-    //   this.setState({errors: this.state.errors});
-    // }
 	},
 	logout: function(e){
 		e.preventDefault();

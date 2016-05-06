@@ -105,6 +105,10 @@ var resetPhotos = function (photos) {
   PhotoStore.__emitChange();
 };
 
+PhotoStore.clearPhotos = function (photos) {
+  _photos = {};
+};
+
 var addPhoto = function (photo) {
   _photos[photo.id] = photo;
   PhotoStore.__emitChange();

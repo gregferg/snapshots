@@ -1,6 +1,7 @@
 var React = require('react');
 var AlbumIndex = require('../albums/album_index');
 var AlbumStore = require('../../stores/album_store');
+var PhotoStore = require('../../stores/photo_store');
 var AlbumActions = require("../../actions/album_actions");
 var AddAlbum = require("../albums/add_album");
 var CurrentUserState = require("../../mixins/current_user_state");
@@ -15,6 +16,8 @@ var Portfolio = React.createClass({
   componentDidMount: function() {
     this.listener = AlbumStore.addListener(this.updateAlbums);
     AlbumActions.fetchAlbums(this.props.params.username);
+    AlbumActions.fetchAlbums(this.props.params.username);
+    PhotoStore.clearPhotos();
   },
   updateAlbums: function() {
     this.setState({ albums: AlbumStore.all() });

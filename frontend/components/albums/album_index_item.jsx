@@ -41,7 +41,7 @@ var AlbumIndexItem = React.createClass({
         className="album-index-item"
         style={{height: Math.floor(this.props.height), width: this.props.width}}
         onClick={this.onClick}>
-        <img src={this.props.album.thumbnail_url} />
+        <img className="fade" src={this.props.album.thumbnail_url} />
         {this.albumTitle()}
         {this.currentUserCanEdit()}
       </div>

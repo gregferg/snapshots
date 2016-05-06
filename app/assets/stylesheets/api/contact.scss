@@ -1,0 +1,78 @@
+.contact-page {
+  width: 80vw;
+  height: 60vh;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+
+  img {
+    width: 25vw;
+  }
+
+  .form-side {
+    margin-left: 30px;
+
+    .contact-form {
+      display: flex;
+      flex-direction: row;
+      margin-bottom: 20px;
+      font-size: 2em;
+    }
+  }
+
+  display: flex;
+  flex-direction: row;
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 100%;
+
+    label {
+      display: flex;
+      align-items: flex-start;
+      flex-direction: column;
+      justify-content: space-between;
+
+      div {
+        margin-top: 7px;
+      }
+
+    }
+
+    .message-label {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    input {
+      border: 1px solid black;
+      margin-bottom: 20px;
+    }
+
+    textarea {
+      border: 1px solid black;
+      width: 450px;
+      height: 200px;
+
+    }
+
+    .submit-button {
+      margin-top: 30px;
+      padding-top: 15px;
+      padding-bottom: 15px;
+      padding-right: 25px;
+      padding-left: 25px;
+      background-color: #B6B6B6;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}

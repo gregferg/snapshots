@@ -53,6 +53,7 @@ var PhotoIndexItem = React.createClass({
 
     //to implement later <button onClick={this.toggleEdit}>Edit Photo</button>
 
+    console.log(this.props);
     if (this.props.currentUser) {
       return (
         <div className="delete-photo" onClick={this.deletePhoto}>Delete Photo
@@ -64,7 +65,7 @@ var PhotoIndexItem = React.createClass({
   render: function(){
     return (
       <div onClick={this.onClick} className="photo-index-item" style={{height: Math.floor(this.props.height), width: this.props.width}}>
-        <img src={this.props.photo.photo_url} />
+        <img className="fade" src={this.props.photo.photo_url} />
         {this.titleAndDescription()}
         {this.currentUserCanEdit()}
       </div>
