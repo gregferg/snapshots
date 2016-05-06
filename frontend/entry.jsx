@@ -63,12 +63,12 @@ var App = React.createClass({
     }
   },
   demoAccount: function() {
-  //   if (!this.state.user) { return ;}
-  //   if (
-  //     this.props.params.username === "Peter Mohrbacher" ||
-  //     this.props.params.username === "Eric Landon" ||
-  //     this.props.params.username === "Dave Powell"
-  //   ) { return true; }
+    if (!this.state.user) { return ;}
+    if (
+      this.props.params.username === "Peter Mohrbacher" ||
+      this.props.params.username === "Eric Landon" ||
+      this.props.params.username === "Dave Powell"
+    ) { return true; }
 },
 
   render: function () {

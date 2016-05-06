@@ -88,12 +88,12 @@ var AlbumDetail = React.createClass({
   },
   demoAccount: function() {
     if (!this.state.user) { return ;}
-    // debugger;
-    // if (
-    //   this.props.params.username === "Peter Mohrbacher" ||
-    //   this.props.params.username === "Eric Landon" ||
-    //   this.props.params.username === "Dave Powell"
-    // ) { return true; }
+    debugger;
+    if (
+      this.props.params.username === "Peter Mohrbacher" ||
+      this.props.params.username === "Eric Landon" ||
+      this.props.params.username === "Dave Powell"
+    ) { return true; }
   },
   deleteAlbum: function (e) {
     e.preventDefault();
