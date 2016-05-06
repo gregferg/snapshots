@@ -28,11 +28,6 @@ var LoginForm = React.createClass({
 	handleSubmit: function(e){
 		e.preventDefault();
 		UserActions.login(this.state.username, this.state.password);
-    // if (this.state.user) {
-    //   HashHistory.push("/" + this.state.user.username);
-    // } else {
-    //   this.setState({errors: this.state.errors});
-    // }
 	},
 	logout: function(e){
 		e.preventDefault();
@@ -59,29 +54,32 @@ var LoginForm = React.createClass({
 			return;
 		}
 		return(
+			<div>
+				<h1 className="login-form-title">Login</h1>
 				<form onSubmit={this.handleSubmit} className="form">
-					<section>
+					<div>
 						<label> Username:
 							<input
-                type="text"
-                placeholder="username"
-                onChange={this.usernameChange}
-                value={this.state.username}/>
+	              type="text"
+	              placeholder="username"
+	              onChange={this.usernameChange}
+	              value={this.state.username}/>
 						</label>
 						<br/>
 
 						<label> Password:
 							<input
-                type="password"
-                placeholder="password"
-                onChange={this.passwordChange}
-                value={this.state.password}/>
+	              type="password"
+	              placeholder="password"
+	              onChange={this.passwordChange}
+	              value={this.state.password}/>
 						</label>
-					</section>
-					<br/>
+						<br/>
 
-					<input type="Submit" value="Submit"/>
+						<input className="submit-button" type="Submit" value="Submit"/>
+					</div>
 				</form>
+			</div>
 		);
 	},
 	render: function(){

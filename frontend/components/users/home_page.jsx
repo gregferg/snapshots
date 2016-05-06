@@ -12,8 +12,10 @@ var HomePage = React.createClass({
     return (
       <div className="home-page">
         <div className="home-info">
+          <div className="home-info-box">  
           <h1 className="username">{this.props.params.username}</h1>
           <h4>THE PORTFOLIO</h4>
+        </div>
         </div>
       </div>
     );

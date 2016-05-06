@@ -21,7 +21,7 @@ var SiteNavBar = React.createClass({
   },
 
   selected: function(option) {
-    if (this.props.url === this.props.username && option === "home") {return "selected"; }
+    if (this.props.url === "/" + this.props.username && option === "home") {return "selected"; }
     if (this.props.url.indexOf(option) > -1) { return "selected"; }
     if (this.props.params.album_id && option === "portfolio") { return "selected"; }
 

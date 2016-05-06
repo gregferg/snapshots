@@ -53,6 +53,15 @@ var AlbumIndex = React.createClass({
       sumWidth += widths[i];
     }
 
+    // IF MARGINS WANTED
+    // if (widths.length === 4) {
+    //   targetWidth -= 60;
+    // } else if (widths.length === 3) {
+    //   targetWidth -= 40;
+    // } else if (widths.length === 2) {
+    //   targetWidth -= 20;
+    // }
+
     var heightScale = targetWidth / sumWidth;
 
     var renderHeight = firstHeight * heightScale;

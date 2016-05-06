@@ -50,6 +50,9 @@ var AboutPage = React.createClass({
         title: this.state.viewedUser.about_me_title,
         body:this.state.viewedUser.about_me_body
       });
+
+
+
     }
   },
   backToViewedUserHomePage: function(e) {

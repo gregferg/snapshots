@@ -1,0 +1,81 @@
+#login-form {
+
+  .login-form-title {
+
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
+    font-size: 3em;
+    color: white;
+
+  }
+
+  height: calc(100vh - 50px);
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-image: url('https://images.unsplash.com/photo-1456930266018-fda42f7404a7?crop=entropy&fit=crop&fm=jpg&h=800&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=1425');
+  background-size: cover;
+  z-index: -1;
+
+  .submit-button {
+    width: 100%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    background-color: #6EB800;
+
+
+    -webkit-box-shadow: 7px 7px 10px -9px rgba(0,0,0,0.75);
+    -moz-box-shadow: 7px 7px 10px -9px rgba(0,0,0,0.75);
+    box-shadow: 7px 7px 10px -9px rgba(0,0,0,0.75);
+  }
+
+  .form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #B6B6B6;
+    height: 30vh;
+    width: 50vh;
+
+    -webkit-box-shadow: 7px 7px 10px -9px rgba(0,0,0,0.75);
+    -moz-box-shadow: 7px 7px 10px -9px rgba(0,0,0,0.75);
+    box-shadow: 7px 7px 10px -9px rgba(0,0,0,0.75);
+
+
+
+    color: white;
+
+    div {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      label {
+        -webkit-box-shadow:inset 2px 2px 15px 1px rgba(0,0,0,0.1);
+        box-shadow:inset 2px 2px 15px 1px rgba(0,0,0,0.1);
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-right: 20px;
+        padding-left: 20px;
+        background-color: #818181;
+
+
+        input {
+          margin-left: 10px;
+        }
+      }
+
+      label:focus {
+        background-color: #D3CFCF;
+      }
+
+    }
+  }
+}

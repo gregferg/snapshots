@@ -37,17 +37,17 @@ var NavBar = React.createClass({
   buttons: function (){
     if (this.state.user) {
       return (
-        <div>
+        <div className="nav-options">
           <AddAlbum />
-          <button className="user-page" onClick={this.redirectToUserPage}>Profile</button>
-          <button className="logout" onClick={this.logout}>Log Out</button>
+          <div className="user-page" onClick={this.redirectToUserPage}>Profile</div>
+          <div className="logout" onClick={this.logout}>Log Out</div>
         </div>
         );
     } else {
       return  (
         <div className="login_signup">
-          <Link to="/new_user">TRY IT OUT</Link>
-          <Link to="/login">LOGIN</Link>
+          <Link to="/login" className="login">LOGIN</Link>
+          <Link to="/new_user" className="new-user">TRY IT OUT</Link>
         </div>
       );
     }

@@ -9,7 +9,10 @@ var Link = require('react-router').Link;
 
 var AlbumIndexItem = React.createClass({
   onClick: function(e) {
-    HashHistory.push("/" + this.props.username + "/" + this.props.album.id);
+    if (e.target.innerHTML === "Delete Album") {return ;}
+    e.preventDefault();
+
+    HashHistory.push("/" + this.props.username + "/albums/" + this.props.album.id);
   },
   deleteAlbum: function (e) {
     e.preventDefault();
@@ -33,13 +36,12 @@ var AlbumIndexItem = React.createClass({
   },
 
   render: function(){
-    console.log(this.props.height);
-    console.log(this.props.width);
     return (
-      <div className="album-index-item" style={{height: Math.floor(this.props.height), width: this.props.width}}>
-        <img
-          src={this.props.album.thumbnail_url}
-          onClick={this.onClick}/>
+      <div
+        className="album-index-item"
+        style={{height: Math.floor(this.props.height), width: this.props.width}}
+        onClick={this.onClick}>
+        <img src={this.props.album.thumbnail_url} />
         {this.albumTitle()}
         {this.currentUserCanEdit()}
       </div>

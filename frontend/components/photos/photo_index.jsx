@@ -8,10 +8,12 @@ var PhotoIndexItem = require("./photo_index_item");
 
 
 
+var _rowOrder = [];
+
 var PhotoIndex = React.createClass({
   mixins: [CurrentUserState],
   getInitialState: function() {
-    return { photos: this.props.photos };
+    return { photos: this.props.photos, rowsToRender: false};
   },
   componentDidMount: function() {
     window.addEventListener("resize", this.reRender);
@@ -27,7 +29,6 @@ var PhotoIndex = React.createClass({
 
   calcRow: function (photos) {
     if (photos.length === 0) { return ;}
-    // debugger;
     var targetWidth = window.innerWidth * .9;
     var firstHeight = photos[0].height;
     var widths = [photos[0].width];
@@ -48,6 +49,15 @@ var PhotoIndex = React.createClass({
       sumWidth += widths[i];
     }
 
+    // IF MARGINS ARE DESISIRED
+    // if (widths.length === 4) {
+    //   targetWidth -= 60;
+    // } else if (widths.length === 3) {
+    //   targetWidth -= 40;
+    // } else if (widths.length === 2) {
+    //   targetWidth -= 20;
+    // }
+
     var heightScale = targetWidth / sumWidth;
 
     var renderHeight = firstHeight * heightScale;
@@ -62,27 +72,40 @@ var PhotoIndex = React.createClass({
   allocateRows: function(allPhotos) {
     var rowsToRender = [];
     var photos = allPhotos.slice();
+    var self = this;
 
-    while (photos.length > 0) {
-      var tempRowNumber = Math.floor(Math.random() * (4 - 1)) + 2;
-
-      var possibleRow = photos.slice(0, tempRowNumber);
-
+    if (_rowOrder.length > 0) {
+      // debugger;
+      for (var i = 0; i < _rowOrder.length; i++) {
+      var possibleRow = photos.slice(0, _rowOrder[i]);
       var calculatedRow = this.calcRow(possibleRow);
 
 
-      if (calculatedRow.renderHeight < 100) {
-        continue ;
-      }
-
-
-      var self = this;
       var newRow = possibleRow.map(function(photo, idx) {
         return <PhotoIndexItem key={photo.id} photo={photo} currentUser={self.props.currentUser} height={calculatedRow.renderHeight} width={calculatedRow.renderWidths[idx]} />;
       });
 
-      photos = photos.slice(tempRowNumber, photos.length);
+      photos = photos.slice(_rowOrder[i], photos.length);
       rowsToRender.push(newRow);
+      }
+    } else {
+      while (photos.length > 0) {
+        var tempRowNumber = Math.floor(Math.random() * (4 - 1)) + 2;
+        var possibleRow = photos.slice(0, tempRowNumber);
+        var calculatedRow = this.calcRow(possibleRow);
+
+        if (calculatedRow.renderHeight < 100) {
+          continue ;
+        }
+
+        var newRow = possibleRow.map(function(photo, idx) {
+          return <PhotoIndexItem key={photo.id} photo={photo} currentUser={self.props.currentUser} height={calculatedRow.renderHeight} width={calculatedRow.renderWidths[idx]} />;
+        });
+
+        photos = photos.slice(tempRowNumber, photos.length);
+        _rowOrder.push(tempRowNumber);
+        rowsToRender.push(newRow);
+      }
     }
 
     return rowsToRender;
@@ -94,14 +117,9 @@ var PhotoIndex = React.createClass({
   render: function(){
     if (!this.state.photos) { return <div></div>; }
     if (this.state.photos.length === 0) { return <div></div>; }
-    var photos = this.state.photos;
 
 
-    var testPhotoRow = [
-        photos[0], photos[1]
-      ];
-
-    var rows = this.allocateRows(photos).map(function(row) {
+    var rows = this.allocateRows(this.state.photos).map(function(row) {
       return (
         <div className="photo-row" >
           {row}

@@ -47,8 +47,11 @@ var App = React.createClass({
   },
   footer: function () {
     console.log(this.props);
+    console.log(this.props.params.album_id && !this.props.params.photo_id);
     if (this.props.location.pathname.indexOf("portfolio") > -1 ||
-        this.props.location.pathname.indexOf("about") > -1) {
+        this.props.location.pathname.indexOf("about") > -1 ||
+        this.props.params.album_id && !this.props.params.photo_id)
+        {
           return (
             <div className="footer">
               <p>Site created by Grant Sauer ®2016</p>
@@ -78,8 +81,8 @@ var routes = (
     <Route path=":username/portfolio" component={Portfolio} />
     <Route path=":username/about" component={AboutPage} />
     <Route path=":username/contact" component={ContactPage} />
-    <Route path=":username/:album_id" component={AlbumDetail} />
-    <Route path=":username/:album_id/:photo_id" component={PhotoDetail} />
+    <Route path=":username/albums/:album_id" component={AlbumDetail} />
+    <Route path=":username/albums/:album_id/:photo_id" component={PhotoDetail} />
   </Route>
 );
 

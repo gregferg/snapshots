@@ -59,8 +59,10 @@ var NewUserForm = React.createClass({
 			return;
 		}
 		return(
+			<div>
+				<h1 className="login-form-title">Sign Up</h1>
 				<form onSubmit={this.handleSubmit} className="form">
-					<section>
+					<div>
 						<label> Username:
 							<input
                 type="text"
@@ -76,25 +78,25 @@ var NewUserForm = React.createClass({
                 onChange={this.passwordChange}
                 value={this.state.password}/>
 						</label>
-					</section>
+						<div className="submit-buttons">
+							<input className="signup-button" type="Submit" value="Sign Up!"/>
+							<button id="demo_login" onClick={this.loginDemo}>Demo Account</button>
+						</div>
+					</div>
 
-					<input type="Submit" value="Sign Up!"/>
 				</form>
+			</div>
 		);
 	},
 	loginDemo:function (e) {
 		UserActions.demoLogin();
 	},
-	demoButton: function() {
-		return <button id="demo_login" onClick={this.loginDemo}>Demo Account</button>;
-	},
 	render: function(){
 		return (
-			<div id="login-form">
+			<div id="signup-form">
 				{this.greeting()}
 				{this.errors()}
 				{this.form()}
-				{this.demoButton()}
 			</div>
 		);
 	}

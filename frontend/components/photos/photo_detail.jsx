@@ -47,13 +47,13 @@ var PhotoDetail = React.createClass({
     if (this.state.photo) { return this.state.photo.photo_url; }
   },
   onClose: function() {
-    HashHistory.push("/" + this.props.params.username + "/" + this.props.params.album_id);
+    HashHistory.push("/" + this.props.params.username + "/albums/" + this.props.params.album_id);
   },
   nextPhoto: function(e) {
 
     HashHistory.push(
       "/" + this.props.params.username +
-      "/" + this.props.params.album_id +
+      "/albums/" + this.props.params.album_id +
       "/" + PhotoStore.nextPhoto(this.state.photo.id).id
     );
   },
@@ -62,7 +62,7 @@ var PhotoDetail = React.createClass({
 
     HashHistory.push(
       "/" + this.props.params.username +
-      "/" + this.props.params.album_id +
+      "/albums/" + this.props.params.album_id +
       "/" + PhotoStore.previousPhoto(this.state.photo.id).id
     );
   },

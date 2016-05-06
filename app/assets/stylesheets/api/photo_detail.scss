@@ -54,6 +54,7 @@
       height: 100px;
       input {
         margin-top: 10px;
+        border-bottom: 1px solid white;
         // margin-left: 10px;
       }
     }
@@ -68,6 +69,13 @@
     color: white;
   }
 
+  .next-photo:hover {
+    cursor: pointer;
+  }
+  .previous-photo {
+    cursor: pointer;
+  }
+
   .previous-photo {
     display: flex;
     position: absolute;
@@ -78,13 +86,17 @@
   }
 
   .close-detail-view {
+    padding: 10px;
     display: flex;
     flex-direction: row;
     position: absolute;
     right: 2%;
     top: 2%;
     color: white;
+  }
 
+  .close-detail-view:hover {
+    cursor: pointer;
   }
 
   img {
