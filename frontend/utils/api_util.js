@@ -10,7 +10,6 @@ var ApiUtil = {
       url: 'api/albums',
       data: {username: username},
       success: function(albums) {
-        console.log("fetched dem" + albums);
         ServerActions.receiveAlbums(albums);
       }
     });
@@ -30,7 +29,6 @@ var ApiUtil = {
       url: 'api/albums',
       data: {album: album},
       success: function(createdAlbum) {
-        console.log(createdAlbum);
         ServerActions.receiveAlbum(createdAlbum);
         ServerActions.emptyPhotoStore();
         var payload = {
@@ -43,7 +41,6 @@ var ApiUtil = {
         );
       },
       error: function(error) {
-        console.log("ERROR");
         console.log(error);
         AppDispatcher.dispatch({
           actionType: 'ALBUM_ERROR',
@@ -122,7 +119,6 @@ updatePhotosToUpload: function(photos) {
       type: 'DELETE',
       url: 'api/photos/' + photo.id,
       success: function(createdPhoto) {
-        console.log(photo);
         ServerActions.removePhoto(photo);
       },
       error: function(error) {
