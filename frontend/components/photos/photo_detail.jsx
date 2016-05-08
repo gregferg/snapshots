@@ -22,20 +22,20 @@ var PhotoDetail = React.createClass({
   componentDidMount: function() {
     this.listener = PhotoStore.addListener(this.updateView);
     window.addEventListener( "keyup", this.newPhotoView);
-    window.addEventListener( "mousemove", function(e) {
-      timeout();
-    });
+    window.addEventListener( "mousemove", timeout);
     PhotoActions.fetchPhotos(this.props.params.album_id);
   },
 
   updateView: function() {
-    this.setState({ photo: PhotoStore.photoDetail(this.props.params.photo_id) });
+    this.setState({
+      photo: PhotoStore.photoDetail(this.props.params.photo_id)
+    });
   },
 
   componentWillUnmount: function() {
     this.listener.remove();
     window.removeEventListener("keyup", this.newPhotoView);
-    window.removeEventListener("mousemove", this.mouseStopped);
+    window.removeEventListener("mousemove", timeout);
   },
 
   componentWillReceiveProps: function(newProps) {
@@ -45,7 +45,9 @@ var PhotoDetail = React.createClass({
     if (this.state.photo) { return this.state.photo.photo_url; }
   },
   onClose: function() {
-    HashHistory.push("/" + this.props.params.username + "/albums/" + this.props.params.album_id);
+    HashHistory.push(
+      "/" + this.props.params.username + "/albums/" + this.props.params.album_id
+    );
   },
   nextPhoto: function(e) {
 

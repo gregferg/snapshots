@@ -133,9 +133,9 @@ var AlbumIndex = React.createClass({
 
     var albums = this.props.albums;
 
-    var rows = this.allocateRows(albums).map(function(row) {
+    var rows = this.allocateRows(albums).map(function(row, idx) {
       return (
-        <div className="photo-row" >
+        <div className="photo-row" key={idx}>
           {row}
         </div>
       );

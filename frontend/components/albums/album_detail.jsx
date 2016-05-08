@@ -37,6 +37,11 @@ var AlbumDetail = React.createClass({
     this.setState({ photos: PhotoStore.all() });
   },
 
+  componentWillUnmount: function() {
+    this.photoListener.remove();
+    this.albumListener.remove();
+  },
+
   updateAlbum: function() {
     this.setState({ album: AlbumStore.currentAlbum() });
   },
@@ -45,11 +50,6 @@ var AlbumDetail = React.createClass({
     if (!this.state.album) { return ; }
 
     return this.state.album.title;
-  },
-
-  componentWillUnmount: function() {
-    this.photoListener.remove();
-    this.albumListener.remove();
   },
 
   componentWillReceiveProps: function(newProps) {

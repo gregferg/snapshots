@@ -1,6 +1,8 @@
 var React = require('react');
 var AlbumActions = require("../../actions/album_actions");
 var AlbumStore = require("../../stores/album_store");
+var HashHistory = require('react-router').hashHistory;
+
 
 
 
@@ -9,7 +11,9 @@ var AlbumIndexItem = React.createClass({
     if (e.target.innerHTML === "Delete Album") {return ;}
     e.preventDefault();
 
-    HashHistory.push("/" + this.props.username + "/albums/" + this.props.album.id);
+    HashHistory.push(
+      "/" + this.props.username + "/albums/" + this.props.album.id
+    );
   },
   deleteAlbum: function (e) {
     e.preventDefault();
@@ -17,7 +21,9 @@ var AlbumIndexItem = React.createClass({
     if (this.props.demoAccount) {
       this.props.modalOpen();
     } else {
-      var deleteAlbum = confirm("Are you sure you want to delete " + this.props.album.title);
+      var deleteAlbum = confirm(
+        "Are you sure you want to delete " + this.props.album.title
+      );
       if (deleteAlbum) {
         AlbumActions.deleteAlbum(this.props.album.id);
       }
@@ -26,7 +32,13 @@ var AlbumIndexItem = React.createClass({
   },
   currentUserCanEdit: function() {
     if (this.props.currentUser) {
-      return <div className="delete-album" onClick={this.deleteAlbum}>Delete Album</div>;
+      return (
+        <div
+          className="delete-album"
+          onClick={this.deleteAlbum}>
+          Delete Album
+        </div>
+      );
     }
   },
   albumTitle: function() {
