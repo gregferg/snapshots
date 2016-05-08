@@ -23,6 +23,7 @@ var NavBar = React.createClass({
     UserActions.logout();
   },
   redirectToHome: function(e) {
+    UserActions.clearViewedUser();
     HashHistory.push("/");
   },
   redirectToUserPage: function(e) {

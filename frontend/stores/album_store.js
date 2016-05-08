@@ -21,6 +21,9 @@ AlbumStore.__onDispatch = function (payload) {
     case "ALBUM_ERROR":
       setErrors(payload.errors);
       break;
+    case "CLEARED_VIEWED_USER":
+      resetAlbums([]);
+      break;
   }
 };
 
@@ -28,6 +31,9 @@ AlbumStore.all = function(){
   return Object.keys(_albums).map(function (albumId) {
     return _albums[albumId];
   });
+};
+AlbumStore.clearAlbums = function(){
+  _albums = {};
 };
 
 AlbumStore.currentAlbum = function(){

@@ -11,6 +11,7 @@ var ApiUtil = {
       url: 'api/albums',
       data: {username: username},
       success: function(albums) {
+        console.log("fetched dem" + albums);
         ServerActions.receiveAlbums(albums);
       }
     });

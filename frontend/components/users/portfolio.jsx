@@ -16,8 +16,6 @@ var Portfolio = React.createClass({
   componentDidMount: function() {
     this.listener = AlbumStore.addListener(this.updateAlbums);
     AlbumActions.fetchAlbums(this.props.params.username);
-    AlbumActions.fetchAlbums(this.props.params.username);
-    PhotoStore.clearPhotos();
   },
   updateAlbums: function() {
     this.setState({ albums: AlbumStore.all() });
@@ -25,16 +23,25 @@ var Portfolio = React.createClass({
 
   componentWillUnmount: function() {
     this.listener.remove();
+    AlbumStore.clearAlbums();
   },
 
   noAlbums: function () {
     if (this.state.albums.length === 0) {
-      return (
-        <div className="photo-content">
-          <p>Looks like you have no albums.</p>
-          <AddAlbum />
-        </div>
-      );
+      if (this.currentUser()) {
+        return (
+          <div className="photo-content">
+            <p>Looks like you have no albums.</p>
+            <AddAlbum />
+          </div>
+        );
+      } else {
+        return (
+          <div className="photo-content">
+            <p>This user has no albums yet.</p>
+          </div>
+        );
+      }
     }
   },
   currentUser: function() {

@@ -7,6 +7,11 @@ var HashHistory = require('react-router').hashHistory;
 
 
 var UserActions = {
+	clearViewedUser: function() {
+		AppDispatcher.dispatch({
+			actionType: "CLEARED_VIEWED_USER"
+		});
+	},
 	fetchCurrentUser: function(){
 		UserApiUtil.fetchCurrentUser(UserActions.loggedInOrNot);
 	},

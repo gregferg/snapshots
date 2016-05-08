@@ -26,6 +26,9 @@ UserStore.__onDispatch = function (payload) {
     case "RECEIVE_UPDATED_USER":
       updateUser(payload.updatedUser);
       break;
+    case "CLEARED_VIEWED_USER":
+      updateUser();
+      break;
 
   }
   UserStore.__emitChange();

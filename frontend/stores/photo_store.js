@@ -36,8 +36,8 @@ PhotoStore.__onDispatch = function (payload) {
       resetPhotos([]);
       emptyPhotosToUpload();
       break;
-    case "EMPTY_PHOTOS_TO_UPLOAD":
-      emptyPhotosToUpload();
+    case "CLEARED_VIEWED_USER":
+      resetPhotos([]);
       break;
   }
 };
