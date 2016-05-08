@@ -27,8 +27,8 @@ var AlbumDetail = React.createClass({
   },
 
   componentDidMount: function() {
-    this.listener = PhotoStore.addListener(this.updateView);
-    this.listener = AlbumStore.addListener(this.updateAlbum);
+    this.photoListener = PhotoStore.addListener(this.updateView);
+    this.albumListener = AlbumStore.addListener(this.updateAlbum);
     AlbumActions.fetchAlbum(this.props.params.album_id);
     PhotoActions.fetchPhotos(this.props.params.album_id);
   },
@@ -48,7 +48,8 @@ var AlbumDetail = React.createClass({
   },
 
   componentWillUnmount: function() {
-    this.listener.remove();
+    this.photoListener.remove();
+    this.albumListener.remove();
   },
 
   componentWillReceiveProps: function(newProps) {

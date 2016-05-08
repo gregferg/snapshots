@@ -18,23 +18,6 @@ var ContactPage = React.createClass({
       sentMessage: false
      };
   },
-  //
-  // componentDidMount: function() {
-  //   this.listener = UserStore.addListener(this.updateView);
-  //   UserActions.fetchUsers();
-  // },
-  //
-  // updateView: function() {
-  //   this.setState({ users: UserStore.all() });
-  // },
-  //
-  // componentWillUnmount: function() {
-  //   this.listener.remove();
-  // },
-  //
-  // componentWillReceiveProps: function(newProps) {
-  //   this.setState({ users: newProps.user});
-  // },
   nameChange: function(e) {
     this.setState({ name: e.target.value });
   },

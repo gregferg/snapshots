@@ -40,9 +40,6 @@ var AboutPage = React.createClass({
         title: this.state.title,
         body: this.state.body
       });
-
-      console.log("SHOULD CHANGE");
-
       this.setState({ editting: false });
     } else {
       this.setState({
@@ -50,9 +47,6 @@ var AboutPage = React.createClass({
         title: this.state.viewedUser.about_me_title,
         body:this.state.viewedUser.about_me_body
       });
-
-
-
     }
   },
   backToViewedUserHomePage: function(e) {
