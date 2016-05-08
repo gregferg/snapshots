@@ -161,6 +161,7 @@ var AboutPage = React.createClass({
   },
 
   render: function(){
+    if (!this.state.viewedUser) { return <div></div>;}
     return (
       <div className="about-page">
         <img src={this.contact()} />
