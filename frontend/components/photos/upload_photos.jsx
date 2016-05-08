@@ -1,22 +1,19 @@
 var React = require('react');
-var CurrentUserState = require("../../mixins/current_user_state");
-var HashHistory = require('react-router').hashHistory;
 var PhotoActions = require("../../actions/photo_actions");
 var PhotoStore = require("../../stores/photo_store");
-var Link = require('react-router').Link;
 var Modal = require('react-modal');
 var ModalStyle = require('../albums/modal_style');
 var UploadPhotoForm = require('./upload_photos_form');
 
 
 
-
 var UploadPhotos = React.createClass({
-  mixins: [CurrentUserState],
+  getInitialState: function () {
+    return { modalOpen: false };
+  },
   __handleClick: function() {
     this.setState({ modalOpen: true });
   },
-
   onModalClose: function() {
     this.setState({ modalOpen: false });
     ModalStyle.content.opacity = 0;
@@ -32,10 +29,6 @@ var UploadPhotos = React.createClass({
         if (error === null) {
           var photosToUpload = photos;
           PhotoActions.updatePhotosToUpload(photosToUpload);
-          // var payload = { photos: photos, album_id: this.props.params.album_id };
-          // PhotoActions.createPhotos(payload);
-        } else {
-
         }
     }.bind(this));
   },

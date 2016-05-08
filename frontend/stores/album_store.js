@@ -40,6 +40,12 @@ AlbumStore.currentAlbum = function(){
  return _currentAlbum;
 };
 
+AlbumStore.errors = function(){
+  if (_errors){
+    return [].slice.call(_errors);
+  }
+};
+
 var resetAlbums = function(albums) {
   _albums = {};
 
@@ -67,11 +73,6 @@ var setErrors = function(errors){
   AlbumStore.__emitChange();
 };
 
-AlbumStore.errors = function(){
-  if (_errors){
-    return [].slice.call(_errors);
-  }
-};
 
 
 

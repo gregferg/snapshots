@@ -54,10 +54,6 @@ var PhotoIndexItem = React.createClass({
 
   },
   currentUserCanEdit: function() {
-
-    //to implement later <button onClick={this.toggleEdit}>Edit Photo</button>
-
-    console.log(this.props);
     if (this.props.currentUser) {
       return (
         <div className="delete-photo" onClick={this.deletePhoto}>Delete Photo

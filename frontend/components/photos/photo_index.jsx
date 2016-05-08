@@ -1,6 +1,4 @@
 var React = require('react');
-var CurrentUserState = require("../../mixins/current_user_state");
-var HashHistory = require('react-router').hashHistory;
 var PhotoActions = require("../../actions/photo_actions");
 var AlbumActions = require("../../actions/album_actions");
 var PhotoStore = require("../../stores/photo_store");
@@ -10,7 +8,6 @@ var PhotoIndexItem = require("./photo_index_item");
 var _rowOrder = [];
 
 var PhotoIndex = React.createClass({
-  mixins: [CurrentUserState],
   getInitialState: function() {
     return {
       photos: this.props.photos,
@@ -140,9 +137,9 @@ var PhotoIndex = React.createClass({
     if (this.state.photos.length === 0) { return <div></div>; }
 
 
-    var rows = this.allocateRows(this.state.photos).map(function(row) {
+    var rows = this.allocateRows(this.state.photos).map(function(row, idx) {
       return (
-        <div className="photo-row" >
+        <div className="photo-row" key={idx}>
           {row}
         </div>
       );

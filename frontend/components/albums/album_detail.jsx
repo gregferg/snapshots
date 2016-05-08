@@ -88,7 +88,6 @@ var AlbumDetail = React.createClass({
     }
   },
   demoAccount: function() {
-    if (!this.state.user) { return ;}
     if (
       this.props.params.username === "Peter Mohrbacher" ||
       this.props.params.username === "Eric Landon" ||
@@ -120,7 +119,6 @@ var AlbumDetail = React.createClass({
     }
   },
   currentUser: function() {
-    if (!this.state.user) { return; }
     var currentSiteUsername = this.props.params.username;
     var currentUsername = this.state.user.username;
     if (currentSiteUsername === currentUsername) {
@@ -129,6 +127,8 @@ var AlbumDetail = React.createClass({
   },
 
   render: function(){
+    if (!this.state.user) { return <div></div>;}
+
     return (
       <div className="photo-content">
         <div className="album-detail">

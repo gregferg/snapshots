@@ -1,15 +1,10 @@
 var React = require('react');
-var CurrentUserState = require("../../mixins/current_user_state");
-var HashHistory = require('react-router').hashHistory;
-var HashHistoryLocation = require('react-router').HashLocation;
 var AlbumActions = require("../../actions/album_actions");
 var AlbumStore = require("../../stores/album_store");
 var AlbumIndexItem = require("./album_index_item");
 var Modal = require('react-modal');
 var ModalStyle = require('./delete_modal_style');
 var CannotDelete = require('../users/cannot_delete_modal');
-
-
 
 
 var AlbumIndex = React.createClass({
@@ -35,6 +30,7 @@ var AlbumIndex = React.createClass({
     window.removeEventListener("resize", this.reRender);
   },
   reRender: function() {
+    //Setting the state so the component will rerender, Why not potato?
     this.setState({ potato: true});
   },
 
@@ -92,9 +88,6 @@ var AlbumIndex = React.createClass({
     var albums = allAlbums.slice();
 
     while (albums.length > 0) {
-      // var tempRowNumber = Math.floor(Math.random() * (4 - 0)) + 2;
-      var tempRowNumber = albums.length;
-//       debugger;
       var possibleRow = albums.slice(0, 3);
 
       var thumbnails = [];

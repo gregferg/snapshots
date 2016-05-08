@@ -1,9 +1,6 @@
 var React = require('react');
-var CurrentUserState = require("../../mixins/current_user_state");
-var HashHistory = require('react-router').hashHistory;
 var PhotoActions = require("../../actions/photo_actions");
 var PhotoStore = require("../../stores/photo_store");
-var Link = require('react-router').Link;
 var PhotosToUpload = require("./photos_to_upload");
 var Modal = require('react-modal');
 var ModalStyle = require('../albums/delete_modal_style');
@@ -11,7 +8,6 @@ var CannotDelete = require('../users/cannot_delete_modal');
 
 
 var UploadPhotoForm = React.createClass({
-  mixins: [CurrentUserState],
   getInitialState: function() {
     return { photos: PhotoStore.all(), modalOpen: false };
   },

@@ -3,7 +3,6 @@ var HashHistory = require('react-router').hashHistory;
 var AppDispatcher = require('../dispatcher/dispatcher');
 
 
-
 var ApiUtil = {
   fetchAlbums: function(username) {
     $.ajax({
@@ -34,9 +33,14 @@ var ApiUtil = {
         console.log(createdAlbum);
         ServerActions.receiveAlbum(createdAlbum);
         ServerActions.emptyPhotoStore();
-        var payload = { photos: createdAlbum.photos, album_id: createdAlbum.id};
+        var payload = {
+          photos: createdAlbum.photos,
+          album_id: createdAlbum.id
+        };
         ApiUtil.createPhotos(payload);
-        HashHistory.push("/" + createdAlbum.username + "/albums/" + createdAlbum.id);
+        HashHistory.push(
+          "/" + createdAlbum.username + "/albums/" + createdAlbum.id
+        );
       },
       error: function(error) {
         console.log("ERROR");
@@ -120,7 +124,6 @@ updatePhotosToUpload: function(photos) {
       success: function(createdPhoto) {
         console.log(photo);
         ServerActions.removePhoto(photo);
-        //HashHistory.push("/" + createdPhotos.username + "/" + payload.album_id);
       },
       error: function(error) {
         AppDispatcher.dispatch({
@@ -130,8 +133,6 @@ updatePhotosToUpload: function(photos) {
       }
     });
   },
-
-
 };
 
 module.exports = ApiUtil;

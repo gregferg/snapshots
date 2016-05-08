@@ -25,13 +25,19 @@ var App = React.createClass({
   lookingAtUser: function() {
     var params = this.props.params;
 
-    if (params.album_id && !params.photo_id || params.username && !params.photo_id) {
+    if (params.album_id && !params.photo_id ||
+      params.username && !params.photo_id) {
       return true;
     }
   },
   site_nav_bar: function () {
     if (this.lookingAtUser()) {
-      return <SiteNavBar url={this.props.location.pathname} params={this.props.params} username={this.props.params.username}/>;
+      return (
+        <SiteNavBar
+          url={this.props.location.pathname}
+          params={this.props.params}
+          username={this.props.params.username}/>
+      );
     }
   },
   displayNavBar: function() {

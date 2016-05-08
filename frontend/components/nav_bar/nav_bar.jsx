@@ -3,7 +3,6 @@ var CurrentUserState = require("../../mixins/current_user_state");
 var HashHistory = require('react-router').hashHistory;
 var UserActions = require("../../actions/user_actions");
 var Link = require('react-router').Link;
-var SearchBar = require('./search_bar');
 var AddAlbum = require('../albums/add_album');
 
 

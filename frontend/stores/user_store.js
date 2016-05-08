@@ -34,14 +34,6 @@ UserStore.__onDispatch = function (payload) {
   UserStore.__emitChange();
 };
 
-var setUser = function(user) {
-  _user = user;
-};
-
-var updateUser = function (user) {
-  _user = user;
-};
-
 UserStore.viewedUser = function() {
   return _user;
 };
@@ -78,6 +70,14 @@ UserStore.errors = function(){
   if (_errors){
     return [].slice.call(_errors);
   }
+};
+
+var setUser = function(user) {
+  _user = user;
+};
+
+var updateUser = function (user) {
+  _user = user;
 };
 
 module.exports = UserStore;

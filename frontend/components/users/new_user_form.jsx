@@ -2,7 +2,6 @@ var React = require("react");
 var UserActions = require("../../actions/user_actions");
 var CurrentUserState = require("../../mixins/current_user_state");
 var UserStore = require('../../stores/user_store');
-var HashHistory = require('react-router').hashHistory;
 
 
 var NewUserForm = React.createClass({
@@ -19,7 +18,10 @@ var NewUserForm = React.createClass({
   },
 	handleSubmit: function(e){
 		e.preventDefault();
-		UserActions.signup({username: this.state.username, password: this.state.password});
+		UserActions.signup({
+			username: this.state.username,
+			password: this.state.password
+			});
 	},
 	logout: function(e){
 		e.preventDefault();
@@ -75,8 +77,15 @@ var NewUserForm = React.createClass({
 						</label>
 
 						<div className="submit-buttons">
-							<input className="signup-button" type="Submit" value="Sign Up!"/>
-							<button id="demo_login" onClick={this.loginDemo}>Demo Account</button>
+							<input
+								className="signup-button"
+								type="Submit"
+								value="Sign Up!"/>
+							<button
+								id="demo_login"
+								onClick={this.loginDemo}>
+								Demo Account
+							</button>
 						</div>
 					</div>
 

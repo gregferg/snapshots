@@ -1,8 +1,5 @@
 var Dispatcher = require('../dispatcher/dispatcher.js');
-
 var PhotoStore = require('../stores/photo_store');
- // Example Constants call
- // var PokemonConstants = require('../constants/pokemonConstants.js');
 
 var ServerActions = {
   receiveAlbums: function (albums) {

@@ -2,7 +2,6 @@ var React = require('react');
 var HashHistory = require('react-router').hashHistory;
 
 
-
 var CannotDelete = React.createClass({
   redirectToNewUser: function () {
     HashHistory.push("/new_user");

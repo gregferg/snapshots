@@ -1,10 +1,6 @@
 var React = require('react');
-var CurrentUserState = require("../../mixins/current_user_state");
-var HashHistory = require('react-router').hashHistory;
 var PhotoActions = require("../../actions/photo_actions");
 var PhotoStore = require("../../stores/photo_store");
-var Link = require('react-router').Link;
-
 
 
 var PhotosToUpload = React.createClass({

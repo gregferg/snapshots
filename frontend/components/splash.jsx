@@ -1,8 +1,6 @@
 var React = require('react');
 var HashHistory = require('react-router').hashHistory;
 
-
-
 var Splash = React.createClass({
 
   redirectToExampleOne: function() {
@@ -32,13 +30,19 @@ var Splash = React.createClass({
             Explore Our Featured Artists
           </div>
           <div className="exploring-options-box">
-            <div className="exploring-options" onClick={this.redirectToExampleOne}>
+            <div
+              className="exploring-options"
+              onClick={this.redirectToExampleOne}>
               Peter Mohrbacher
             </div>
-            <div className="exploring-options" onClick={this.redirectToExampleTwo}>
+            <div
+              className="exploring-options"
+              onClick={this.redirectToExampleTwo}>
               Eric Landon
             </div>
-            <div className="exploring-options" onClick={this.redirectToExampleThree}>
+            <div
+              className="exploring-options"
+              onClick={this.redirectToExampleThree}>
               Dave Powell
             </div>
         </div>

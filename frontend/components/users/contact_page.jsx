@@ -1,14 +1,11 @@
 var React = require('react');
-var CurrentUserState = require("../../mixins/current_user_state");
 var HashHistory = require('react-router').hashHistory;
 var UserActions = require("../../actions/user_actions");
 var UserStore = require("../../stores/user_store");
-var Link = require('react-router').Link;
 
 
 
 var ContactPage = React.createClass({
-  // mixins: [CurrentUserState],
   getInitialState: function() {
     return {
       users: "UserStore.all()",

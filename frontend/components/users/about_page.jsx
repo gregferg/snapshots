@@ -5,7 +5,6 @@ var UserActions = require("../../actions/user_actions");
 var UserStore = require("../../stores/user_store");
 
 
-
 var AboutPage = React.createClass({
   mixins: [CurrentUserState],
   getInitialState: function() {
@@ -57,13 +56,19 @@ var AboutPage = React.createClass({
   about_title: function() {
     if (this.state.viewedUser.about_me_title) {
       return <h3>{this.state.viewedUser.about_me_title}</h3>;
-    } else if (this.state.user && this.state.viewedUser.username === this.state.user.username){
+    } else if (
+      this.state.user &&
+      this.state.viewedUser.username === this.state.user.username
+    ){
       return <h3>You haven't written your about me yet!</h3>;
     } else {
       return (
         <div>
           <h3>This user hasn't made their about me page yet</h3>
-          <button onClick={this.backToViewedUserHomePage}>Back to {this.state.viewedUser.username}&#39;s Homepage.</button>
+          <button
+            onClick={this.backToViewedUserHomePage}>
+            Back to {this.state.viewedUser.username}&#39;s Homepage.
+          </button>
         </div>
       );
     }
@@ -135,11 +140,11 @@ var AboutPage = React.createClass({
       );
     }
   },
-  contact: function (){
+  userAboutPhoto: function (){
     var photoToRender;
     switch (this.state.viewedUser.username) {
       case 'Eric Landon':
-        photoToRender ='http://tortus-copenhagen.com/wp-content/uploads/2014/11/portrait3-600x600.jpg';
+        photoToRender = 'http://tortus-copenhagen.com/wp-content/uploads/2014/11/portrait3-600x600.jpg';
         break;
       case 'Peter Mohrbacher':
         photoToRender = 'http://static1.squarespace.com/static/52b99140e4b02ffea75851ab/t/56bf641386db43b5489f4e77/1455383619587/artist+photo.jpg?format=300w';
@@ -158,7 +163,7 @@ var AboutPage = React.createClass({
     if (!this.state.viewedUser) { return <div></div>;}
     return (
       <div className="about-page">
-        <img src={this.contact()} />
+        <img src={this.userAboutPhoto()} />
         <div className="about-me-info">
           {this.renderAboutMe()}
         </div>

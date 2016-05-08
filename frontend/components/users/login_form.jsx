@@ -77,7 +77,10 @@ var LoginForm = React.createClass({
 						<br/>
 						{this.errors()}
 
-						<input className="submit-button" type="Submit" value="Submit"/>
+						<input
+							className="submit-button"
+							 type="Submit"
+							 value="Submit"/>
 					</div>
 				</form>
 			</div>

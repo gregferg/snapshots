@@ -52,12 +52,6 @@ PhotoStore.photosToUpload = function(){
   );
 };
 
-var emptyPhotosToUpload = function() {
-  _photosToUpload = {};
-
-  PhotoStore.__emitChange();
-};
-
 PhotoStore.addPhotosToPhotosToUpload = function(photos) {
   photos.forEach(function (photo) {
 
@@ -82,7 +76,6 @@ PhotoStore.nextPhoto = function (currentPhotoId) {
   return _photoDetail;
 };
 
-
 PhotoStore.previousPhoto = function (currentPhotoId) {
   var keys = Object.keys(_photos);
   var previousPhotoId = keys.indexOf(currentPhotoId.toString()) - 1;
@@ -94,6 +87,21 @@ PhotoStore.previousPhoto = function (currentPhotoId) {
   return _photoDetail;
 };
 
+PhotoStore.errors = function(){
+  if (_errors){
+    return [].slice.call(_errors);
+  }
+};
+
+PhotoStore.clearPhotos = function (photos) {
+  _photos = {};
+};
+
+var emptyPhotosToUpload = function() {
+  _photosToUpload = {};
+
+  PhotoStore.__emitChange();
+};
 
 var resetPhotos = function (photos) {
   _photos = {};
@@ -103,10 +111,6 @@ var resetPhotos = function (photos) {
   });
 
   PhotoStore.__emitChange();
-};
-
-PhotoStore.clearPhotos = function (photos) {
-  _photos = {};
 };
 
 var addPhoto = function (photo) {
@@ -138,11 +142,6 @@ var setErrors = function(errors){
   PhotoStore.__emitChange();
 };
 
-PhotoStore.errors = function(){
-  if (_errors){
-    return [].slice.call(_errors);
-  }
-};
 
 
 module.exports = PhotoStore;
