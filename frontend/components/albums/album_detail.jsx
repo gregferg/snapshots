@@ -31,6 +31,7 @@ var AlbumDetail = React.createClass({
     this.albumListener = AlbumStore.addListener(this.updateAlbum);
     AlbumActions.fetchAlbum(this.props.params.album_id);
     PhotoActions.fetchPhotos(this.props.params.album_id);
+    debugger;
   },
 
   updateView: function() {

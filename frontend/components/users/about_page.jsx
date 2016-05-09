@@ -93,9 +93,6 @@ var AboutPage = React.createClass({
   bodyChange: function(e) {
     this.setState({ body: e.target.value});
   },
-  handleSubmit: function(e) {
-    e.preventDefault();
-  },
   editForm: function() {
     return (
       <form className="form">
