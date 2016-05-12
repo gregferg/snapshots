@@ -15,6 +15,7 @@ var AddAlbum = React.createClass({
   },
   componentDidMount: function() {
     this.listener = AlbumStore.addListener(this.albumCreated);
+
     this.albumCount = AlbumStore.all().length;
   },
   componentWillUnmount: function() {
@@ -66,7 +67,7 @@ var AddAlbum = React.createClass({
           style={ModalStyle}
           onAfterOpen={this.onModalOpen}>
           <button onClick={this.onModalClose}>Close</button>
-          <AddAlbumForm demoAccount={this.props.demoAccount}/>
+          <AddAlbumForm demoAccount={this.props.demoAccount} user={this.props.user}/>
 
         </Modal>
       </div>

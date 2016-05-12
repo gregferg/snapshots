@@ -8,7 +8,6 @@ var AddAlbum = require('../albums/add_album');
 
 
 var NavBar = React.createClass({
-  mixins: [CurrentUserState],
   getInitialState: function () {
     return ({ modalOpen: false });
   },
@@ -26,7 +25,7 @@ var NavBar = React.createClass({
     HashHistory.push("/");
   },
   redirectToUserPage: function(e) {
-    HashHistory.push("/" + this.state.user.username);
+    HashHistory.push("/" + this.props.user.username);
   },
   className: function() {
     if (this.props.isHomePage) {
@@ -35,10 +34,10 @@ var NavBar = React.createClass({
     return "nav_bar";
   },
   buttons: function (){
-    if (this.state.user) {
+    if (this.props.user) {
       return (
         <div className="nav-options">
-          <AddAlbum demoAccount={this.props.demoAccount}/>
+          <AddAlbum demoAccount={this.props.demoAccount} user={this.state.user}/>
           <div className="user-page" onClick={this.redirectToUserPage}>Profile</div>
           <div className="logout" onClick={this.logout}>Log Out</div>
         </div>

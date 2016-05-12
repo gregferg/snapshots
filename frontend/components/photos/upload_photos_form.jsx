@@ -22,10 +22,6 @@ var UploadPhotoForm = React.createClass({
     this.setState({ modalOpen: true });
     ModalStyle.content.opacity = 100;
   },
-
-  componentWillReceiveProps: function(newProps) {
-    this.setState({ photos: newProps.photo});
-  },
   handleSubmit: function (e) {
     e.preventDefault();
 

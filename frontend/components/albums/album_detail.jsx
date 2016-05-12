@@ -10,12 +10,17 @@ var UploadPhotos = require("../photos/upload_photos");
 var Modal = require('react-modal');
 var ModalStyle = require('./delete_modal_style');
 var CannotDelete = require('../users/cannot_delete_modal');
+var UserStore = require('../../stores/user_store');
 
 
 var AlbumDetail = React.createClass({
-  mixins: [CurrentUserState],
+  // mixins: [CurrentUserState],
   getInitialState: function() {
-    return { photos: PhotoStore.all(), modalOpen: false };
+    return {
+      photos: PhotoStore.all(),
+      modalOpen: false,
+      user: UserStore.currentUser()
+     };
   },
   onModalClose: function() {
     this.setState({ modalOpen: false });
@@ -29,9 +34,15 @@ var AlbumDetail = React.createClass({
   componentDidMount: function() {
     this.photoListener = PhotoStore.addListener(this.updateView);
     this.albumListener = AlbumStore.addListener(this.updateAlbum);
+    // this.userListener = UserStore.addListener(this.updateUser);
+
+
     AlbumActions.fetchAlbum(this.props.params.album_id);
     PhotoActions.fetchPhotos(this.props.params.album_id);
-    debugger;
+  },
+
+  updateUser: function() {
+    this.setState( {user: UserStore.currentUser()} );
   },
 
   updateView: function() {
@@ -41,6 +52,7 @@ var AlbumDetail = React.createClass({
   componentWillUnmount: function() {
     this.photoListener.remove();
     this.albumListener.remove();
+    // this.userListener.remove();
   },
 
   updateAlbum: function() {
@@ -62,10 +74,11 @@ var AlbumDetail = React.createClass({
       window.cloudinary_options,
       function(error, photos) {
         if (error === null) {
-          var photosToUpload = { photos: photos, album_id: this.props.params.album_id };
+          var photosToUpload = {
+            photos: photos,
+            album_id: this.props.params.album_id
+          };
           PhotoActions.updatePhotosToUpload(photosToUpload);
-        } else {
-
         }
     }.bind(this));
   },
@@ -120,6 +133,8 @@ var AlbumDetail = React.createClass({
     }
   },
   currentUser: function() {
+    if (!this.state.user) { return <div></div>;}
+
     var currentSiteUsername = this.props.params.username;
     var currentUsername = this.state.user.username;
     if (currentSiteUsername === currentUsername) {
@@ -128,8 +143,6 @@ var AlbumDetail = React.createClass({
   },
 
   render: function(){
-    if (!this.state.user) { return <div></div>;}
-
     return (
       <div className="photo-content">
         <div className="album-detail">

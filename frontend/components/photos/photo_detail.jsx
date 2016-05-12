@@ -8,7 +8,7 @@ var timer;
 var timeout = function () {
   $('.shown-on-mouse-move').css('display', 'flex');
   clearTimeout(timer);
-  timer=setTimeout(mouseStopped, 3000);
+  timer = setTimeout(mouseStopped, 3000);
 };
 
 var mouseStopped = function() {
@@ -23,6 +23,7 @@ var PhotoDetail = React.createClass({
     this.listener = PhotoStore.addListener(this.updateView);
     window.addEventListener( "keyup", this.newPhotoView);
     window.addEventListener( "mousemove", timeout);
+
     PhotoActions.fetchPhotos(this.props.params.album_id);
   },
 

@@ -18,10 +18,30 @@ var AboutPage = require('./components/users/about_page');
 var ContactPage = require('./components/users/contact_page');
 var HomePage = require('./components/users/home_page');
 var Portfolio = require('./components/users/portfolio');
+var UserStore = require('./stores/user_store');
+var UserActions = require('./actions/user_actions');
+
+
 
 
 var App = React.createClass({
-  mixins: [CurrentUserState],
+  getInitialState: function() {
+    return { user: UserStore.currentUser(), errors: UserStore.errors() };
+  },
+  componentDidMount: function() {
+    this.listener = UserStore.addListener(this.updateUser);
+
+    if (!UserStore.currentUser()) {
+      UserActions.fetchCurrentUser();
+    }
+  },
+  componentWillUnmount: function() {
+    this.listener.remove();
+  },
+
+  updateUser: function() {
+    this.setState( {user: UserStore.currentUser(), errors: UserStore.errors()} );
+  },
   lookingAtUser: function() {
     var params = this.props.params;
 

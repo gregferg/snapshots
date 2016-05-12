@@ -12,38 +12,46 @@ var CannotDelete = require('../users/cannot_delete_modal');
 
 
 var AddAlbumForm = React.createClass({
-  mixins: [CurrentUserState],
   getInitialState: function() {
     return { title: "", description: "", image_url: "", modalOpen: false};
   },
   onModalClose: function() {
+    debugger;
     this.setState({ modalOpen: false });
     ModalStyle.content.opacity = 0;
   },
   onModalOpen: function () {
+    debugger;
     this.setState({ modalOpen: true });
     ModalStyle.content.opacity = 100;
   },
   componentDidMount: function() {
     this.listener = AlbumStore.addListener(this.updateErrors);
+
+    debugger;
+
     this.setState({ errors: {} });
   },
   componentWillUnmount: function() {
     this.listener.remove();
   },
   updateErrors: function(){
+    debugger;
     this.setState({errors: AlbumStore.errors() });
   },
 
   updateView: function() {
+    debugger;
     this.setState({ title: "", description: "" });
   },
 
   titleChange: function (e) {
+    debugger;
     this.setState({ title: e.target.value });
   },
 
   descriptionChange: function (e) {
+    debugger;
     this.setState({ description: e.target.value });
   },
 
@@ -56,7 +64,7 @@ var AddAlbumForm = React.createClass({
       AlbumActions.createAlbum({
         title: this.state.title,
         description: this.state.description,
-        user_id: this.state.user.id,
+        user_id: this.props.user.id,
         photos_to_upload: PhotoStore.photosToUpload()
       });
     }
