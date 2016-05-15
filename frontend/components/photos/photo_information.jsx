@@ -5,7 +5,7 @@ var PhotoActions = require("../../actions/photo_actions");
 var PhotoStore = require("../../stores/photo_store");
 
 var PhotoInformation = React.createClass({
-  mixins: [CurrentUserState],
+  // mixins: [CurrentUserState],
   getInitialState: function() {
     return {
       editing: false,
@@ -124,9 +124,9 @@ var PhotoInformation = React.createClass({
     }
   },
   currentUser: function() {
-    if (!this.state.user) { return; }
+    if (!this.props.user) { return; }
     var currentSiteUsername = this.props.username;
-    var currentUsername = this.state.user.username;
+    var currentUsername = this.props.user.username;
     if (currentSiteUsername === currentUsername) {
       return true;
     }

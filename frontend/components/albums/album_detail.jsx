@@ -1,5 +1,4 @@
 var React = require('react');
-var CurrentUserState = require("../../mixins/current_user_state");
 var HashHistory = require('react-router').hashHistory;
 var PhotoActions = require("../../actions/photo_actions");
 var AlbumActions = require("../../actions/album_actions");
@@ -12,9 +11,9 @@ var ModalStyle = require('./delete_modal_style');
 var CannotDelete = require('../users/cannot_delete_modal');
 var UserStore = require('../../stores/user_store');
 
+var retrivedPhotos;
 
 var AlbumDetail = React.createClass({
-  // mixins: [CurrentUserState],
   getInitialState: function() {
     return {
       photos: PhotoStore.all(),
@@ -34,7 +33,9 @@ var AlbumDetail = React.createClass({
   componentDidMount: function() {
     this.photoListener = PhotoStore.addListener(this.updateView);
     this.albumListener = AlbumStore.addListener(this.updateAlbum);
-    // this.userListener = UserStore.addListener(this.updateUser);
+    this.userListener = UserStore.addListener(this.updateUser);
+
+    if (PhotoStore.all().length === 0) { retrivedPhotos = false; }
 
 
     AlbumActions.fetchAlbum(this.props.params.album_id);
@@ -46,13 +47,14 @@ var AlbumDetail = React.createClass({
   },
 
   updateView: function() {
+    retrivedPhotos = true;
     this.setState({ photos: PhotoStore.all() });
   },
 
   componentWillUnmount: function() {
     this.photoListener.remove();
     this.albumListener.remove();
-    // this.userListener.remove();
+    this.userListener.remove();
   },
 
   updateAlbum: function() {
@@ -122,7 +124,7 @@ var AlbumDetail = React.createClass({
   },
 
   noPhotos: function () {
-    if (!this.state.photos) { return; }
+    if (!this.state.photos || !retrivedPhotos) { return; }
     if (this.state.photos.length === 0) {
       return (
         <div>
@@ -133,7 +135,7 @@ var AlbumDetail = React.createClass({
     }
   },
   currentUser: function() {
-    if (!this.state.user) { return <div></div>;}
+    if (!this.state.user) { return false;}
 
     var currentSiteUsername = this.props.params.username;
     var currentUsername = this.state.user.username;

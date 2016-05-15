@@ -2,6 +2,7 @@ var React = require('react');
 var HashHistory = require('react-router').hashHistory;
 var PhotoActions = require("../../actions/photo_actions");
 var PhotoStore = require("../../stores/photo_store");
+var UserStore = require('../../stores/user_store');
 var PhotoInformation = require("./photo_information");
 
 var timer;
@@ -17,7 +18,10 @@ var mouseStopped = function() {
 
 var PhotoDetail = React.createClass({
   getInitialState: function() {
-    return { photo: PhotoStore.photoDetail(this.props.params.photo_id) };
+    return {
+      photo: PhotoStore.photoDetail(this.props.params.photo_id),
+      user: UserStore.currentUser()
+     };
   },
   componentDidMount: function() {
     this.listener = PhotoStore.addListener(this.updateView);

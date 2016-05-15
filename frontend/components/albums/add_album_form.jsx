@@ -16,19 +16,15 @@ var AddAlbumForm = React.createClass({
     return { title: "", description: "", image_url: "", modalOpen: false};
   },
   onModalClose: function() {
-    debugger;
     this.setState({ modalOpen: false });
     ModalStyle.content.opacity = 0;
   },
   onModalOpen: function () {
-    debugger;
     this.setState({ modalOpen: true });
     ModalStyle.content.opacity = 100;
   },
   componentDidMount: function() {
     this.listener = AlbumStore.addListener(this.updateErrors);
-
-    debugger;
 
     this.setState({ errors: {} });
   },
@@ -36,22 +32,18 @@ var AddAlbumForm = React.createClass({
     this.listener.remove();
   },
   updateErrors: function(){
-    debugger;
     this.setState({errors: AlbumStore.errors() });
   },
 
   updateView: function() {
-    debugger;
     this.setState({ title: "", description: "" });
   },
 
   titleChange: function (e) {
-    debugger;
     this.setState({ title: e.target.value });
   },
 
   descriptionChange: function (e) {
-    debugger;
     this.setState({ description: e.target.value });
   },
 

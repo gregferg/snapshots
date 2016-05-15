@@ -106,19 +106,35 @@ var AlbumIndex = React.createClass({
         continue ;
       }
 
+      while (possibleRow.length < 3) {
+        possibleRow.push(false);
+      }
+
       var self = this;
       var newRow = possibleRow.map(function(album, idx) {
-        return (
-          <AlbumIndexItem
-            key={album.id}
-            album={album}
-            username={self.props.username}
-            currentUser={self.props.currentUser}
-            height={calculatedRow.renderHeight}
-            width={calculatedRow.renderWidths[idx]}
-            demoAccount={self.props.demoAccount}
-            modalOpen={self.onModalOpen}/>
-        );
+        if (album) {
+          return (
+            <AlbumIndexItem
+              key={album.id}
+              album={album}
+              username={self.props.username}
+              currentUser={self.props.currentUser}
+              height={calculatedRow.renderHeight}
+              width={calculatedRow.renderWidths[idx]}
+              demoAccount={self.props.demoAccount}
+              modalOpen={self.onModalOpen}/>
+          );
+        } else {
+          return (
+            <div
+              key={idx}
+              style={{
+                height: calculatedRow.renderHeight,
+                width: calculatedRow.renderWidths[idx]
+              }}>
+            </div>
+          );
+        }
       });
 
       albums = albums.slice(3, albums.length);

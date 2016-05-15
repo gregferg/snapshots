@@ -40,7 +40,10 @@ var App = React.createClass({
   },
 
   updateUser: function() {
-    this.setState( {user: UserStore.currentUser(), errors: UserStore.errors()} );
+    this.setState({
+      user: UserStore.currentUser(),
+      errors: UserStore.errors()
+    });
   },
   lookingAtUser: function() {
     var params = this.props.params;

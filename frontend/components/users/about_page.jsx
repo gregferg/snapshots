@@ -6,9 +6,12 @@ var UserStore = require("../../stores/user_store");
 
 
 var AboutPage = React.createClass({
-  mixins: [CurrentUserState],
+  // mixins: [CurrentUserState],
   getInitialState: function() {
-    return { viewedUser: UserStore.viewedUser(), editting: false };
+    return {
+      user: UserStore.currentUser(),
+      viewedUser: UserStore.viewedUser(),
+      editting: false };
   },
 
   componentDidMount: function() {
@@ -24,11 +27,25 @@ var AboutPage = React.createClass({
     this.listener.remove();
   },
   editButton: function (){
-    if (this.state.user && this.state.viewedUser.username === this.state.user.username) {
+    if (
+      this.state.user &&
+      this.state.viewedUser.username === this.state.user.username
+    ) {
       if (this.state.editting) {
-        return <div className="edit-about-me" onClick={this.toggleEditting}>Update</div>;
+        return (
+          <div className="edit-about-me"
+            onClick={this.toggleEditting}>
+            Update
+          </div>
+        );
       } else {
-        return <div className="edit-about-me" onClick={this.toggleEditting}>Edit Your About Me</div>;
+        return (
+          <div
+            className="edit-about-me"
+            onClick={this.toggleEditting}>
+            Edit Your About Me
+          </div>
+        );
       }
     }
   },
@@ -60,7 +77,12 @@ var AboutPage = React.createClass({
       this.state.user &&
       this.state.viewedUser.username === this.state.user.username
     ){
-      return <h3>You haven't written your about me yet!</h3>;
+      return (
+        <div>
+          <p></p>
+          <h3>You haven't written your about me yet!</h3>
+        </div>
+      );
     } else {
       return (
         <div>

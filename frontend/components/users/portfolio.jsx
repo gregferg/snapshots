@@ -2,23 +2,32 @@ var React = require('react');
 var AlbumIndex = require('../albums/album_index');
 var AlbumStore = require('../../stores/album_store');
 var PhotoStore = require('../../stores/photo_store');
+var UserStore = require('../../stores/user_store');
 var AlbumActions = require("../../actions/album_actions");
 var AddAlbum = require("../albums/add_album");
-var CurrentUserState = require("../../mixins/current_user_state");
 
 
+var retrivedAlbums;
 
 var Portfolio = React.createClass({
-  mixins: [CurrentUserState],
   getInitialState: function() {
-    return { albums: AlbumStore.all() };
+    return {
+      albums: AlbumStore.all(),
+      user: UserStore.currentUser()
+    };
   },
   componentDidMount: function() {
     this.listener = AlbumStore.addListener(this.updateAlbums);
     AlbumActions.fetchAlbums(this.props.params.username);
+
+    if (AlbumStore.all().length === 0) { retrivedAlbums = false; }
   },
   updateAlbums: function() {
-    this.setState({ albums: AlbumStore.all() });
+    retrivedAlbums = true;
+
+    this.setState({
+      albums: AlbumStore.all()
+    });
   },
 
   componentWillUnmount: function() {
@@ -27,12 +36,13 @@ var Portfolio = React.createClass({
   },
 
   noAlbums: function () {
+    if (!this.state.retrivedAlbums) { return <div className="loading"></div>; }
     if (this.state.albums.length === 0) {
       if (this.currentUser()) {
         return (
           <div className="photo-content">
             <p>Looks like you have no albums.</p>
-            <AddAlbum />
+            <AddAlbum user={this.state.user}/>
           </div>
         );
       } else {
