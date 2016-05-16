@@ -9,7 +9,6 @@ var NewUserForm = require('./components/users/new_user_form');
 var Splash = require('./components/splash');
 var NavBar = require('./components/nav_bar/nav_bar');
 var SiteNavBar = require('./components/site_nav_bar/site_nav_bar');
-var CurrentUserState = require("./mixins/current_user_state");
 var Modal = require('react-modal');
 var PhotoIndex = require('./components/photos/photo_index');
 var AlbumDetail = require('./components/albums/album_detail');
@@ -20,7 +19,6 @@ var HomePage = require('./components/users/home_page');
 var Portfolio = require('./components/users/portfolio');
 var UserStore = require('./stores/user_store');
 var UserActions = require('./actions/user_actions');
-
 
 
 

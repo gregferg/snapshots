@@ -1,5 +1,4 @@
 var React = require('react');
-var CurrentUserState = require("../../mixins/current_user_state");
 var AlbumActions = require("../../actions/album_actions");
 var AlbumStore = require("../../stores/album_store");
 var PhotoStore = require("../../stores/photo_store");

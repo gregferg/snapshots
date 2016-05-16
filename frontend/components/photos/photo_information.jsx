@@ -1,11 +1,9 @@
 var React = require('react');
-var CurrentUserState = require("../../mixins/current_user_state");
 var HashHistory = require('react-router').hashHistory;
 var PhotoActions = require("../../actions/photo_actions");
 var PhotoStore = require("../../stores/photo_store");
 
 var PhotoInformation = React.createClass({
-  // mixins: [CurrentUserState],
   getInitialState: function() {
     return {
       editing: false,

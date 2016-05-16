@@ -1,12 +1,10 @@
 var React = require('react');
-var CurrentUserState = require("../../mixins/current_user_state");
 var HashHistory = require('react-router').hashHistory;
 var UserActions = require("../../actions/user_actions");
 var UserStore = require("../../stores/user_store");
 
 
 var AboutPage = React.createClass({
-  // mixins: [CurrentUserState],
   getInitialState: function() {
     return {
       user: UserStore.currentUser(),

@@ -1,5 +1,4 @@
 var React = require('react');
-var CurrentUserState = require("../../mixins/current_user_state");
 var HashHistory = require('react-router').hashHistory;
 var UserActions = require("../../actions/user_actions");
 var Link = require('react-router').Link;
@@ -46,7 +45,7 @@ var NavBar = React.createClass({
             onClick={this.redirectToUserPage}>
             Home
           </div>
-          
+
           <div className="logout" onClick={this.logout}>Log Out</div>
         </div>
         );
