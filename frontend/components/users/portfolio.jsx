@@ -4,6 +4,7 @@ var AlbumStore = require('../../stores/album_store');
 var PhotoStore = require('../../stores/photo_store');
 var UserStore = require('../../stores/user_store');
 var AlbumActions = require("../../actions/album_actions");
+var UserActions = require("../../actions/user_actions");
 var AddAlbum = require("../albums/add_album");
 
 
@@ -17,10 +18,21 @@ var Portfolio = React.createClass({
     };
   },
   componentDidMount: function() {
-    this.listener = AlbumStore.addListener(this.updateAlbums);
+    this.albumListener = AlbumStore.addListener(this.updateAlbums);
+    this.userListener = UserStore.addListener(this.updateUser);
+
     AlbumActions.fetchAlbums(this.props.params.username);
+    if (!UserStore.currentUser()) {
+      UserActions.fetchCurrentUser();
+    }
 
     if (AlbumStore.all().length === 0) { retrivedAlbums = false; }
+  },
+  updateUser: function() {
+    this.setState({
+      user: UserStore.currentUser(),
+      errors: UserStore.errors()
+    });
   },
   updateAlbums: function() {
     retrivedAlbums = true;
@@ -31,12 +43,13 @@ var Portfolio = React.createClass({
   },
 
   componentWillUnmount: function() {
-    this.listener.remove();
+    this.albumListener.remove();
+    this.userListener.remove();
     AlbumStore.clearAlbums();
   },
 
   noAlbums: function () {
-    if (!this.state.retrivedAlbums) { return <div className="loading"></div>; }
+    if (!retrivedAlbums) { return <div className="loading"></div>; }
     if (this.state.albums.length === 0) {
       if (this.currentUser()) {
         return (
@@ -62,14 +75,6 @@ var Portfolio = React.createClass({
       return true;
     }
   },
-  demoAccount: function() {
-    if (!this.state.user) { return ;}
-    if (
-      this.props.params.username === "Peter Mohrbacher" ||
-      this.props.params.username === "Eric Landon" ||
-      this.props.params.username === "Dave Powell"
-    ) { return true; }
-  },
 
   render: function(){
     return (
@@ -80,8 +85,7 @@ var Portfolio = React.createClass({
         <AlbumIndex
           albums={this.state.albums}
           username={this.props.params.username}
-          currentUser={this.currentUser()}
-          demoAccount={this.demoAccount()}/>
+          currentUser={this.currentUser()}/>
         {this.noAlbums()}
       </div>
     );

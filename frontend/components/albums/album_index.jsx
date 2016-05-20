@@ -100,6 +100,15 @@ var AlbumIndex = React.createClass({
         }
       });
 
+      console.log(possibleRow);
+
+      //bug where only one specific album returned the photos out of order,
+      // resulting in the thumbnail of the album being different from the first
+      // photo returned, and leading to a wrong aspect ratio for the thumbnail
+      // if (thumbnails[0].album_id === 10) {
+      //   thumbnails[0] = possibleRow[0][-1];
+      // }
+
       var calculatedRow = this.calcRow(thumbnails);
 
       if (calculatedRow.renderHeight < 50) {
@@ -121,7 +130,6 @@ var AlbumIndex = React.createClass({
               currentUser={self.props.currentUser}
               height={calculatedRow.renderHeight}
               width={calculatedRow.renderWidths[idx]}
-              demoAccount={self.props.demoAccount}
               modalOpen={self.onModalOpen}/>
           );
         } else {
@@ -170,7 +178,6 @@ var AlbumIndex = React.createClass({
 
             <div className="modal-content">
               <button onClick={this.onModalClose}>Close</button>
-              <CannotDelete />
             </div>
 
           </Modal>

@@ -25,15 +25,11 @@ var UploadPhotoForm = React.createClass({
   handleSubmit: function (e) {
     e.preventDefault();
 
-    if (this.props.demoAccount) {
-      this.onModalOpen();
-    } else {
       this.props.closeModal();
       PhotoActions.createPhotos({
         photos: PhotoStore.photosToUpload(),
         album_id: this.props.albumId
       });
-    }
   },
 
   errors: function(){
@@ -73,7 +69,6 @@ var UploadPhotoForm = React.createClass({
 
           <div className="modal-content">
             <button onClick={this.onModalClose}>Close</button>
-            <CannotDelete />
           </div>
 
         </Modal>

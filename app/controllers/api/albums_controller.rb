@@ -1,7 +1,6 @@
 class Api::AlbumsController < ApplicationController
   def index
     user = User.includes(:albums).find_by(username: params[:username])
-    puts user
     @albums = user.albums
     render :index
   end

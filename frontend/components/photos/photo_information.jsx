@@ -41,7 +41,7 @@ var PhotoInformation = React.createClass({
   photoTitle: function() {
     var title = this.state.photo.title;
     if (title === "") { title = "untitled"; }
-    return <p>{title}</p>;
+    return <h3>{title}</h3>;
   },
   photoDescription: function() {
     var description = this.state.photo.description;

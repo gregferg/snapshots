@@ -49,16 +49,12 @@ var AddAlbumForm = React.createClass({
   handleSubmit: function (e) {
     e.preventDefault();
 
-    if (this.props.demoAccount) {
-      this.onModalOpen();
-    } else {
-      AlbumActions.createAlbum({
-        title: this.state.title,
-        description: this.state.description,
-        user_id: this.props.user.id,
-        photos_to_upload: PhotoStore.photosToUpload()
-      });
-    }
+    AlbumActions.createAlbum({
+      title: this.state.title,
+      description: this.state.description,
+      user_id: this.props.user.id,
+      photos_to_upload: PhotoStore.photosToUpload()
+    });
   },
 
   errors: function(){

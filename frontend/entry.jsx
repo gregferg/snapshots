@@ -73,8 +73,7 @@ var App = React.createClass({
     return (
       <NavBar
         isHomePage={homepage}
-        user={this.state.user}
-        demoAccount={this.demoAccount()}/>
+        user={this.state.user}/>
     );
   },
   footer: function () {
@@ -89,15 +88,6 @@ var App = React.createClass({
           );
     }
   },
-  demoAccount: function() {
-    if (!this.state.user) { return ;}
-    if (
-      this.props.params.username === "Peter Mohrbacher" ||
-      this.props.params.username === "Eric Landon" ||
-      this.props.params.username === "Dave Powell"
-    ) { return true; }
-},
-
   render: function () {
     return(
     <div>

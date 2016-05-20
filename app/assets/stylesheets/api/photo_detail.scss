@@ -45,8 +45,20 @@
       position: absolute;
       display: flex;
       flex-direction: column;
+      top: 15px;
       left: 5%;
+      right: 5%;
       margin-left: 5%;
+      margin-right: 5%;
+
+      h3 {
+        font-weight: 400;
+        margin: 0px;
+      }
+
+      p {
+        margin-top: 4px;
+      }
     }
 
     .form {

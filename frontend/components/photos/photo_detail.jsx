@@ -1,6 +1,7 @@
 var React = require('react');
 var HashHistory = require('react-router').hashHistory;
 var PhotoActions = require("../../actions/photo_actions");
+var UserActions = require("../../actions/user_actions");
 var PhotoStore = require("../../stores/photo_store");
 var UserStore = require('../../stores/user_store');
 var PhotoInformation = require("./photo_information");
@@ -28,6 +29,12 @@ var PhotoDetail = React.createClass({
     window.addEventListener( "keyup", this.newPhotoView);
     window.addEventListener( "mousemove", timeout);
 
+    this.userListener = UserStore.addListener(this.updateUser);
+
+    if (!UserStore.currentUser()) {
+      UserActions.fetchCurrentUser();
+    }
+
     PhotoActions.fetchPhotos(this.props.params.album_id);
   },
 
@@ -36,11 +43,18 @@ var PhotoDetail = React.createClass({
       photo: PhotoStore.photoDetail(this.props.params.photo_id)
     });
   },
+  updateUser: function() {
+    this.setState({
+      user: UserStore.currentUser(),
+      errors: UserStore.errors()
+    });
+  },
 
   componentWillUnmount: function() {
     this.listener.remove();
     window.removeEventListener("keyup", this.newPhotoView);
     window.removeEventListener("mousemove", timeout);
+    this.userListener.remove();
   },
 
   componentWillReceiveProps: function(newProps) {
@@ -87,6 +101,7 @@ var PhotoDetail = React.createClass({
     return (
       <PhotoInformation
         photo={this.state.photo}
+        user={this.state.user}
         username={this.props.params.username}/>
     );
   },

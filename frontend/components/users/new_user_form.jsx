@@ -51,10 +51,15 @@ var NewUserForm = React.createClass({
 		}
 		</ul>);
 	},
+	doNothing: function () {
+		// removes failed form proptype warning saying that setting a value without
+		// giving an onChange handler is not valid
+	},
 	form: function(){
 		if (this.state.currentUser) {
 			return;
 		}
+
 		return(
 			<div>
 				<h1 className="login-form-title">Sign Up</h1>
@@ -78,9 +83,12 @@ var NewUserForm = React.createClass({
 
 						<div className="submit-buttons">
 							<input
+								onChange={this.doNothing}
 								className="signup-button"
 								type="Submit"
 								value="Sign Up!"/>
+
+
 							<button
 								id="demo_login"
 								onClick={this.loginDemo}>
@@ -96,6 +104,8 @@ var NewUserForm = React.createClass({
 		);
 	},
 	loginDemo:function (e) {
+		e.preventDefault();
+
 		UserActions.demoLogin();
 	},
 	render: function(){

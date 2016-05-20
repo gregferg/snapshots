@@ -20,7 +20,7 @@ It works by splitting the photos into rows of 1-4 photos, then calculating the c
 ![photo_layout](./docs/production_readme_photos/photo_layout.png)
 
 ### Simple Photo Detail Allowing Photos to be Shown Without Distractions
-Clicking on a photo expands the photo to a fullscreen view with a minimal interface to allow the photo to be the highlight of the view. One can use the arrow keys to view the next or previous image, as well as the escape key to go back to viewing the ablum.
+Clicking on a photo expands the photo to a fullscreen view with a minimal interface to allow the photo to be the highlight of the view. One can use the arrow keys to view the next or previous image, as well as the escape key to go back to viewing the album.
 
 ![photo_layout](./docs/production_readme_photos/photo_detail.png)
 

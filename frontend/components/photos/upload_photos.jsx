@@ -44,11 +44,10 @@ var UploadPhotos = React.createClass({
           style={ModalStyle}
           onAfterOpen={this.onModalOpen}>
           <button onClick={this.onModalClose}>Close</button>
+          
           <UploadPhotoForm
             closeModal={this.onModalClose}
-            albumId={this.props.albumId}
-            demoAccount={this.props.demoAccount}/>
-
+            albumId={this.props.albumId}/>
         </Modal>
       </div>
     );

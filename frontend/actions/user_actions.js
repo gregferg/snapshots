@@ -36,7 +36,7 @@ var UserActions = {
 	},
 	sucessfulLogin: function(user) {
 		UserActions.receiveCurrentUser(user);
-		HashHistory.push("/" + user.username);
+		HashHistory.push("/" + user.username + "/portfolio");
 	},
 	demoLogin: function() {
 		switch(Math.floor(Math.random() * (3 - 0) + 0)) {

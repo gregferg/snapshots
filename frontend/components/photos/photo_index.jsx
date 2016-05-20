@@ -115,7 +115,6 @@ var PhotoIndex = React.createClass({
               currentUser={self.props.currentUser}
               height={calculatedRow.renderHeight}
               width={calculatedRow.renderWidths[idx]}
-              demoAccount={self.props.demoAccount}
               modalOpen={self.props.modalOpen}/>
           );
         });

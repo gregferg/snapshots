@@ -12,11 +12,8 @@ var PhotoIndexItem = React.createClass({
   deletePhoto: function(e) {
     e.preventDefault();
 
-    if (this.props.demoAccount) {
-      this.props.modalOpen();
-    } else {
-      PhotoActions.deletePhoto(this.props.photo);
-    }
+
+    PhotoActions.deletePhoto(this.props.photo);
   },
 
   onClick: function(e) {
@@ -25,8 +22,8 @@ var PhotoIndexItem = React.createClass({
     if (e.target.className === "delete-photo") {
       return ;
     }
+    
     HashHistory.push(window.path + "/" + this.props.photo.id);
-
   },
 
   toggleEdit: function(e) {

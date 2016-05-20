@@ -2,6 +2,7 @@ var React = require('react');
 var HashHistory = require('react-router').hashHistory;
 var PhotoActions = require("../../actions/photo_actions");
 var AlbumActions = require("../../actions/album_actions");
+var UserActions = require("../../actions/user_actions");
 var PhotoStore = require("../../stores/photo_store");
 var AlbumStore = require("../../stores/album_store");
 var PhotoIndex = require("../photos/photo_index");
@@ -35,6 +36,9 @@ var AlbumDetail = React.createClass({
     this.albumListener = AlbumStore.addListener(this.updateAlbum);
     this.userListener = UserStore.addListener(this.updateUser);
 
+    if (!UserStore.currentUser()) {
+      UserActions.fetchCurrentUser();
+    }
     if (PhotoStore.all().length === 0) { retrivedPhotos = false; }
 
 
@@ -97,29 +101,17 @@ var AlbumDetail = React.createClass({
         <div>
           <button onClick={this.deleteAlbum}>Delete Album</button>
           <UploadPhotos
-            albumId={this.props.params.album_id}
-            demoAccount={this.demoAccount()}/>
+            albumId={this.props.params.album_id}/>
         </div>
       );
     }
   },
-  demoAccount: function() {
-    if (
-      this.props.params.username === "Peter Mohrbacher" ||
-      this.props.params.username === "Eric Landon" ||
-      this.props.params.username === "Dave Powell"
-    ) { return true; }
-  },
   deleteAlbum: function (e) {
     e.preventDefault();
 
-    if (this.demoAccount()) {
-      this.onModalOpen();
-    } else {
-      var deleteAlbum = confirm("Are you sure you want to delete this album?");
-      if (deleteAlbum) {
-        AlbumActions.deleteAlbum(this.props.params.album_id);
-      }
+    var deleteAlbum = confirm("Are you sure you want to delete this album?");
+    if (deleteAlbum) {
+      AlbumActions.deleteAlbum(this.props.params.album_id);
     }
   },
 
@@ -136,6 +128,7 @@ var AlbumDetail = React.createClass({
   },
   currentUser: function() {
     if (!this.state.user) { return false;}
+
 
     var currentSiteUsername = this.props.params.username;
     var currentUsername = this.state.user.username;
@@ -159,7 +152,6 @@ var AlbumDetail = React.createClass({
             <PhotoIndex
               photos={this.state.photos}
               currentUser={this.currentUser()}
-              demoAccount={this.demoAccount()}
               modalOpen={this.onModalOpen}/>
           </div>
 

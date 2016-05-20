@@ -49,6 +49,10 @@ var LoginForm = React.createClass({
 		}
 		</ul>);
 	},
+	doNothing: function () {
+		// removes failed form proptype warning saying that setting a value without
+		// giving an onChange handler is not valid
+	},
 	form: function(){
 		if (this.state.currentUser) {
 			return;
@@ -79,8 +83,9 @@ var LoginForm = React.createClass({
 
 						<input
 							className="submit-button"
-							 type="Submit"
-							 value="Submit"/>
+							onChange={this.doNothing}
+							type="Submit"
+							value="Submit"/>
 					</div>
 				</form>
 			</div>
