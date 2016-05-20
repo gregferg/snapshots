@@ -1,8 +1,8 @@
 # Snapshots
 
-[Heroku link][heroku] **NB:** Snapshots!
+[Heroku link][heroku] **NB:** Snapshots Live Link!
 
-[heroku]: https://snapshotapp.herokuapp.com/
+[heroku]: https://www.snapshots.design/
 
 Snapshots is a full-stack web application inspired by Smugmug. It utilizes Ruby on Rails on the backend, a PostgreSQL database, and React.js with a Flux architectural framework on the frontend.
 

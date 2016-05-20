@@ -100,7 +100,6 @@ var AlbumIndex = React.createClass({
         }
       });
 
-      console.log(possibleRow);
 
       //bug where only one specific album returned the photos out of order,
       // resulting in the thumbnail of the album being different from the first
