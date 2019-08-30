@@ -1,3 +1,5 @@
+Please note this application was made in 2016 and is not a current reflection of my skills
+
 # Snapshots
 
 [Heroku link][heroku] **NB:** Snapshots Live Link!
@@ -44,7 +46,7 @@ If the viewer of the person's portfolio likes their work, there is a contact tab
 
 
 ## Future Directions for the Project
-Features I plan to add to the project when I have more time.
+Potential directions to improve upon the application.
 
 ### Customizable Photo Layouts
 Make it so that the user can customize their photo layouts as opposed to randomizing it each time.
